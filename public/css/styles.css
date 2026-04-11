@@ -1,0 +1,58 @@
+.carousel-item img {
+  height: auto;
+  width: 100%;
+  object-fit: contain;
+  background-color: #f8f9fa; /* relleno suave */
+}
+
+#carouselExampleIndicators {
+  max-width: 700px;   
+  margin: 0 auto;    
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: 
+    linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+    url('/img/fondo.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.navbar-custom {
+  background-color: #e9a6a7;
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 18px;
+}
+
+.navbar-custom .nav-link,
+.navbar-custom .navbar-brand {
+  color: rgb(255, 255, 255);
+}
+
+.navbar-custom .nav-link.active {
+  color: #437eaf;
+}
+
+.navbar-custom .nav-link:hover {
+  color: #437eaf;
+}
+
+.topbar {
+  background-color: #fff8d2; 
+  padding: 30px 50px;
+  color: #ffec70;
+}
+
+.topbar img {
+  max-height: 80px;
+  width: auto;
+}
+
+.topbar .form-control {
+  width: 100%;
+  max-width: 400px;
+}
