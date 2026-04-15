@@ -1,49 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v=13">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Pacifico&family=Shadows+Into+Light&family=Titan+One&display=swap" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-        <title> inicio </title>
-    </head>
+@extends('plantilla')
+@section('contenido')
+
+    <title> inicio </title>
+
     <body>
-        <div class="topbar">
-            <div class="container-fluid d-flex align-items-center justify-content-between">
-
-                <div class="d-flex align-items-center">
-                <img src="{{ asset('img/logo2.png') }}" height="40">
-                </div>
-
-                <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Buscar...">
-                <button class="btn btn-buscar">Buscar</button>
-                </form>
-
-                <div class="d-flex align-items-center gap-3 fs-4">
-                    <i class="bi bi-cart-fill icono-topbar"></i>
-                    <i class="bi bi-person-circle icono-topbar"></i>
-                </div>
-            </div>
-        </div>
-        <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#">INICIO</a>
-                <a class="nav-link" href="/catalogo">CATALOGO</a>
-                <a class="nav-link" href="#">COMO COMPRAR</a>
-                <a class="nav-link" href="#">NOSOTROS</a>
-            </div>
-            </div>
-        </div>
-        </nav>
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 
         <div class="carousel-indicators">
@@ -53,14 +13,14 @@
         </div>
 
         <div class="carousel-inner">
-            <div class="carousel-item active">
+                <div class="carousel-item active">
             <img src="{{ asset('img/c1.jpg') }}" class="d-block w-100">
             </div>
             <div class="carousel-item">
-            <img src="{{ asset('img/c2.jpg') }}" class="d-block w-100">
+                <img src="{{ asset('img/c2.jpg') }}" class="d-block w-100">
             </div>
             <div class="carousel-item">
-            <img src="{{ asset('img/c3.jpg') }}" class="d-block w-100">
+                <img src="{{ asset('img/c3.jpg') }}" class="d-block w-100">
             </div>
         </div>
 
@@ -89,13 +49,13 @@
                         <div id="carruselNiños" class="carousel slide carousel-fade carousel-card" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                <img src="{{ asset('img/dinoC1.jpg') }}" class="d-block w-100" alt="...">
+                                    <img src="{{ asset('img/dinoC1.jpg') }}" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                <img src="{{ asset('img/barbC1.jpg') }}" class="d-block w-100" alt="...">
+                                    <img src="{{ asset('img/barbC1.jpg') }}" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                <img src="{{ asset('img/hwC1.jpg') }}" class="d-block w-100" alt="...">
+                                    <img src="{{ asset('img/hwC1.jpg') }}" class="d-block w-100" alt="...">
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carruselNiños" data-bs-slide="prev">
@@ -237,56 +197,6 @@
             </p>
             <a href="#" class="btn btn-catalogo mt-auto">VER CATALOGO COMPLETO</a>
         </div>
-
-        <footer class="footer mt-5">
-            <div class="container py-4">
-                <div class="row">
-
-                <div class="col-md-3 d-flex align-items-center">
-                    <img src="{{ asset('img/logo.png') }}" class="logo-footer">
-                </div>
-
-                <div class="col-md-3">
-                    <h5>NAVEGACIÓN</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="/">Inicio</a></li>
-                        <li><a href="/sobre-mi">Catalogo</a></li>
-                        <li><a href="/contacto">Nosotros</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-3">
-                    <h5>IMPORTANTE</h5>
-                    <ul class="list-unstyled">
-                    <li><a href="#">Términos y condiciones</a></li>
-                    <li><a href="#">Política de privacidad</a></li>
-                    <li><a href="#">Envíos</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-3">
-                    <h5>CONTACTO</h5>
-                    <p>
-                        <i class="bi bi-envelope-fill"></i>
-                        tntoysjugueteria@gmail.com
-                    </p>
-                    <p>
-                        <i class="bi bi-whatsapp"></i>
-                        3794-382461
-                    </p>
-                    <p>
-                        <i class="bi bi-instagram"></i>
-                        @tntoys_jugueteria
-                    </p>
-                    <p>
-                        <i class="bi bi-facebook"></i>
-                        @tntoys_jugueteria
-                    </p>
-                </div>
-
-                </div>
-            </div>
-        </footer>
     </body>
 </html>
-         
+@endsection
