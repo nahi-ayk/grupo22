@@ -180,3 +180,214 @@ body {
 .footer p {
   margin-bottom: 5px;
 }
+
+
+
+
+
+
+/*Titulos principales de cada sección "Contacto" - "Sobre nosotros" , etc*/
+.titulo{
+    font-family: 'Titan One', sans-serif;
+    color: #437eaf;
+    font-weight: 700;
+    font-size: 4.00rem;
+}
+
+
+
+.col-lg-5 {
+    max-width: 500px;
+}
+
+.c1{
+    max-width: 100%;
+    border-radius: 2.5rem;
+    background-color: #fff8d2;
+    margin: 0 auto;
+    
+}
+
+
+
+strong{
+    font-size: 25px;
+}
+
+.text-sp span{
+  font-size: 22px;
+}
+
+/*Formulario de la sección contactos*/
+.mi-formulario{
+  background-color: #fff8d2;
+  border-radius: 2.5rem;
+  max-width: 100%;
+}
+
+/*Inputs y textarea*/
+.mi-formulario .form-control {
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 15px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Efecto al hacer click */
+.mi-formulario .form-control:focus {
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(25, 135, 84, 0.3);
+}
+
+/* Textarea más grande */
+.mi-formulario textarea {
+    min-height: 140px;
+    resize: none;
+}
+
+/* Botón */
+.mi-formulario .btn {
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* Hover del botón */
+.mi-formulario .btn:hover {
+    background-color: #e9a6a7;
+}
+
+.mi-formulario .form-control::placeholder {
+    color: #999;
+}
+
+.mi-formulario .bi-send {
+    color: rgb(255, 255, 255);
+}
+
+/*Personalización de iconos*/
+i {
+  margin-right: 8px;
+  color: #e9a6a7;
+}
+
+
+.seccion-sobre .col-md-6 p{
+  font-size: 1.5em;
+}
+
+/* Imagenes de la sección nosotros*/
+.img-mediana {
+    width: 50%; 
+    max-width: 500px; /* Para que no crezca demasiado en pantallas gigantes */
+    height: auto;
+    border-radius: 15px;
+}
+
+/* Maneja el crecimiento de las imagenes en Celulares */
+@media (max-width: 768px) {
+    .img-mediana {
+        width: 80%;   /* más grande en celular */
+        margin: 0 auto;
+        display: block;
+    }
+
+    .subtitulo {
+        font-size: 45px;
+        text-align: center;
+        
+    }
+
+    .seccion-sobre .col-md-6 p {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+}
+
+/* Maneja el crecimiento de las imagenes en Tablets (iPad incluido) */
+@media (min-width: 769px) and (max-width: 1200px) {
+    .img-mediana {
+        width: 65%;
+    }
+
+    .subtitulo {
+        font-size: 45px;
+    }
+
+    .seccion-sobre .col-md-6 p {
+        font-size: 1.3rem;
+    }
+}
+
+/*Filas de la sección nosotros*/
+.contenido1, .contenido2 {
+    min-height: 500px; 
+    display: flex;
+    align-items: center; /* Centra el contenido verticalmente en toda la sección */
+}
+
+/*Primer fila de la sección nosotros*/
+.contenido1{
+  background-color: #fcfcfc;
+  
+}
+
+/*Primer fila de la sección nosotros "Nuestra misión""*/
+.contenido2{
+  background-color: #e9a6a7;
+}
+
+.contenido3{
+  background-color: #fff8d2;
+}
+
+/*Segunda fila de la sección nosotros "Historia"*/
+.subtitulo {
+  font-size: 48px;
+  font-family: 'Titan One', sans-serif;
+  color: #437eaf;
+  position: relative;
+}
+
+.subtitulo::after {
+  content: "";
+  width: 60px;
+  height: 5px;
+  background: #437eaf;
+  display: block;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+
+/*Animación de aparecer en pantalla*/
+.aparecer {
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contenido1, .contenido2, .contenido3 {
+  padding: 60px 0;
+}
+
+.descripcion-text{
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 2em;
+}
+
+

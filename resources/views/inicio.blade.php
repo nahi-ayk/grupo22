@@ -3,7 +3,7 @@
 
     <title> inicio </title>
 
-    <body>
+    <body class= "aparecer">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 
         <div class="carousel-indicators">
