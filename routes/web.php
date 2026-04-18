@@ -18,10 +18,11 @@ Route::get('/nosotros', function () {
     return view('nosotros');
 });
 
-<<<<<<< HEAD
 Route::get('/terminos', function () {
     return view('terminos');
-=======
+});
+
+
 Route::get('categorias/juguetes', function () {
     return view('categorias.juguetes');
 });
@@ -44,5 +45,4 @@ Route::get('categorias/legos', function () {
 
 Route::get('categorias/peluches', function () {
     return view('categorias.peluches');
->>>>>>> d004aa597d8667adba3e7db686b8b95d13561e6d
 });
