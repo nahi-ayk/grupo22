@@ -17,3 +17,7 @@ Route::get('/contacto', function () {
 Route::get('/nosotros', function () {
     return view('nosotros');
 });
+
+Route::get('/terminos', function () {
+    return view('terminos');
+});
