@@ -17,3 +17,27 @@ Route::get('/contacto', function () {
 Route::get('/nosotros', function () {
     return view('nosotros');
 });
+
+Route::get('categorias/juguetes', function () {
+    return view('categorias.juguetes');
+});
+
+Route::get('categorias/primera-infancia', function () {
+    return view('categorias.primera-infancia');
+});
+
+Route::get('categorias/juegos-de-mesa', function () {
+    return view('categorias.juegos-de-mesa');
+});
+
+Route::get('categorias/fig-coleccionables', function () {
+    return view('categorias.fig-coleccionables');
+});
+
+Route::get('categorias/legos', function () {
+    return view('categorias.legos');
+});
+
+Route::get('categorias/peluches', function () {
+    return view('categorias.peluches');
+});

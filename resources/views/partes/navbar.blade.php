@@ -7,8 +7,8 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" aria-current="page" href="/">INICIO</a>
-                <a class="nav-link {{ request()->is('catalogo') ? 'active' : '' }}" href="/catalogo">CATALOGO</a>
-                <a class="nav-link {{ request()->is('..') ? 'active' : '' }}" href="#">COMPRAS</a>
+                <a class="nav-link {{ request()->is('catalogo') || request()->is('categorias/*')? 'active' : '' }}" href="/catalogo">CATALOGO</a>
+                <a class="nav-link {{ request()->is('..') ? 'active' : '' }}" href="#">COMERCIALIZACION</a>
                 <a class="nav-link {{ request()->is('nosotros') ? 'active' : '' }}" href="/nosotros">NOSOTROS</a>
                 <a class="nav-link {{ request()->is('contacto') ? 'active' : '' }}" href="/contacto">CONTACTO</a>
             </div>
