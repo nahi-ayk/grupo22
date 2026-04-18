@@ -1,142 +1,114 @@
-.carousel-item img {
-  height: auto;
-  width: 100%;
-  object-fit: contain;
-  background-color: #f8f9fa; 
+/* ================= VARIABLES ================= */
+:root {
+  --rosa: #e9a6a7;
+  --azul: #437eaf;
+  --amarillo: #fff8d2;
+  --verde: rgb(107, 214, 161);
 }
 
-#carouselExampleIndicators {
-  max-width: 700px;   
-  margin: 30px auto;    
-}
-
+/* ================= BASE ================= */
 html, body {
   height: 100%;
   margin: 0;
 }
 
 body {
+  line-height: 1.6;
   background: 
     linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
     url('/img/fondo.jpg') no-repeat center center fixed;
-    background-size: cover;
+  background-size: cover;
 }
 
+/* ================= CARRUSEL ================= */
+.carousel-item img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  background-color: #f8f9fa; 
+}
+
+#carouselExampleIndicators {
+  max-width: 700px;
+  margin: 30px auto;
+}
+
+/* ================= NAVBAR ================= */
 .navbar-custom {
-  background-color: #e9a6a7;
+  background-color: var(--rosa);
   font-family: 'Fjalla One', sans-serif;
   font-size: 18px;
 }
 
 .navbar-custom .nav-link,
 .navbar-custom .navbar-brand {
-  color: rgb(255, 255, 255);
+  color: white;
 }
 
-.navbar-custom .nav-link.active {
-  color: #437eaf;
-}
-
+.navbar-custom .nav-link.active,
 .navbar-custom .nav-link:hover {
-  color: #437eaf;
+  color: var(--azul);
 }
 
+/* ================= TOPBAR ================= */
 .topbar {
-  background-color: #fff8d2; 
+  background-color: var(--amarillo);
   padding: 30px 50px;
-  color: #ffec70;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.navbar {
-  position: sticky;
-  top: 100px; 
-  z-index: 999;
 }
 
 .topbar .form-control {
-  width: 100%;
   max-width: 400px;
-}
-
-.btn-buscar {
-    background-color: #e9a6a7;
-    color: white;
-    border: none;
-    font-family: 'Fjalla One', sans-serif;
-}
-
-.btn-buscar:hover {
-    background-color: #437eaf; 
-    color: white;
 }
 
 .icono-topbar {
   font-size: 30px;
-  color: #437eaf;
+  color: var(--azul);
 }
 
-.titulo-bienvenida {
-  font-family: 'Titan One', sans-serif;
-  font-size: 30px;
-  color: #437eaf;
-}
-
-.texto-bienvenida{
-  font-family: 'Titan One', Arial;
-  font-size: 20px;
-  color: #e9a6a7;
-}
-
-.card-title {
-    font-family: 'Titan One', cursive;
-    color:rgb(107, 214, 161)
-}
-
-.card-text {
-    font-family: 'Fjalla One', sans-serif;
-    text-align: justify;
-}
-
-.btn-categoria {
-    background-color: rgb(107, 214, 161); 
-    color: white;
-    border: none;
-    border-radius: 8px;
-    transition: 0.3s;
-    font-family: 'Fjalla One', sans-serif;
-}
-
-.card {
-    border: 5px solid #e9a6a7; 
-    border-radius: 15px;
-    transition: 0.3s;
-}
-
-.btn-catalogo {
-  background-color: #437eaf;
+.btn-buscar {
+  background-color: var(--rosa);
   color: white;
   border: none;
-  border-radius: 8px;
-  transition: 0.3s;
   font-family: 'Fjalla One', sans-serif;
 }
 
-.carousel-card {
-  height: 180px; 
-  overflow: hidden;
-  display: flex;
-  align-items: center; 
+.btn-buscar:hover {
+  background-color: var(--azul);
 }
 
-.carousel-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;  
+/* ================= TEXTOS ================= */
+.titulo-bienvenida {
+  font-family: 'Titan One', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--azul);
+}
+
+.texto-bienvenida {
+  font-family: 'Titan One', Arial;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--rosa);
+}
+
+/* ================= CARDS ================= */
+.card {
+  border: 5px solid var(--rosa);
   border-radius: 15px;
-  margin-left: 3px;
+  transition: 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card-title {
+  font-family: 'Titan One', cursive;
+  color: var(--verde);
+}
+
+.card-text {
+  font-family: 'Fjalla One', sans-serif;
+  text-align: justify;
 }
 
 .card .col-4 {
@@ -145,15 +117,67 @@ body {
   justify-content: center;
 }
 
+/* ================= BOTONES ================= */
+.btn-categoria,
+.btn-catalogo,
+.btn-bcategoria {
+  border: none;
+  border-radius: 8px;
+  color: white;
+  transition: 0.3s;
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.btn-categoria { background-color: var(--verde); }
+.btn-catalogo { background-color: var(--azul); }
+.btn-bcategoria { background-color: var(--azul); }
+
+.btn-categoria:hover,
+.btn-catalogo:hover,
+.btn-bcategoria:hover {
+  transform: scale(1.05);
+}
+
+.btn-bcategoria:hover {
+  background-color: var(--verde);
+}
+
+.btn-bcategoria:focus,
+.btn-bcategoria:active,
+.btn-bcategoria.show {
+  background-color: var(--verde);
+  box-shadow: none;
+}
+
+/* ================= CARRUSEL CARDS ================= */
+.carousel-card {
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.carousel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* ================= FOOTER ================= */
 .footer {
-  background-color: #e9a6a7; 
+  background-color: var(--rosa);
   color: white;
   font-family: "Fjalla One", arial;
 }
 
+.footer .row {
+  align-items: center;
+}
+
 .footer a {
-  text-decoration: none;
   color: white;
+  text-decoration: none;
 }
 
 .footer a:hover {
@@ -161,252 +185,228 @@ body {
 }
 
 .logo-footer {
-  width: 150px;   
-  height: auto;  
+  width: 150px;
+  display: block;
+  margin: 0 auto;
 }
 
 .icono {
   width: 20px;
-  height: 20px;
   margin-right: 8px;
-  vertical-align: middle;
 }
 
 .footer i {
   margin-right: 8px;
-  color: white; 
 }
 
-.footer p {
-  margin-bottom: 5px;
+/* ================= CATALOGO ================= */
+.catalogo .card-img-top {
+  height: 180px;
+  object-fit: contain;
+  margin: 0 auto;
 }
 
-
-
-
-
-
-/*Titulos principales de cada sección "Contacto" - "Sobre nosotros" , etc*/
-.titulo{
-    font-family: 'Titan One', sans-serif;
-    color: #437eaf;
-    font-weight: 700;
-    font-size: 4.00rem;
+.catalogo .card-body {
+  display: flex;
+  flex-direction: column;
 }
 
-
-
-.col-lg-5 {
-    max-width: 500px;
+.catalogo .card-body .btn {
+  margin-top: auto;
+  background: var(--azul);
 }
 
-.c1{
-    max-width: 100%;
-    border-radius: 2.5rem;
-    background-color: #fff8d2;
-    margin: 0 auto;
-    
+.catalogo .card-title {
+  min-height: 48px;
 }
 
-
-
-strong{
-    font-size: 25px;
+.catalogo .card-text {
+  margin-top: auto;
 }
 
-.text-sp span{
-  font-size: 22px;
+.dropdown-item {
+  color: var(--azul);
+  font-family: 'Fjalla One', sans-serif;
 }
 
-/*Formulario de la sección contactos*/
-.mi-formulario{
-  background-color: #fff8d2;
-  border-radius: 2.5rem;
-  max-width: 100%;
+.dropdown-item:hover {
+  background-color: var(--rosa);
+  color: white;
 }
 
-/*Inputs y textarea*/
-.mi-formulario .form-control {
-    background-color: #f8f9fa;
-    border: none;
-    border-radius: 12px;
-    padding: 12px 15px;
-    font-size: 15px;
-    transition: all 0.3s ease;
+/* ================= TITULOS GENERALES ================= */
+.titulo {
+  font-family: 'Titan One';
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: var(--azul);
 }
 
-/* Efecto al hacer click */
-.mi-formulario .form-control:focus {
-    background-color: #fff;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(25, 135, 84, 0.3);
-}
-
-/* Textarea más grande */
-.mi-formulario textarea {
-    min-height: 140px;
-    resize: none;
-}
-
-/* Botón */
-.mi-formulario .btn {
-    width: 100%;
-    border-radius: 10px;
-    padding: 10px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-/* Hover del botón */
-.mi-formulario .btn:hover {
-    background-color: #e9a6a7;
-}
-
-.mi-formulario .form-control::placeholder {
-    color: #999;
-}
-
-.mi-formulario .bi-send {
-    color: rgb(255, 255, 255);
-}
-
-/*Personalización de iconos*/
-i {
-  margin-right: 8px;
-  color: #e9a6a7;
-}
-
-
-.seccion-sobre .col-md-6 p{
-  font-size: 1.5em;
-}
-
-/* Imagenes de la sección nosotros*/
-.img-mediana {
-    width: 50%; 
-    max-width: 500px; /* Para que no crezca demasiado en pantallas gigantes */
-    height: auto;
-    border-radius: 15px;
-}
-
-/* Maneja el crecimiento de las imagenes en Celulares */
-@media (max-width: 768px) {
-    .img-mediana {
-        width: 80%;   /* más grande en celular */
-        margin: 0 auto;
-        display: block;
-    }
-
-    .subtitulo {
-        font-size: 45px;
-        text-align: center;
-        
-    }
-
-    .seccion-sobre .col-md-6 p {
-        font-size: 1.1rem;
-        text-align: center;
-    }
-}
-
-/* Maneja el crecimiento de las imagenes en Tablets (iPad incluido) */
-@media (min-width: 769px) and (max-width: 1200px) {
-    .img-mediana {
-        width: 65%;
-    }
-
-    .subtitulo {
-        font-size: 45px;
-    }
-
-    .seccion-sobre .col-md-6 p {
-        font-size: 1.3rem;
-    }
-}
-
-/*Filas de la sección nosotros*/
-.contenido1, .contenido2 {
-    min-height: 500px; 
-    display: flex;
-    align-items: center; /* Centra el contenido verticalmente en toda la sección */
-}
-
-/*Primer fila de la sección nosotros*/
-.contenido1{
-  background-color: #fcfcfc;
-  
-}
-
-/*Primer fila de la sección nosotros "Nuestra misión""*/
-.contenido2{
-  background-color: #e9a6a7;
-}
-
-.contenido3{
-  background-color: #fff8d2;
-}
-
-/*Segunda fila de la sección nosotros "Historia"*/
 .subtitulo {
-  font-size: 48px;
-  font-family: 'Titan One', sans-serif;
-  color: #437eaf;
-  position: relative;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-family: 'Titan One';
+  color: var(--azul);
 }
 
 .subtitulo::after {
   content: "";
   width: 60px;
   height: 5px;
-  background: #437eaf;
+  background: var(--azul);
   display: block;
   margin-top: 10px;
   border-radius: 5px;
 }
 
+.contenido3 .subtitulo {
+  display: block;
+  width: fit-content;  
+  margin: 0 auto;       
+  position: relative;
+}
 
-/*Animación de aparecer en pantalla*/
+.contenido3 .subtitulo::after {
+  content: "";
+  width: 60px;
+  height: 5px;
+  background: var(--azul);
+  position: absolute;
+  left: 0;              
+  bottom: -10px;
+  border-radius: 5px;
+}
+
+/* ================= CONTACTO ================= */
+.contacto-box {
+    display: flex;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.contacto-info {
+    width: 50%;
+    background-color: var(--amarillo);
+    padding: 30px;
+    font-family: 'Fjalla One', Arial;
+    text-align: center;
+    font-size: 1.15rem; 
+}
+
+.contacto-form {
+    width: 50%;
+    background-color: var(--rosa);
+    padding: 30px;
+    font-family: 'Fjalla One', Arial;
+}
+
+.contacto-form .form-control {
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(255, 235, 236);
+}
+
+.contacto-form .btn {
+    background-color: var(--amarillo);
+    color: black;
+    border: none;
+}
+
+.contacto-form .btn:hover {
+    background-color: var(--rosa);
+}
+
+.mapa-box {
+    background-color: rgb(254, 255, 220);
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-top: 30px;
+}
+
+.mapa-box h2 {
+    font-family: 'Fjalla One', Arial;
+}
+
+.mapa-contenedor iframe {
+    border-radius: 15px;
+    width: 100%;
+    display: block;
+}
+
+/* ================= NOSOTROS ================= */
+.img-mediana {
+  width: 50%;
+  max-width: 500px;
+  border-radius: 15px;
+}
+
+.contenido1, .contenido2, .contenido3 {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  padding: 30px 0;
+  border-radius: 20px;
+  text-align: justify;
+  font-family: 'Fjalla One', arial;
+}
+
+.contenido1 { background-color: #fcfcfc; }
+.contenido2 { background-color: var(--rosa); }
+.contenido3 { background-color: var(--amarillo); }
+
+/* ================= STAFF ================= */
+.staff-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%; 
+  border: 4px solid #e9a6a7;
+  transition: 0.3s;
+}
+
+.staff-img:hover {
+  transform: scale(1.05);
+}
+
+/* ================= ANIMACIONES ================= */
 .aparecer {
   animation: fadeUp 1s ease forwards;
 }
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .carousel-item img {
+    height: 200px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .topbar {
+    padding: 15px;
+  }
+
+  .img-mediana {
+    width: 80%;
+    margin: auto;
+    display: block;
+  }
+
+  .btn {
+    width: 100%;
   }
 }
 
-.contenido1, .contenido2, .contenido3 {
-  padding: 60px 0;
-}
+@media (max-width: 768px) {
+    .contacto-box {
+        flex-direction: column;
+    }
 
-.descripcion-text{
-  font-family: 'Fjalla One', sans-serif;
-  font-size: 2em;
-}
-
-.diseño-terminos{
-  background-color: #fcfcfc;
-  
-}
-
-.diseño-terminos h2{
-  font-family: 'Fjalla One', sans-serif;
-  margin-top: 40px;
-  margin-bottom: 15px;
-  
-
-}
-
-.diseño-terminos p{
-  font-size: 1.5em;
-}
-
-.diseño-terminos ol{
-  font-size: 1.5em;
+    .contacto-info,
+    .contacto-form {
+        width: 100%;
+    }
 }
