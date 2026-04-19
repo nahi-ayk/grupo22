@@ -3,8 +3,8 @@
 
 <title> Sobre Nosotros </title>
 
-<div class="container mt-5 text-center">
-    <h2 class="titulo-bienvenida">Conocé nuestra historia y lo que nos inspira...</h2>
+<div class="container mt-5">
+    <h2 class="titulo-bienvenida text-center">Conocé nuestra historia y lo que nos inspira...</h2>
 </div>
 
 <section class="contenido1 aparecer"> 
@@ -54,7 +54,7 @@
         <!-- FUNDADORES -->
         <div class="row justify-content-center mb-5">
             <div class="col-md-4 text-center">
-                <img src="{{ asset('img/fundador1.jpg') }}" class="img-fluid staff-img mb-3" alt="Fundador 1">
+                <img src="{{ asset('img/nosotros/fundador1.png') }}" class="img-fluid staff-img mb-3" alt="Fundador 1">
                 <h5>Tobias Sanchez</h5>
                 <h8>Cofundador</h8>
             </div>
@@ -69,19 +69,19 @@
         <!-- EMPLEADOS -->
         <div class="row justify-content-center">
             <div class="col-md-4 text-center">
-                <img src="{{ asset('img/empleado1.jpg') }}" class="img-fluid staff-img mb-3" alt="Empleado 1">
+                <img src="{{ asset('img/nosotros/empleado1.png') }}" class="img-fluid staff-img mb-3" alt="Empleado 1">
                 <h5>Joaquín Herrera</h5>
                 <h8>Encargado</h8>
             </div>
 
             <div class="col-md-4 text-center">
-                <img src="{{ asset('img/empleado2.jpg') }}" class="img-fluid staff-img mb-3" alt="Empleado 2">
+                <img src="{{ asset('img/nosotros/empleado2.png') }}" class="img-fluid staff-img mb-3" alt="Empleado 2">
                 <h5>Valentina Ríos</h5>
                 <h8>Empleada</h8>
             </div>
 
             <div class="col-md-4 text-center">
-                <img src="{{ asset('img/empleado3.jpg') }}" class="img-fluid staff-img mb-3" alt="Empleado 3">
+                <img src="{{ asset('img/nosotros/empleado3.png') }}" class="img-fluid staff-img mb-3" alt="Empleado 3">
                 <h5>Martina Salazar</h5>
                 <h8>Empleada</h8>
             </div>

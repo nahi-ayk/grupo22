@@ -18,9 +18,19 @@ Route::get('/nosotros', function () {
     return view('nosotros');
 });
 
+Route::get('/comercializacion', function () {
+    return view('comercializacion');
+});
+
 Route::get('/terminos', function () {
     return view('terminos');
 });
+
+Route::get('/privacidad', function () {
+    return view('privacidad');
+});
+
+
 
 
 Route::get('categorias/juguetes', function () {

@@ -1,120 +1,113 @@
 @extends('plantilla')
 @section('contenido')
 <title> Términos y usos </title>
- <body> 
-    <section class="container-fluid my-5">
-    <h1 class="text-center mb-4 titulo">Términos y Condiciones de Uso</h1>
+
+    <section class="terminos-container aparecer">
+    <h1 class="titulo-bienvenida text-center">Términos y Condiciones</h1>
 
     
-    <div class= "diseño-terminos text-start">
-  
-    <h2>Aviso Legal</h2>
-    <p>
-        Bienvenido a <strong>Tn Toys</strong>. El presente sitio web es operado por la empresa responsable,
-        con domicilio en Corrientes, Argentina. Al acceder y utilizar este sitio, usted acepta los presentes términos
-        y condiciones. Para cualquier consulta, puede contactarnos a través de nuestros canales oficiales.
-    </p>
+    <div class= "terminos-box">
+<h2>Aviso Legal</h2>
+<p>
+    Bienvenido a <strong>Tn Toys</strong>. El presente sitio web es operado por la empresa titular,
+    con domicilio en Corrientes, República Argentina. El acceso y uso de este sitio web atribuye la
+    condición de usuario, lo que implica la aceptación plena y sin reservas de todos los términos y condiciones aquí establecidos.
+</p>
+<p>
+    Nos reservamos el derecho de modificar en cualquier momento la presentación, configuración y contenido del sitio,
+    así como también las condiciones requeridas para su acceso y/o utilización.
+</p>
 
-   
-    <h2>Objeto del Sitio</h2>
-    <p>
-        Este sitio tiene como finalidad la venta de juguetes, así como brindar información sobre productos,
-        promociones y novedades relacionadas con nuestra tienda.
-    </p>
+<h2>Condiciones de Uso</h2>
+<p>
+    El usuario se compromete a utilizar el sitio web, sus contenidos y servicios de conformidad con la ley,
+    la moral, el orden público y los presentes términos. Asimismo, se compromete a no emplearlos con fines ilícitos
+    o contrarios a los derechos e intereses de terceros.
+</p>
+<p>
+    Queda expresamente prohibido el uso del sitio con fines fraudulentos, así como la realización de cualquier conducta
+    que pudiera dañar, inutilizar o sobrecargar la plataforma.
+</p>
 
-   
-    <h2>Usuarios</h2>
-    <p>
-        El uso del sitio está dirigido a personas mayores de edad o menores bajo supervisión de un adulto.
-        El usuario se compromete a proporcionar información veraz y a utilizar el sitio de manera responsable.
-    </p>
+<h2>Registro de Usuarios</h2>
+<p>
+    Para acceder a determinadas funcionalidades, el usuario podrá registrarse proporcionando información veraz,
+    completa y actualizada. El usuario será responsable de mantener la confidencialidad de sus credenciales
+    y de todas las actividades que se realicen bajo su cuenta.
+</p>
 
-   
-    <h2>Productos y Servicios</h2>
-    <p>
-        Los productos ofrecidos pueden incluir imágenes ilustrativas. La disponibilidad está sujeta a stock.
-        Nos reservamos el derecho de modificar precios, descripciones y características sin previo aviso.
-    </p>
+<h2>Productos y Disponibilidad</h2>
+<p>
+    Todos los productos ofrecidos están sujetos a disponibilidad de stock. En caso de no disponibilidad luego de realizada
+    una compra, el usuario será notificado y se procederá a la devolución del importe abonado o a ofrecer una alternativa.
+</p>
+<p>
+    Las imágenes de los productos son ilustrativas y pueden no coincidir exactamente con el producto real.
+</p>
 
-    
-    <h2>Proceso de Compra</h2>
-    <ol>
-        <li>Seleccionar el producto deseado.</li>
-        <li>Agregarlo al carrito de compras.</li>
-        <li>Completar los datos personales requeridos.</li>
-        <li>Elegir el método de pago.</li>
-        <li>Confirmar la compra.</li>
-    </ol>
-    <p>
-        Una vez realizada la compra, el usuario recibirá una confirmación por los medios proporcionados.
-    </p>
+<h2>Precios</h2>
+<p>
+    Todos los precios están expresados en pesos argentinos (ARS) e incluyen impuestos, salvo indicación en contrario.
+    Nos reservamos el derecho de modificar los precios en cualquier momento sin previo aviso.
+</p>
 
-   
-    <h2>Formas de Pago</h2>
-    <p>
-        Aceptamos distintos medios de pago como tarjetas de crédito, débito, transferencias bancarias
-        y billeteras virtuales. Todas las transacciones son procesadas de forma segura.
-    </p>
+<h2>Proceso de Compra</h2>
+<p>
+    El proceso de compra se realiza a través del carrito virtual. Una vez confirmada la operación,
+    el usuario recibirá un correo electrónico con los detalles de la transacción.
+</p>
+<p>
+    Tn Toys se reserva el derecho de cancelar pedidos en caso de detectar irregularidades o problemas en el pago.
+</p>
 
-    
-    <h2>Envíos y Entregas</h2>
-    <p>
-        Realizamos envíos a distintas zonas del país y ofrecemos la opción de retiro en tienda.
-        Los tiempos de entrega pueden variar según la ubicación y la demanda.
-    </p>
+<h2>Pagos</h2>
+<p>
+    Las transacciones se realizan a través de plataformas seguras. Tn Toys no almacena datos sensibles
+    de tarjetas de crédito o débito.
+</p>
 
-    
-    <h2>Cambios, Devoluciones y Garantías</h2>
-    <p>
-        El usuario podrá solicitar cambios o devoluciones dentro del plazo establecido, siempre que el
-        producto se encuentre en perfectas condiciones y en su empaque original. Las garantías estarán
-        sujetas a las condiciones del fabricante o de la tienda.
-    </p>
+<h2>Envíos</h2>
+<p>
+    Los envíos se realizan dentro del territorio argentino. Los plazos de entrega son estimativos y pueden variar
+    por causas externas como demoras logísticas.
+</p>
 
-    
-    <h2>Soporte Postventa</h2>
-    <p>
-        Contamos con canales de atención para consultas, reclamos o seguimiento de pedidos, disponibles
-        a través de email, teléfono o mensajería instantánea en horarios comerciales.
-    </p>
+<h2>Devoluciones y Reembolsos</h2>
+<p>
+    El usuario podrá solicitar la devolución de un producto dentro de los plazos legales vigentes,
+    siempre que se encuentre en perfectas condiciones y sin uso.
+</p>
 
-   
-    <h2>Política de Privacidad</h2>
-    <p>
-        Recopilamos datos personales como nombre, dirección y correo electrónico con el fin de procesar
-        pedidos y mejorar nuestros servicios. Nos comprometemos a proteger la información del usuario
-        y no compartirla con terceros sin consentimiento.
-    </p>
+<h2>Propiedad Intelectual</h2>
+<p>
+    Todos los contenidos del sitio (textos, imágenes, logotipos, diseño, software) son propiedad de Tn Toys
+    o cuentan con licencia para su uso, y están protegidos por la legislación vigente.
+</p>
 
-   
-    <h2>Propiedad Intelectual</h2>
-    <p>
-        Todo el contenido del sitio, incluyendo diseño, imágenes y textos, es propiedad de Tn Toys
-        y no puede ser utilizado sin autorización previa.
-    </p>
+<h2>Protección de Datos</h2>
+<p>
+    La información personal proporcionada por los usuarios será tratada conforme a nuestra política de privacidad,
+    respetando la normativa vigente en materia de protección de datos personales en Argentina.
+</p>
 
-    
-    <h2>Limitación de Responsabilidad</h2>
-    <p>
-        No nos responsabilizamos por fallas técnicas, errores en el contenido o el uso indebido del sitio
-        por parte de los usuarios.
-    </p>
+<h2>Limitación de Responsabilidad</h2>
+<p>
+    Tn Toys no será responsable por daños derivados del uso del sitio, interrupciones del servicio,
+    errores técnicos o accesos no autorizados.
+</p>
 
-   
-    <h2>Modificaciones</h2>
-    <p>
-        Nos reservamos el derecho de modificar estos términos en cualquier momento. Las modificaciones
-        entrarán en vigencia desde su publicación en el sitio.
-    </p>
+<h2>Modificaciones</h2>
+<p>
+    Nos reservamos el derecho de actualizar estos términos en cualquier momento. Las modificaciones entrarán en vigencia
+    desde su publicación en el sitio web.
+</p>
 
-    
-    <h2>Legislación Aplicable</h2>
-    <p>
-        Estos términos se rigen por las leyes de la República Argentina. Ante cualquier conflicto,
-        las partes se someterán a los tribunales competentes.
-    </p>
+<h2>Legislación Aplicable</h2>
+<p>
+    Estos términos se rigen por las leyes de la República Argentina. Cualquier controversia será sometida
+    a los tribunales competentes de la jurisdicción correspondiente.
+</p>
     </div>
 </section>
 
- </body>
- @endsection
+@endsection

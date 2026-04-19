@@ -17,9 +17,9 @@
             <div class="col-md-3">
                 <h5>IMPORTANTE</h5>
                 <ul class="list-unstyled">
-                <li><a href="#">Términos y condiciones</a></li>
-                <li><a href="#">Política de privacidad</a></li>
-                <li><a href="#">Envíos</a></li>
+                <li><a href="/terminos">Términos y condiciones</a></li>
+                <li><a href="/privacidad">Política de privacidad</a></li>
+                <li><a href="/comercializacion">Envíos</a></li>
                 </ul>
             </div>
 
