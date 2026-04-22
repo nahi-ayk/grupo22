@@ -28,7 +28,7 @@
                 <img src="{{ asset('img/catalogo/figuras-colec/fig-iron-man.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Funko Pop Iron Man</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$65.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                 <img src="{{ asset('img/catalogo/figuras-colec/fig-batman.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Funko Pop Batman</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$60.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                 <img src="{{ asset('img/catalogo/figuras-colec/fig-colec-batman.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Fig. Colec. Batman</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$90.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                 <img src="{{ asset('img/catalogo/figuras-colec/fig-spider-man.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Funko Pop Spider-Man</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$60.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                 <img src="{{ asset('img/catalogo/figuras-colec/fig-flash.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Funko Pop Flash</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$60.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>

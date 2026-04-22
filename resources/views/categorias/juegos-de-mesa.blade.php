@@ -60,7 +60,7 @@
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-domino.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Domino</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$11.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-cartas-españolas.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Cartas de Truco</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$4.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-cartas-poker.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Cartas de Loba/Poker</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$6.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-bingo.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Bingo</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$50.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-ruleta.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Juego de la Ruleta</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$76.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>

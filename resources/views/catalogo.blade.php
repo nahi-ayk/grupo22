@@ -70,7 +70,7 @@
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-domino.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Domino</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$11.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-cartas-españolas.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Cartas de Truco</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$4.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -92,7 +92,7 @@
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-cartas-poker.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Cartas de Loba/Poker</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$6.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-bingo.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Bingo</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$50.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -114,7 +114,7 @@
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-ruleta.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Juego de la Ruleta</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$76.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -125,7 +125,7 @@
                 <img src="{{ asset('img/catalogo/juguetes/j-barbie-unicornio.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Barbie Unicornio</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$80.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -136,7 +136,7 @@
                 <img src="{{ asset('img/catalogo/juguetes/j-barbie-doctora.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Barbie Doctora</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$60.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -147,7 +147,7 @@
                 <img src="{{ asset('img/catalogo/juguetes/j-barbie-maestra.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Barbie Maestra</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$65.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -158,7 +158,7 @@
                 <img src="{{ asset('img/catalogo/juguetes/j-barbie-ken.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Ken Surfista</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$40.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -169,7 +169,7 @@
                 <img src="{{ asset('img/catalogo/figuras-colec/fig-iron-man.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Funko Pop Iron Man</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$65.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -180,7 +180,7 @@
                 <img src="{{ asset('img/catalogo/figuras-colec/fig-batman.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Funko Pop Batman</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$60.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -191,7 +191,7 @@
                 <img src="{{ asset('img/catalogo/figuras-colec/fig-colec-batman.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Fig. Colec. Batman</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$90.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -202,7 +202,7 @@
                 <img src="{{ asset('img/catalogo/figuras-colec/fig-spider-man.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Funko Pop Spider-Man</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$60.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -213,7 +213,7 @@
                 <img src="{{ asset('img/catalogo/figuras-colec/fig-flash.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Funko Pop Flash</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$60.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -224,7 +224,7 @@
                 <img src="{{ asset('img/catalogo/primeraInfancia/prim-inf-locomotora.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">J. Didactico Locomotora</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$10.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -235,7 +235,7 @@
                 <img src="{{ asset('img/catalogo/primeraInfancia/prim-inf-gimnasio.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Gimnasio Primera Inf.</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$25.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -246,7 +246,7 @@
                 <img src="{{ asset('img/catalogo/primeraInfancia/prim-inf-tren.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">J. Tren Didactico</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$12.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -257,7 +257,7 @@
                 <img src="{{ asset('img/catalogo/primeraInfancia/prim-inf-torre-anillos.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">J. Piramide de Anillos</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$8.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -268,7 +268,7 @@
                 <img src="{{ asset('img/catalogo/primeraInfancia/prim-inf-barco.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">J. Barco Flotador</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$9.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -279,7 +279,7 @@
                 <img src="{{ asset('img/catalogo/juguetes/j-pista-hw.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Pista Hot Wheels</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$120.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -290,7 +290,7 @@
                 <img src="{{ asset('img/catalogo/juguetes/j-auto-policia.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Auto Policia</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$18.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -301,7 +301,7 @@
                 <img src="{{ asset('img/catalogo/juguetes/j-cam-bomberos.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Camion de Bomberos</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$22.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -312,7 +312,7 @@
                 <img src="{{ asset('img/catalogo/juguetes/j-hw.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Hot Wheel</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$5.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -323,7 +323,7 @@
                 <img src="{{ asset('img/catalogo/juguetes/j-pistola-dardos.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Pistola de Dardos</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$23.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -334,7 +334,7 @@
                 <img src="{{ asset('img/catalogo/legos/lego-est-policia.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Lego Est. de Policia</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$48.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -345,7 +345,7 @@
                 <img src="{{ asset('img/catalogo/legos/lego-est-bomberos.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Lego Est. de Bomberos</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$53.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -356,7 +356,7 @@
                 <img src="{{ asset('img/catalogo/legos/lego-helicoptero.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Lego Helicoptero</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$32.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -367,7 +367,7 @@
                 <img src="{{ asset('img/catalogo/peluches/peluche-osito.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Peluche Osito</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$17.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -378,7 +378,7 @@
                 <img src="{{ asset('img/catalogo/peluches/peluche-conejito.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Peluche Conejito</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$15.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -389,7 +389,7 @@
                 <img src="{{ asset('img/catalogo/peluches/peluche-ranita.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Peluche Ranita</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$15.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -400,7 +400,7 @@
                 <img src="{{ asset('img/catalogo/peluches/peluche-dino.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Peluche Dinosaurio</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$16.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>

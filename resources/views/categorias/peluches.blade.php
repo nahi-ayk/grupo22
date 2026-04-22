@@ -27,7 +27,7 @@
                 <img src="{{ asset('img/catalogo/peluches/peluche-osito.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Peluche Osito</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$17.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 <img src="{{ asset('img/catalogo/peluches/peluche-conejito.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Peluche Conejito</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$15.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 <img src="{{ asset('img/catalogo/peluches/peluche-ranita.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Peluche Ranita</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$15.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                 <img src="{{ asset('img/catalogo/peluches/peluche-dino.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Peluche Dinosaurio</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$16.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>

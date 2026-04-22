@@ -27,7 +27,7 @@
                 <img src="{{ asset('img/catalogo/legos/lego-est-policia.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Lego Est. de Policia</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$48.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 <img src="{{ asset('img/catalogo/legos/lego-est-bomberos.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Lego Est. de Bomberos</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$53.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 <img src="{{ asset('img/catalogo/legos/lego-helicoptero.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">Lego Helicoptero</h5>
-                    <p class="card-text">$20.000</p>
+                    <p class="card-text">$32.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
             </div>
