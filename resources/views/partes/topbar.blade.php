@@ -10,7 +10,11 @@
         </form>
         <div class="d-flex align-items-center gap-3 fs-4">
             <i class="bi bi-cart-fill icono-topbar"></i>
+
+            <a href="/login">
             <i class="bi bi-person-circle icono-topbar"></i>
+            </a>
+
         </div>
     </div>
 </div>

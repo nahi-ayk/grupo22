@@ -312,7 +312,7 @@ body {
 }
 
 .contacto-form .btn:hover {
-    background-color: var(--rosa);
+    background-color: var(--verde);
 }
 
 .mapa-box {
@@ -413,7 +413,7 @@ body {
 
 /* ================= Términos, condiciones y politicas de privacidad ================= */
 .terminos-container {
-    max-width: 1000px;   /* controla el ancho */
+    max-width: 1200px;   /* controla el ancho  arregle esto*/ 
     margin: 0 auto;      /* centra */
     padding: 40px 20px;  /* espacio interno */
 }
@@ -422,9 +422,10 @@ body {
     background-color: #fff;
     border-radius: 16px;
     padding: 30px;
-    text-align: left;   
+    text-align: justify;  
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+
 
 .terminos-box h2 {
     margin-top: 20px;
@@ -436,7 +437,13 @@ body {
 .terminos-box li {
     line-height: 1.6;
     color: #444;
+    font-size: 22px; /*arregle esto*/
+    text-align: justify;
 }
+
+
+
+/* ================= Comercializacion ================= */
 
 .comercio-conteiner{
     max-width: 1000px;   /* controla el ancho */
@@ -444,7 +451,6 @@ body {
     padding: 40px 20px;  /* espacio interno */
 }
 
-/* ================= Comercializacion ================= */
 .comercio-box{
     background-color: #fcfcfc;
     border-radius: 16px;
@@ -508,3 +514,28 @@ body {
    border-radius: 0 0 10px 10px;
 }
 
+/* ================= LOGIN y REGISTER ================= */
+.login-card {
+  border: none;
+  box-shadow: none;
+  background-color: var(--rosa);
+  width: 100%;
+  max-width: 550px;
+  font-family: 'Fjalla One', Arial;
+}
+
+.login-form .form-control{
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(255, 235, 236);
+}
+
+.login-form .btn{
+  background-color: var(--amarillo);
+  border: none;
+  color: black;
+}
+
+.login-form .btn:hover{
+  background-color: var(--verde);
+}

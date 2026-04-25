@@ -30,6 +30,15 @@ Route::get('/privacidad', function () {
     return view('privacidad');
 });
 
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/register', function () {
+    return view('register');
+});
+
+
 
 
 
