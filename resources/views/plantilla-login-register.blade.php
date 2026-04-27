@@ -1,4 +1,4 @@
-<!-- platilla para vistas -->
+<!-- platilla para registro e inicio de sesion -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,14 +12,27 @@
     </head>
 
     <body class= "aparecer">
-        <div class= "header">
-            @include('partes.topbar')
-            @include('partes.navbar')
-        </div>
         <main>
             @yield('contenido')
         </main>
-        @include('partes.footer') 
-         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+        <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+        <script>
+            document.addEventListener('click', function (e) {
+                const toggle = e.target.closest('.toggle-password');
+                if (!toggle) return;
+
+                const input = document.getElementById(toggle.dataset.target);
+                if (!input) return;
+
+                const isPassword = input.type === 'password';
+                input.type = isPassword ? 'text' : 'password';
+
+                toggle.classList.toggle('bi-eye');
+                toggle.classList.toggle('bi-eye-slash');
+            });
+        </script>
+
     </body>
 </html>

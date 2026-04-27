@@ -2,9 +2,9 @@
 @section('contenido')
 
 <div class="container mt-4 mb-5">
-    <h1 class="titulo-bienvenida text-center">Contacto</h1>
+    <h1 class="titulo-bienvenida text-center">¿Tenés alguna consulta?</h1>
     <p class="texto-bienvenida text-center">
-        Escríbinos y nuestro equipo te contactará a la brevedad
+        Escríbinos y nuestro equipo te contactará a la brevedad!
     </p>
 
     <div class="row justify-content-center mt-4">
@@ -42,20 +42,30 @@
                 <div class="contacto-form">
                     <h2 class="text-center mb-4">Envíanos un Mensaje</h2>
 
-                    <form>
+                    <div id="alerta"></div>
+
+                    <form id="formContacto" action="{{ url('/contacto') }}" method="POST">
+                            @csrf
                         <div class="mb-3">
                             <label class="form-label">Nombre</label>
-                            <input type="text" class="form-control" placeholder="Tu nombre" required>
+                            <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required
+                            oninvalid="this.setCustomValidity('Por favor ingresá tu nombre')"
+                            oninput="this.setCustomValidity('')">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" class="form-control" placeholder="tu@email.com" required>
+                            <input type="email" name="email" class="form-control" placeholder="tu@email.com" required
+                            oninvalid="if(this.validity.valueMissing){this.setCustomValidity('Ingresá tu email')} else if(this.validity.typeMismatch)
+                            {this.setCustomValidity('El email debe contener un @ y ser válido')}"
+                            oninput="this.setCustomValidity('')">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Mensaje</label>
-                            <textarea class="form-control" rows="5" placeholder="Tu mensaje" required></textarea>
+                            <textarea name="mensaje" class="form-control" rows="5" placeholder="Tu mensaje" required
+                            oninvalid="this.setCustomValidity('Escribí tu mensaje')"
+                            oninput="this.setCustomValidity('')"></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-success w-100">
@@ -89,5 +99,48 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById("formContacto").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        let form = this;
+        let formData = new FormData(form);
+
+        fetch("/contacto", {
+            method: "POST",
+            headers: {
+                "X-CSRF-TOKEN": document.querySelector('input[name="_token"]').value
+            },
+            body: formData
+        })
+        
+        .then(response => response.json())
+        .then(data => {
+            let alerta = document.getElementById("alerta");
+
+            alerta.innerHTML = `
+                <div class="alert alert-success alert-dismissible fade show text-center mb-3" role="alert">
+                    ${data.mensaje}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+
+            form.reset(); // limpia el formulario
+
+            setTimeout(() => {
+                alerta.innerHTML = "";
+            }, 4000);
+        })
+        
+        .catch(error => {
+            document.getElementById("alerta").innerHTML = `
+                <div class="alert alert-danger text-center">
+                    Ocurrió un error. Intentalo de nuevo.
+                </div>
+            `;
+        });
+    });
+</script>
 
 @endsection

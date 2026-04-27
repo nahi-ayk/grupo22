@@ -2,7 +2,7 @@
 <div class="topbar">
     <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center">
-            <img src="{{ asset('img/logo2.png') }}" height="40">
+            <img src="{{ asset('img/logo2.png') }}" class='logo-empresa' height="40">
         </div>
         <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Buscar...">

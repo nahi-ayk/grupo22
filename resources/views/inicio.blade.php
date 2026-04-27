@@ -98,7 +98,7 @@
                                     <img src="{{ asset('img/carruseles-inicio/carrusel2/bebeC2.jpg') }}" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="{{ asset('img/carruseles-inicio/carrusel2/camC2.jpg') }}" class="d-block w-100" alt="...">
+                                    <img src="{{ asset('img/carruseles-inicio/carrusel2/caminadorC2.jpg') }}" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
                                     <img src="{{ asset('img/carruseles-inicio/carrusel2/famC2.jpg') }}" class="d-block w-100" alt="...">
@@ -135,7 +135,7 @@
                         <div id="carruselJuegos" class="carousel slide carousel-fade carousel-card" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="{{ asset('img/carruseles-inicio/carrusel3/bastaC3.jpg') }}" class="d-block w-100" alt="...">
+                                    <img src="{{ asset('img/carruseles-inicio/carrusel3/batallaNavalC3.jpg') }}" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
                                     <img src="{{ asset('img/carruseles-inicio/carrusel3/ajeC3.jpg') }}" class="d-block w-100" alt="...">
@@ -212,7 +212,7 @@
                 <div class="row g-0">
                     <!--carrusel de la card-->
                     <div class="col-4">
-                        <div id="carruselFiguras" class="carousel slide carousel-fade carousel-card" data-bs-ride="carousel">
+                        <div id="carruselLegos" class="carousel slide carousel-fade carousel-card" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <img src="{{ asset('img/carruseles-inicio/carrusel5/lego-cityC5.jpg') }}" class="d-block w-100">
@@ -252,7 +252,7 @@
                 <div class="row g-0">
                     <!--carrusel de la card-->
                     <div class="col-4">
-                        <div id="carruselFiguras" class="carousel slide carousel-fade carousel-card" data-bs-ride="carousel">
+                        <div id="carruselPeluches" class="carousel slide carousel-fade carousel-card" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <img src="{{ asset('img/carruseles-inicio/carrusel6/kittyC6.jpg') }}" class="d-block w-100">

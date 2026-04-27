@@ -81,7 +81,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juguetes/j-auto-policia.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Auto Policia</h5>
+                    <h5 class="card-title">Auto de Policia</h5>
                     <p class="card-text">$18.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -114,7 +114,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juguetes/j-pistola-dardos.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Pistola de Dardos</h5>
+                    <h5 class="card-title">Pistola de Dardos X-Shoot</h5>
                     <p class="card-text">$23.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>

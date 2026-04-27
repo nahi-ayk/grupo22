@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactoController;
 
 Route::get('/', function () {
     return view('inicio');
@@ -65,3 +66,6 @@ Route::get('categorias/legos', function () {
 Route::get('categorias/peluches', function () {
     return view('categorias.peluches');
 });
+
+
+Route::post('/contacto', [ContactoController::class, 'procesar']);

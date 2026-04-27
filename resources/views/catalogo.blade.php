@@ -36,7 +36,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-ajedrez-madera.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Ajedrez de Madera</h5>
+                    <h5 class="card-title">Ajedrez de Madera - Nupro</h5>
                     <p class="card-text">$20.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -47,7 +47,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-ajedrez-plastico.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Ajedrez de Plastico</h5>
+                    <h5 class="card-title">Ajedrez de Plastico - Ruibal</h5>
                     <p class="card-text">$15.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -58,7 +58,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-damas.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Damas</h5>
+                    <h5 class="card-title">Damas - Ruibal</h5>
                     <p class="card-text">$17.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -69,7 +69,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-domino.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Domino</h5>
+                    <h5 class="card-title">Domino - Ruibal</h5>
                     <p class="card-text">$11.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -80,7 +80,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-cartas-españolas.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Cartas de Truco</h5>
+                    <h5 class="card-title">Cartas Españolas</h5>
                     <p class="card-text">$4.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -91,7 +91,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-cartas-poker.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Cartas de Loba/Poker</h5>
+                    <h5 class="card-title">Cartas Poker</h5>
                     <p class="card-text">$6.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -102,7 +102,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-bingo.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Bingo</h5>
+                    <h5 class="card-title">Bingo - Ruibal</h5>
                     <p class="card-text">$50.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -113,7 +113,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-ruleta.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Juego de la Ruleta</h5>
+                    <h5 class="card-title">Juego de la Ruleta - Ruibal</h5>
                     <p class="card-text">$76.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -223,7 +223,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/primeraInfancia/prim-inf-locomotora.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">J. Didactico Locomotora</h5>
+                    <h5 class="card-title">Locomotora Didactica - Duravit</h5>
                     <p class="card-text">$10.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -234,7 +234,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/primeraInfancia/prim-inf-gimnasio.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Gimnasio Primera Inf.</h5>
+                    <h5 class="card-title">Gimnasio Primera Inf. - Duravit</h5>
                     <p class="card-text">$25.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -245,7 +245,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/primeraInfancia/prim-inf-tren.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">J. Tren Didactico</h5>
+                    <h5 class="card-title">Tren Didactico - Duravit</h5>
                     <p class="card-text">$12.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -256,7 +256,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/primeraInfancia/prim-inf-torre-anillos.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">J. Piramide de Anillos</h5>
+                    <h5 class="card-title">Piramide de Anillos - Duravit</h5>
                     <p class="card-text">$8.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -267,7 +267,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/primeraInfancia/prim-inf-barco.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">J. Barco Flotador</h5>
+                    <h5 class="card-title">Barco Flotador - Duravit</h5>
                     <p class="card-text">$9.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -322,7 +322,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juguetes/j-pistola-dardos.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Pistola de Dardos</h5>
+                    <h5 class="card-title">Pistola de Dardos X-Shoot</h5>
                     <p class="card-text">$23.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>

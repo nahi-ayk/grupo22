@@ -1,5 +1,6 @@
 @extends('plantilla')
 @section('contenido')
+
 <title> Términos y usos </title>
 
     <section class="terminos-container aparecer">

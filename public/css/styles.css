@@ -15,7 +15,7 @@ html, body {
 body {
   line-height: 1.6;
   background: 
-    linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+    linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
     url('/img/fondo.jpg') no-repeat center center fixed;
   background-size: cover;
 }
@@ -23,12 +23,11 @@ body {
 /* ================= CARRUSEL ================= */
 .carousel-item img {
   width: 100%;
-  height: 350px;
-  object-fit: cover;
+  height: auto;
   background-color: #f8f9fa; 
 }
 
-#carouselExampleIndicators {
+#carouselExampleIndicators{
   max-width: 700px;
   margin: 30px auto;
 }
@@ -70,10 +69,12 @@ body {
   color: white;
   border: none;
   font-family: 'Fjalla One', sans-serif;
+  pointer-events: none;
 }
 
 .btn-buscar:hover {
   background-color: var(--azul);
+  color: white;
 }
 
 /* ================= TEXTOS ================= */
@@ -84,8 +85,8 @@ body {
 }
 
 .texto-bienvenida {
-  font-family: 'Titan One', Arial;
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-family: 'Fjalla One', Arial;
+  font-size: clamp(1.2rem, 2.5vw, 1.3rem);
   color: var(--rosa);
 }
 
@@ -102,7 +103,7 @@ body {
 }
 
 .card-title {
-  font-family: 'Titan One', cursive;
+  font-family: 'Fjalla One', cursive;
   color: var(--verde);
 }
 
@@ -138,30 +139,45 @@ body {
   transform: scale(1.05);
 }
 
+.btn-categoria:hover{
+  background-color: var(--azul);
+  color:#fff;
+}
+
+.btn-catalogo:hover{
+  background-color: var(--verde);
+  color:#fff;
+}
 .btn-bcategoria:hover {
   background-color: var(--verde);
+  color: #fff;
 }
 
 .btn-bcategoria:focus,
-.btn-bcategoria:active,
 .btn-bcategoria.show {
   background-color: var(--verde);
+  color: #fff;
   box-shadow: none;
 }
 
-/* ================= CARRUSEL CARDS ================= */
+/* ================= CARRUSEL CARDS DEL INICIO================= */
 .carousel-card {
-  min-height: 150px;
-  display: flex;
-  align-items: center;
+  height: 150px;
+  width: 100%;
   overflow: hidden;
+}
+
+.carousel-card .carousel-inner,
+.carousel-card .carousel-item {
+  height: 100%;
 }
 
 .carousel-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 15px;
+  background-color: white;
 }
 
 /* ================= FOOTER ================= */
@@ -170,10 +186,6 @@ body {
   color: white;
   font-family: "Fjalla One", arial;
 }
-
-/*.footer .row {
-  align-items: center;
-}*/
 
 .footer a {
   color: white;
@@ -214,6 +226,9 @@ body {
 .catalogo .card-body .btn {
   margin-top: auto;
   background: var(--azul);
+  border: none;
+  pointer-events: none;
+  font-family: 'Fjalla One', arial;
 }
 
 .catalogo .card-title {
@@ -236,14 +251,14 @@ body {
 
 /* ================= TITULOS GENERALES ================= */
 .titulo {
-  font-family: 'Titan One';
+  font-family: 'Titan One', cursive;
   font-size: clamp(2rem, 5vw, 4rem);
   color: var(--azul);
 }
 
 .subtitulo {
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-family: 'Titan One';
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-family: 'Fjalla One', arial;
   color: var(--azul);
 }
 
@@ -254,24 +269,6 @@ body {
   background: var(--azul);
   display: block;
   margin-top: 10px;
-  border-radius: 5px;
-}
-
-.contenido3 .subtitulo {
-  display: block;
-  width: fit-content;  
-  margin: 0 auto;       
-  position: relative;
-}
-
-.contenido3 .subtitulo::after {
-  content: "";
-  width: 60px;
-  height: 5px;
-  background: var(--azul);
-  position: absolute;
-  left: 0;              
-  bottom: -10px;
   border-radius: 5px;
 }
 
@@ -312,7 +309,8 @@ body {
 }
 
 .contacto-form .btn:hover {
-    background-color: var(--verde);
+    background-color: var(--azul);
+    color: #fff;
 }
 
 .mapa-box {
@@ -355,6 +353,24 @@ body {
 .contenido2 { background-color: var(--rosa); }
 .contenido3 { background-color: var(--amarillo); }
 
+.contenido3 .subtitulo {
+  display: block;
+  width: fit-content;  
+  margin: 0 auto;       
+  position: relative;
+}
+
+.contenido3 .subtitulo::after {
+  content: "";
+  width: 60px;
+  height: 5px;
+  background: var(--azul);
+  position: absolute;
+  left: 0;              
+  bottom: -10px;
+  border-radius: 5px;
+}
+
 /* ================= STAFF ================= */
 .staff-img {
   width: 150px;
@@ -382,7 +398,7 @@ body {
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
   .carousel-item img {
-    height: 200px;
+    height: 280px;
   }
 
   .topbar {
@@ -400,6 +416,38 @@ body {
   }
 }
 
+@media (max-width: 767px) {
+
+  .carousel-card {
+    height: auto; 
+  }
+
+  .carousel-card img {
+    object-fit: contain;      
+    object-position: center;  
+    max-height: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .carousel-card {
+    height: 180px; /* un poco más de aire, sin exagerar */
+  }
+
+  .carousel-card img {
+    object-fit: cover; /* CLAVE para que no haya vacío arriba */
+  }
+
+}
+
+@media (max-width: 767px) {
+  .logo-empresa {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
     .contacto-box {
         flex-direction: column;
@@ -411,7 +459,7 @@ body {
     }
 }
 
-/* ================= Términos, condiciones y politicas de privacidad ================= */
+/* ================= TERMINOS Y PRIVACIDAD ================= */
 .terminos-container {
     max-width: 1200px;   /* controla el ancho  arregle esto*/ 
     margin: 0 auto;      /* centra */
@@ -443,7 +491,7 @@ body {
 
 
 
-/* ================= Comercializacion ================= */
+/* ================= COMERCIALIZACION ================= */
 
 .comercio-conteiner{
     max-width: 1000px;   /* controla el ancho */
@@ -452,7 +500,7 @@ body {
 }
 
 .comercio-box{
-    background-color: #fcfcfc;
+    background-color: #fff;
     border-radius: 16px;
     padding: 30px;
     text-align: center;   
@@ -494,13 +542,40 @@ body {
 
 .comercio-box h3{
   font-family: 'Fjalla One', arial;
+  color: var(--azul);
+}
+
+.comercio-box .subtitulo {
+  display: block;
+  width: fit-content;  
+  margin: auto;       
+  position: relative;
+}
+
+.comercio-box .subtitulo::after{
+  content: "";
+  width: 60px;
+  height: 5px;
+  background: var(--azul);
+  position: absolute;
+  left: 0;              
+  bottom: -10px;
+  border-radius: 5px;
+}
+
+.comercio-box .row {
+  margin-top: 30px;
 }
 
 .acordeon-style .accordion-button {
-   background-color: var(--rosa);
+   background-color: var(--amarillo);
    border-radius: 10px;
-   color: rgb(0, 0, 0);
+   color: var(--azul);
    font-family: 'Fjalla One', arial;
+}
+
+.accordion-button::after {
+  filter: invert(1); /* blanco */
 }
 
 .acordeon-style .accordion-item {
@@ -514,28 +589,90 @@ body {
    border-radius: 0 0 10px 10px;
 }
 
-/* ================= LOGIN y REGISTER ================= */
+/* ================= LOGIN Y REGISTER ================= */
 .login-card {
   border: none;
-  box-shadow: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   background-color: var(--rosa);
   width: 100%;
-  max-width: 550px;
+  max-width: 700px;
   font-family: 'Fjalla One', Arial;
+  border-radius: 18px;
 }
 
+/* FORM */
 .login-form .form-control{
-    border-radius: 10px;
-    border: none;
-    background-color: rgb(255, 235, 236);
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(255, 235, 236);
+  padding: 0.7rem 0.9rem;
 }
 
+.login-form .form-control:focus{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 200, 200, 0.6);
+}
+
+/* BOTÓN PRINCIPAL */
 .login-form .btn{
   background-color: var(--amarillo);
   border: none;
   color: black;
+  border-radius: 10px;
+  padding: 0.75rem;
+  font-weight: 600;
+  transition: 0.2s ease;
 }
 
 .login-form .btn:hover{
   background-color: var(--verde);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.btn-inicio-sesion{
+  pointer-events: none;
+}
+
+/* INVITADO */
+.login-form .btn-outline-secondary{
+  border-radius: 10px;
+  padding: 0.65rem;
+  border: 2px solid rgba(0,0,0,0.2);
+  background-color: transparent;
+  transition: 0.2s ease;
+  margin-top: 10px;
+}
+
+.login-form .btn-outline-secondary:hover{
+  background-color: rgba(0,0,0,0.08);
+  transform: translateY(-1px);
+}
+
+/* ESPACIADO GENERAL */
+.login-form h2{
+  margin-bottom: 1.5rem;
+}
+
+.login-form p{
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6c757d;
+  font-size: 1.2rem;
+}
+
+.password-toggle:hover {
+  color: #000;
 }

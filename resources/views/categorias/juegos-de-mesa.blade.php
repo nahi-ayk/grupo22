@@ -26,7 +26,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-ajedrez-madera.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Ajedrez de Madera</h5>
+                    <h5 class="card-title">Ajedrez de Madera - Nupro</h5>
                     <p class="card-text">$20.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -37,7 +37,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-ajedrez-plastico.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Ajedrez de Plastico</h5>
+                    <h5 class="card-title">Ajedrez de Plastico - Ruibal</h5>
                     <p class="card-text">$15.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -48,7 +48,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-damas.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Damas</h5>
+                    <h5 class="card-title">Damas - Ruibal</h5>
                     <p class="card-text">$17.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -59,7 +59,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-domino.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Domino</h5>
+                    <h5 class="card-title">Domino - Ruibal</h5>
                     <p class="card-text">$11.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -70,7 +70,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-cartas-españolas.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Cartas de Truco</h5>
+                    <h5 class="card-title">Cartas Españolas</h5>
                     <p class="card-text">$4.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -81,7 +81,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-cartas-poker.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Cartas de Loba/Poker</h5>
+                    <h5 class="card-title">Cartas Poker</h5>
                     <p class="card-text">$6.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -92,7 +92,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-bingo.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Bingo</h5>
+                    <h5 class="card-title">Bingo - Ruibal</h5>
                     <p class="card-text">$50.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
@@ -103,7 +103,7 @@
             <div class="card h-100">
                 <img src="{{ asset('img/catalogo/juegos-de-mesa/jm-ruleta.jpg') }}" class="card-img-top">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Juego de la Ruleta</h5>
+                    <h5 class="card-title">Juego de la Ruleta - Ruibal</h5>
                     <p class="card-text">$76.000</p>
                     <a href="#" class="btn btn-primary">Agregar</a>
                 </div>
