@@ -154,7 +154,7 @@
                             </button>
                         </div>
                     </div>
-                    <!--texxto de la card-->
+                    <!--texto de la card-->
                     <div class="col-8">
                         <div class="card-body">
                             <h5 class="card-title">Juegos De Mesa!</h5>

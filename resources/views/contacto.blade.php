@@ -7,13 +7,14 @@
         Escríbinos y nuestro equipo te contactará a la brevedad!
     </p>
 
-    <div class="row justify-content-center mt-4">
-        <div class="col-12 col-lg-10">
+<div class="row justify-content-center mt-4">
+    <div class="col-12 col-lg-10">
 
-            <div class="contacto-box">
+        <div class="contacto-box">
+            <div class="row g-0">
 
                 <!-- IZQUIERDA -->
-                <div class="contacto-info">
+                <div class="col-12 col-md-6 contacto-info">
                     <h2 class="text-center mb-4">Información de contacto</h2>
 
                     <div class="mb-3">
@@ -39,43 +40,40 @@
                 </div>
 
                 <!-- DERECHA -->
-                <div class="contacto-form">
+                <div class="col-12 col-md-6 contacto-form">
                     <h2 class="text-center mb-4">Envíanos un Mensaje</h2>
 
                     <div id="alerta"></div>
 
                     <form id="formContacto" action="{{ url('/contacto') }}" method="POST">
-                            @csrf
+                        @csrf
+
                         <div class="mb-3">
                             <label class="form-label">Nombre</label>
-                            <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required
-                            oninvalid="this.setCustomValidity('Por favor ingresá tu nombre')"
-                            oninput="this.setCustomValidity('')">
+                            <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="tu@email.com" required
-                            oninvalid="if(this.validity.valueMissing){this.setCustomValidity('Ingresá tu email')} else if(this.validity.typeMismatch)
-                            {this.setCustomValidity('El email debe contener un @ y ser válido')}"
-                            oninput="this.setCustomValidity('')">
+                            <input type="email" name="email" class="form-control" placeholder="tu@email.com" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Mensaje</label>
-                            <textarea name="mensaje" class="form-control" rows="5" placeholder="Tu mensaje" required
-                            oninvalid="this.setCustomValidity('Escribí tu mensaje')"
-                            oninput="this.setCustomValidity('')"></textarea>
+                            <textarea name="mensaje" class="form-control" rows="5" placeholder="Tu mensaje" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-success w-100">
+                        <button type="submit" class="btn w-100">
                             <i class="bi bi-send"></i> Enviar mensaje
                         </button>
                     </form>
                 </div>
 
             </div>
+        </div>
 
+    </div>
+</div>
             <div class="row justify-content-center mt-4">
                 <div class="col-12 col-lg-10">
 
