@@ -344,6 +344,7 @@ body {
   border-radius: 20px;
   text-align: justify;
   font-family: 'Fjalla One', arial;
+  font-size: 18px;
 }
 
 .contenido1 { background-color: #fcfcfc; }
@@ -394,6 +395,7 @@ body {
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
+
   .carousel-item img {
     height: 280px;
   }
@@ -411,56 +413,40 @@ body {
   .btn {
     width: 100%;
   }
-}
 
-@media (max-width: 767px) {
-
+  /* Carousel */
   .carousel-card {
-    height: auto; 
+    height: 180px; 
   }
 
   .carousel-card img {
-    object-fit: contain;      
-    object-position: center;  
+    object-fit: cover; 
+    object-position: center;
+    width: 100%;
     max-height: 100%;
+  }
+
+  /* Logo */
+  .logo-empresa {
+    display: none;
+  }
+
+  /* Contacto */
+  .contacto-box {
+    flex-direction: column;
+  }
+
+  .contacto-info,
+  .contacto-form {
     width: 100%;
   }
 }
 
-@media (max-width: 767px) {
-
-  .carousel-card {
-    height: 180px; /* un poco más de aire, sin exagerar */
-  }
-
-  .carousel-card img {
-    object-fit: cover; /* CLAVE para que no haya vacío arriba */
-  }
-
-}
-
-@media (max-width: 767px) {
-  .logo-empresa {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-    .contacto-box {
-        flex-direction: column;
-    }
-
-    .contacto-info,
-    .contacto-form {
-        width: 100%;
-    }
-}
-
 /* ================= TERMINOS Y PRIVACIDAD ================= */
 .terminos-container {
-    max-width: 1200px;   /* controla el ancho  arregle esto*/ 
-    margin: 0 auto;      /* centra */
-    padding: 40px 20px;  /* espacio interno */
+    max-width: 1200px;   
+    margin: 0 auto;      
+    padding: 40px 20px;
 }
 
 .terminos-box {
@@ -482,7 +468,7 @@ body {
 .terminos-box li {
     line-height: 1.6;
     color: #444;
-    font-size: 22px; /*arregle esto*/
+    font-size: 20px; 
     text-align: justify;
 }
 
@@ -491,9 +477,9 @@ body {
 /* ================= COMERCIALIZACION ================= */
 
 .comercio-conteiner{
-    max-width: 1000px;   /* controla el ancho */
-    margin: 0 auto;      /* centra */
-    padding: 40px 20px;  /* espacio interno */
+    max-width: 1000px;   
+    margin: 0 auto;      
+    padding: 40px 20px;  
 }
 
 .comercio-box{

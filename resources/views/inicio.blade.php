@@ -1,6 +1,8 @@
+<!--vista del sector de inicio-->
 @extends('plantilla')
 @section('contenido')
 
+<!--titulo de la pagina-->
 <title> inicio </title>
 
 <!--carrusel principal del inicio -->

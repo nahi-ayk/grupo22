@@ -1,15 +1,21 @@
+<!--vista de sector COMERCIALIZACION-->
 @extends('plantilla')
 @section('contenido')
+
+<!--titulo de pagina-->
 <title>Comercialización</title>
 
+<!--pequeña animacion-->
 <section class= "comercio-conteiner aparecer">
 
+    <!--titulos-->
     <h2 class= "titulo-bienvenida text-center">Cómo podés comprar en TN Toys!</h2>
 
     <!--Medios de pago-->
     <div class= "comercio-box">
         <h2 class="text-center subtitulo mb-4">Medios de pago</h2>
 
+        <!--cards-->
         <div class="row text-center">
 
             <div class="col-md-4 mb-3">
@@ -55,6 +61,7 @@
     <div class="comercio-box">
         <h2 class="text-center subtitulo">Entrega</h2>
 
+        <!--cards-->
         <div class="row text-center justify-content-center">
 
             <div class="col-md-4 mb-3">
@@ -83,8 +90,6 @@
 
         </div>
     </div>
-
-
 
     <!--Preguntas frecuentes-->
     <div class="comercio-box">

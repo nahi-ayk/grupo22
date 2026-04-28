@@ -1,3 +1,6 @@
+<!--vista para categoria de peluches-->
+<!--es un copia y pega de catalogo con los productos de esta categoria-->
+<!--alternativa ante la ausencia de base de datos-->
 @extends('plantilla') 
 @section('contenido')
 

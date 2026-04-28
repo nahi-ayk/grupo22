@@ -1,8 +1,11 @@
+<!-- vista de sector CATALOGO -->
 @extends('plantilla') 
 @section('contenido')
 
+<!--titulo de pagina-->
 <title>Catalogo</title>
 
+<!--titulos del cuerpo-->
 <div class= "container mt-3 text-center">
     <p class= "titulo-bienvenida">
         Bienvenido a Nuestro Catalogo!!
@@ -12,6 +15,7 @@
     </p>
 </div>
 
+<!--boton de categorias-->
 <div class= "container mt-3">
     <div class="dropdown">
         <button class="btn btn-bcategoria dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -29,6 +33,7 @@
     </div>
 </div>
 
+<!--cards del catalogo-->
 <div class="container mt-4">
     <div class="row catalogo row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
 
