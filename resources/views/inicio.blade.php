@@ -66,14 +66,6 @@
                                     <img src="{{ asset('img/carruseles-inicio/carrusel1/hwC1.jpg') }}" class="d-block w-100" alt="...">
                                 </div>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carruselNiños" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carruselNiños" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
                         </div>
                     </div>
                     <!--texto de la card -->
@@ -106,14 +98,6 @@
                                     <img src="{{ asset('img/carruseles-inicio/carrusel2/famC2.jpg') }}" class="d-block w-100" alt="...">
                                 </div>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carruselBebes" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carruselBebes" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
                         </div>
                     </div>
                     <!-- texto de la card -->
@@ -146,14 +130,6 @@
                                     <img src="{{ asset('img/carruseles-inicio/carrusel3/jengC3.jpg') }}" class="d-block w-100" alt="...">
                                 </div>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carruselJuegos" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carruselJuegos" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
                         </div>
                     </div>
                     <!--texto de la card-->
@@ -186,14 +162,6 @@
                                     <img src="{{ asset('img/carruseles-inicio/carrusel4/fpC4.jpg') }}" class="d-block w-100">
                                 </div>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carruselFiguras" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carruselFiguras" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
                         </div>
                     </div>
                     <!--texto de la card-->
@@ -226,14 +194,6 @@
                                     <img src="{{ asset('img/carruseles-inicio/carrusel5/lego-speedC5.jpg') }}" class="d-block w-100">
                                 </div>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carruselFiguras" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carruselFiguras" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
                         </div>
                     </div>
                     <!--texto de la card-->
@@ -266,14 +226,6 @@
                                     <img src="{{ asset('img/carruseles-inicio/carrusel6/stichC6.jpg') }}" class="d-block w-100">
                                 </div>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carruselFiguras" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carruselFiguras" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
                         </div>
                     </div>
                     <!--texto de la card-->
