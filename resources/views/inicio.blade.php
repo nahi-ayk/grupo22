@@ -3,7 +3,7 @@
 @section('contenido')
 
 <!--titulo de la pagina-->
-<title> inicio </title>
+<title> Inicio </title>
 
 <!--carrusel principal del inicio -->
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
