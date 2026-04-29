@@ -56,7 +56,9 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Nombre</label>
-                                <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required>
+                                <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required
+                                pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+"
+                                title="Solo se permiten letras y espacios">
                             </div>
 
                         <div class="mb-3">
