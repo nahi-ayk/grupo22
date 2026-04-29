@@ -59,10 +59,17 @@
                                 <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="tu@email.com" required>
-                            </div>
+                        <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input 
+                        type="email" 
+                        name="email" 
+                        class="form-control" 
+                        placeholder="tu@email.com" 
+                        required
+                        pattern="^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,3}$"
+                        title="El email debe terminar en un punto seguido de 2 o 3 letras (ej: .com, .es, .net)">
+                        </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Mensaje</label>
