@@ -23,7 +23,7 @@
                 <ul class="list-unstyled">
                 <li><a href="/terminos">Términos y condiciones</a></li>
                 <li><a href="/privacidad">Política de privacidad</a></li>
-                <li><a href="/comercializacion">Comercializacion</a></li>
+                <li><a href="/comercializacion">Comercialización</a></li>
                 </ul>
             </div>
 

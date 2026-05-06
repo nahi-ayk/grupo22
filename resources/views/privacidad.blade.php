@@ -3,7 +3,7 @@
 @section('contenido')
 
 <!--titulo de pagina-->
-<title> Politicas de Privacidad</title>
+<title> Politica de Privacidad</title>
 
 <!--animacion-->
 <section class="terminos-container aparecer">

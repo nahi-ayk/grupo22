@@ -17,7 +17,6 @@
 
         <!--cards-->
         <div class="row text-center">
-
             <div class="col-md-4 mb-3">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body">
