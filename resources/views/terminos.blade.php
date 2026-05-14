@@ -1,4 +1,4 @@
-<!--vista para sector de terminos y condiciones-->
+<!--vista para sector de tèrminos y condiciones-->
 @extends('plantilla')
 @section('contenido')
 
