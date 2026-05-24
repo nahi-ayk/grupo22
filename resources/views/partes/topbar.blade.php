@@ -14,9 +14,23 @@
         <div class="d-flex align-items-center gap-3 fs-4">
             <i class="bi bi-cart-fill icono-topbar"></i>
 
-            <a href="/login">
-                <i class="bi bi-person-circle icono-topbar"></i>
-            </a>
+            @auth
+                @if(Auth::user()->rol->nombre === 'admin')
+                    <a href="{{ route('admin.cuenta') }}">
+                        <i class="bi bi-person-circle icono-topbar"></i>
+                    </a>
+                @else
+                    <a href="{{ route('cliente.cuenta') }}">
+                        <i class="bi bi-person-circle icono-topbar"></i>
+                    </a>
+                @endif
+
+            @else
+
+                <a href="{{ url('/login') }}">
+                    <i class="bi bi-person-circle icono-topbar"></i>
+                </a>
+            @endauth
         </div>
     </div>
 </div>

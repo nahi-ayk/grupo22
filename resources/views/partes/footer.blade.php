@@ -1,5 +1,5 @@
 <!-- footer para las vistas -->
-<footer class="footer mt-5">
+<footer class="footer">
     <div class="container py-4">
         <div class="row">
             <!--logo de la empresa-->

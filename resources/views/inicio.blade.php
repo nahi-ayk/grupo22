@@ -243,7 +243,7 @@
 </div>
 
 <!--texto y boton de catalogo-->
-<div class="container mt-3 text-center">
+<div class="container mt-3 mb-5 text-center">
     <p class="texto-bienvenida">
         Y Mucho Mas!!...
     </p>

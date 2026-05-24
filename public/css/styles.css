@@ -578,9 +578,13 @@ body {
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   background-color: var(--rosa);
   width: 100%;
-  max-width: 700px;
+  max-width: 520px;
   font-family: 'Fjalla One', Arial;
   border-radius: 18px;
+}
+
+.login-card:hover {
+  transform: none;
 }
 
 /* FORM */
@@ -588,7 +592,7 @@ body {
   border-radius: 10px;
   border: none;
   background-color: rgb(255, 235, 236);
-  padding: 0.7rem 0.9rem;
+  padding: 0.55rem 0.8rem;
 }
 
 .login-form .form-control:focus{
@@ -602,33 +606,29 @@ body {
   border: none;
   color: black;
   border-radius: 10px;
-  padding: 0.75rem;
+  padding: 0.6rem;
   font-weight: 600;
   transition: 0.2s ease;
 }
 
 .login-form .btn:hover{
-  background-color: var(--verde);
+  background-color: var(--azul);
   color: white;
   transform: translateY(-1px);
-}
-
-.btn-inicio-sesion{
-  pointer-events: none;
 }
 
 /* INVITADO */
 .login-form .btn-outline-secondary{
   border-radius: 10px;
   padding: 0.65rem;
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 2px solid rgba(97, 87, 87, 0.2);
   background-color: transparent;
   transition: 0.2s ease;
   margin-top: 10px;
 }
 
 .login-form .btn-outline-secondary:hover{
-  background-color: rgba(0,0,0,0.08);
+  background-color: rgba(255, 148, 148, 0.432);
   transform: translateY(-1px);
 }
 
@@ -658,4 +658,190 @@ body {
 
 .password-toggle:hover {
   color: #000;
+}
+
+/*================ BACKEND =================*/
+
+.layout-backend{
+    display: flex;
+    align-items: stretch;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width: 230px;
+    min-width: 230px;
+    background-color: #fcfcfc;
+    padding: 35px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 15px rgba(0,0,0,0.08);
+}
+
+/* SALUDO */
+
+.saludo-sidebar{
+    font-family: 'Fjalla One', Arial;
+    font-size: 1.7rem;
+    line-height: 1.1;
+    color: var(--azul);
+    margin-bottom: 20px;
+}
+
+/* MENU */
+
+.menu-sidebar{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.menu-sidebar a{
+    text-decoration: none;
+    font-family: 'Fjalla One', Arial;
+    font-size: 1rem;
+    color: #333;
+    transition: 0.2s;
+}
+
+.menu-sidebar a:hover{
+    color: var(--rosa);
+    transform: translateX(5px);
+}
+
+/* USUARIO ABAJO */
+
+.usuario-sidebar{
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 80px;
+    font-family: 'Fjalla One', arial;
+}
+
+/* AVATAR */
+
+.avatar-sidebar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--rosa);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.usuario-btn{
+    border: none !important;
+    background: transparent !important;
+    width: 100%;
+    padding: 0;
+    text-align: left;
+    box-shadow: none !important;
+}
+
+.usuario-btn:hover{
+    background: transparent !important;
+}
+
+.usuario-btn::after{
+    margin-left: auto;
+    display: none !important;
+}
+
+/* CONTENIDO */
+
+.contenido-backend{
+    flex: 1;
+    padding: 40px;
+}
+
+
+/* ================= MI CUENTA ================= */
+
+.mi-cuenta-card{
+    background-color: #fcfcfc;
+    border-radius: 18px;
+    border: 4px solid var(--rosa);
+    max-width: 760px;
+    margin: auto;
+    font-family: 'Fjalla One', Arial;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.mi-cuenta-card:hover{
+  transform: none;
+}
+
+.mi-cuenta-card .card-body{
+    padding: 35px 45px;
+}
+
+/* TITULO */
+
+.mi-cuenta-titulo{
+    color: var(--verde);
+    text-align: center;
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+}
+
+/* TITULOS DE SECCION */
+
+.seccion-titulo{
+  font-family: 'Fjalla One', Arial;
+  font-size: 0.95rem;
+  color: var(--verde);
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+/* LABELS */
+
+.mi-cuenta-card .form-label{
+    color: #333;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+}
+
+/* INPUTS */
+
+.mi-cuenta-card .form-control{
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(255, 235, 236);
+    padding: 0.6rem 0.8rem;
+    font-family: 'Fjalla One', Arial;
+    font-size: 0.9rem;
+}
+
+.mi-cuenta-card .form-control:focus{
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 200, 200, 0.6);
+    background-color: white;
+}
+
+/* BOTON */
+
+.btn-guardar{
+    background-color: var(--verde);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 0.7rem 3rem;
+    font-family: 'Fjalla One', Arial;
+    font-size: 1rem;
+    transition: 0.2s ease;
+}
+
+.btn-guardar:hover{
+    background-color: var(--azul);
+    color: white;
+    transform: translateY(-2px);
 }

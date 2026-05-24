@@ -72,7 +72,7 @@
 </section>
 
 <!--staff-->
-<section class="contenido3 aparecer">
+<section class="contenido3 aparecer mb-5">
     <div class="container py-5">
 
         <h2 class="subtitulo mb-5">Nuestro Staff</h2>

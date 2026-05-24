@@ -34,7 +34,7 @@
 </div>
 
 <!--cards del catalogo-->
-<div class="container mt-4">
+<div class="container mt-4 mb-5">
     <div class="row catalogo row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
 
         <div class="col">
