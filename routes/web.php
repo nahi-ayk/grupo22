@@ -6,6 +6,11 @@ use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\CatalogoController;
+use App\Http\Controllers\FavoritoController;
 
 //ruta de inicio
 Route::get('/', function () {
@@ -13,9 +18,14 @@ Route::get('/', function () {
 });
 
 //ruta de catalogo
-Route::get('/catalogo', function () {
-    return view('catalogo');
-});
+Route::get('/catalogo', [CatalogoController::class, 'index'])
+    ->name('catalogo');
+
+Route::get('/categorias/{id}', [CatalogoController::class, 'categoria'])
+    ->name('catalogo.categoria');
+
+Route::get('/producto/{id}', [CatalogoController::class, 'mostrar'])
+->name('producto.mostrar');
 
 //ruta de contacto
 Route::get('/contacto', function () {
@@ -59,6 +69,8 @@ Route::middleware('cliente')->group(function () {
     Route::put('backend/cliente/cuentaCliente', [ClienteController::class, 'actualizar'])
     ->name('cliente.actualizar');
 
+    Route::post('/favoritos/{producto}', [FavoritoController::class, 'toggle'])
+    ->name('favoritos.toggle');
 });
 
 //ruta para cerrar sesion
@@ -85,39 +97,29 @@ Route::middleware('admin')->group(function () {
     //ruta de usuarios 
     Route::resource('usuarios', UsuarioController::class);
 
-    Route::get('/admin', function () {
-        return view('backend.administrador.cuentaAdmin');
-    })->name('admin.cuenta');
+    Route::get('/admin', [AdminController::class, 'admin'])
+    ->name('admin.cuenta');
 
+    //clientes
+    Route::get('/clientes', [AdminController::class, 'clientes'])
+    ->name('admin.clientes');
+
+    //Productos
+    Route::get('/productos', [ProductoController::class, 'index'])
+    ->name('admin.productos');
+
+    Route::get('/crear_producto', [ProductoController::class, 'crear'])
+    ->name('crear.producto');
+
+    Route::post('/admin/productos/guardar', [ProductoController::class, 'guardar'])
+    ->name('admin.productos.guardar');
+
+    Route::get('/admin/categorias/crear',[CategoriaController::class, 'crear'])
+    ->name('admin.categorias.crear');
+
+    Route::post('/admin/categorias/guardar',[CategoriaController::class, 'guardar'])
+    ->name('admin.categorias.guardar');
 });
-
-
-
-//ruta de categorias que se van a borrar
-Route::get('categorias/juguetes', function () {
-    return view('categorias.juguetes');
-});
-
-Route::get('categorias/primera-infancia', function () {
-    return view('categorias.primera-infancia');
-});
-
-Route::get('categorias/juegos-de-mesa', function () {
-    return view('categorias.juegos-de-mesa');
-});
-
-Route::get('categorias/fig-coleccionables', function () {
-    return view('categorias.fig-coleccionables');
-});
-
-Route::get('categorias/legos', function () {
-    return view('categorias.legos');
-});
-
-Route::get('categorias/peluches', function () {
-    return view('categorias.peluches');
-});
-
 
 //ruta de controlador de formulario
 Route::post('/contacto', [ContactoController::class, 'procesar']);

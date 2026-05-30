@@ -212,41 +212,224 @@ body {
 }
 
 /* ================= CATALOGO ================= */
-.catalogo .card-img-top {
-  height: 180px;
-  object-fit: contain;
-  margin: 0 auto;
+.catalogo .card-body{
+    display: flex;
+    flex-direction: column;
 }
 
-.catalogo .card-body {
-  display: flex;
-  flex-direction: column;
+/* CARD PRODUCTO */
+
+.producto-card{
+    position: relative;
+
+    border: none;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    transition: .3s;
+
+    background: white;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,.08);
+
+    height: 100%;
 }
 
-.catalogo .card-body .btn {
-  margin-top: auto;
-  background: var(--azul);
-  border: none;
-  pointer-events: none;
-  font-family: 'Fjalla One', arial;
+.producto-card:hover{
+    transform: translateY(-5px);
+
+    box-shadow: 0 8px 20px rgba(0,0,0,.15);
 }
 
-.catalogo .card-title {
-  min-height: 48px;
+.producto-card .card-img-top{
+    height: 180px;
+
+    object-fit: contain;
+
+    padding: 15px;
 }
 
-.catalogo .card-text {
-  margin-top: auto;
+.producto-card .card-body{
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 15px;
+}
+/* FAVORITOS */
+
+.btn-favorito{
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+
+    z-index: 10;
 }
 
-.dropdown-item {
-  color: var(--azul);
-  font-family: 'Fjalla One', sans-serif;
+.btn-favorito i{
+    color: #ff6b8a;
 }
 
-.dropdown-item:hover {
-  background-color: var(--rosa);
-  color: white;
+.btn-favorito:hover{
+    transform: scale(1.1);
+}
+
+/* TITULO */
+
+.producto-card .card-title{
+    min-height: 50px;
+
+    text-align: center;
+
+    font-family: 'Fjalla One', arial;
+}
+
+/* PRECIO */
+
+.precio{
+    text-align: center;
+
+    color: var(--rosa);
+
+    font-size: 1.5rem;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+/* BOTONES */
+
+.acciones-producto{
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: auto;
+}
+
+.btn-vermas{
+    flex: 1;
+
+    background: white;
+
+    border: 2px solid var(--azul);
+
+    color: var(--azul);
+
+    border-radius: 8px;
+
+    font-family: 'Fjalla One';
+
+    text-decoration: none;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 8px;
+}
+
+.btn-vermas:hover{
+    background: var(--azul);
+
+    color: white;
+}
+
+.btn-carrito{
+    flex: 1;
+
+    background: var(--rosa);
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-family: 'Fjalla One';
+
+    padding: 8px;
+}
+
+.btn-carrito:hover{
+    background: #ff76a8;
+
+    color: white;
+}
+
+/* CATEGORIAS */
+
+/* FILTROS */
+
+.filtros-catalogo{
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-bottom: 35px;
+}
+
+.btn-filtro{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 12px 20px;
+
+    border: 2px solid var(--azul);
+
+    border-radius: 999px;
+
+    background: white;
+
+    color: var(--azul);
+
+    text-decoration: none;
+
+    font-family: 'Fjalla One', arial;
+
+    transition: .25s;
+}
+
+.btn-filtro:hover{
+
+    background: var(--azul);
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+.btn-filtro.activo{
+
+    background: var(--azul);
+
+    color: white;
 }
 
 /* ================= TITULOS GENERALES ================= */
@@ -440,6 +623,51 @@ body {
   .contacto-form {
     width: 100%;
   }
+
+  .dashboard-number{
+        font-size: 1.8rem;
+    }
+
+    .dashboard-icon{
+        width: 55px;
+        height: 55px;
+        font-size: 1.5rem;
+    }
+
+    .fake-chart{
+        gap: 8px;
+    }
+
+    .cliente-card{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .cliente-extra{
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .producto-detalle-card{
+        padding: 25px;
+    }
+
+    .producto-detalle-img{
+        height: 300px;
+    }
+
+    .producto-titulo{
+        font-size: 1.8rem;
+    }
+
+    .producto-precio{
+        font-size: 2rem;
+    }
+
+    .btn-agregar-carrito{
+        width: 100%;
+    }
 }
 
 /* ================= TERMINOS Y PRIVACIDAD ================= */
@@ -661,7 +889,6 @@ body {
 }
 
 /*================ BACKEND =================*/
-
 .layout-backend{
     display: flex;
     align-items: stretch;
@@ -711,48 +938,82 @@ body {
     transform: translateX(5px);
 }
 
-/* USUARIO ABAJO */
 
-.usuario-sidebar{
-    border-top: 1px solid #ddd;
+/* ==========================================================================
+   DESDE ACÁ ABAJO ES LO QUE REEMPLAZAMOS (Borrá lo viejo y pegá esto)
+   ========================================================================== */
+
+/* USUARIO ABAJO */
+.usuario-sidebar {
+    border-top: 1px solid #eee;
     padding-top: 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 80px;
-    font-family: 'Fjalla One', arial;
+    margin-top: auto; /* Esto reemplaza los 80px para mandarlo al fondo */
+    font-family: 'Fjalla One', Arial, sans-serif;
+    position: relative;
+    width: 100%;
 }
 
 /* AVATAR */
-
-.avatar-sidebar{
-    width: 50px;
-    height: 50px;
+.avatar-sidebar {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
     border-radius: 50%;
     background-color: var(--rosa);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
-.usuario-btn{
+/* EL BOTÓN DE BOOTSTRAP */
+.usuario-btn {
     border: none !important;
     background: transparent !important;
     width: 100%;
-    padding: 0;
+    padding: 0 !important;
     text-align: left;
     box-shadow: none !important;
+    color: #333 !important;
+    transition: color 0.2s ease;
 }
 
-.usuario-btn:hover{
+.usuario-btn .d-flex {
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.usuario-btn:hover {
     background: transparent !important;
+    color: var(--rosa) !important;
 }
 
-.usuario-btn::after{
-    margin-left: auto;
+.usuario-btn::after {
     display: none !important;
+}
+
+/* EL DESPLEGABLE DE CERRAR SESIÓN */
+.usuario-sidebar .dropdown-menu {
+    width: 100%;
+    border: 1px solid #eee;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    padding: 5px 0;
+    margin-bottom: 8px !important;
+}
+
+.usuario-sidebar .dropdown-item {
+    font-family: 'Fjalla One' Arial;
+    font-size: 0.9rem;
+    padding: 10px 15px;
+    color: #555;
+    transition: all 0.2s;
+}
+
+.usuario-sidebar .dropdown-item:hover {
+    background-color: #fff0f3;
+    color: var(--rosa);
 }
 
 /* CONTENIDO */
@@ -844,4 +1105,686 @@ body {
     background-color: var(--azul);
     color: white;
     transform: translateY(-2px);
+}
+
+/* ================= DASHBOARD ADMIN ================= */
+
+.admin-titulo{
+    font-family: 'Fjalla One', cursive;
+    color: var(--azul);
+    font-size: 2.3rem;
+}
+
+.admin-subtitulo{
+    font-family: 'Fjalla One', Arial;
+    color: #666;
+    font-size: 1rem;
+}
+
+/* TARJETAS */
+
+.dashboard-card{
+    border: 4px solid var(--rosa);
+    border-radius: 22px;
+    background-color: #fcfcfc;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.25s ease;
+}
+
+.dashboard-card:hover{
+    transform: translateY(-4px);
+}
+
+.dashboard-card .card-body{
+    padding: 25px;
+}
+
+/* TEXTOS */
+
+.dashboard-text{
+    font-family: 'Fjalla One', Arial;
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.dashboard-number{
+    font-family: 'Fjalla One', cursive;
+    color: var(--azul);
+    font-size: 2.3rem;
+    margin: 0;
+}
+
+/* ICONOS */
+
+.dashboard-icon{
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2rem;
+    color: white;
+}
+
+.icono-usuarios{
+    background-color: var(--azul);
+}
+
+.icono-productos{
+    background-color: var(--verde);
+}
+
+.icono-pedidos{
+    background-color: var(--rosa);
+}
+
+/* GRAFICO */
+
+.grafico-box{
+    height: 320px;
+}
+
+.graficos-text{
+  font-family: 'Fjalla One';
+}
+
+.fake-chart {
+    height: 240px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 25px;
+    font-family: 'Fjalla One', arial;
+}
+
+.bar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    flex: 1;
+}
+
+.bar {
+    width: 100%;
+    background: linear-gradient(to top, var(--rosa), #ffd1d1);
+    border-radius: 15px 15px 0 0;
+    transition: 0.3s;
+    min-height: 5px;
+}
+
+.bar:hover {
+    opacity: 0.8;
+    transform: scaleY(1.03);
+}
+
+ /*ACTIVIDAD */
+
+.activity-box{
+    font-family: 'Fjalla One', arial;
+    background-color: rgb(255, 245, 245);
+
+    border-radius: 18px;
+
+    padding: 16px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+}
+
+.activity-box h6{
+    font-family: 'Fjalla One', Arial;
+    color: var(--azul);
+    margin-bottom: 2px;
+}
+
+.activity-box small{
+    font-family: Arial;
+    color: #777;
+}
+
+.activity-badge{
+    font-family: 'Fjalla One', Arial;
+    font-size: 1rem;
+
+    padding: 10px 16px;
+
+    border-radius: 12px;
+
+    color: white;
+}
+
+.badge-compras{
+    background-color: var(--verde);
+}
+
+.badge-consultas{
+    background-color: var(--azul);
+}
+
+.badge-usuarios{
+    background-color: var(--rosa);
+}
+
+/* ================= CLIENTES ================= */
+
+.lista-clientes{
+    max-height: 250px;
+    overflow: auto;
+    padding-right: 10px;
+    margin-top: 25px;
+}
+
+.lista-clientes::-webkit-scrollbar{
+  width: 10px;
+}
+
+.lista-clientes::-webkit-scrollbar-track{
+  background: #f3f3f3;
+  border-radius: 20px;
+}
+
+.lista-clientes::-webkit-scrollbar-thumb{
+  background: var(--rosa);
+  border-radius: 20px;
+}
+
+.lista-clientes::-webkit-scrollbar-thumb:hover{
+  background: var(--azul);
+}
+
+/* CARD */
+
+.cliente-card{
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 24px 28px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+
+    transition: 0.25s ease;
+}
+
+.cliente-card:hover{
+    transform: translateY(-3px);
+}
+
+/* IZQUIERDA */
+
+.cliente-info{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cliente-avatar{
+    width: 75px;
+    height: 75px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        var(--rosa),
+        #ffc8d2
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 2rem;
+}
+
+/* TEXTOS */
+
+.cliente-nombre{
+    font-family: 'Fjalla One', Arial;
+    color: var(--azul);
+    margin-bottom: 4px;
+}
+
+.cliente-email{
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.cliente-fecha{
+    color: #888;
+}
+
+/* DERECHA */
+
+.cliente-extra{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* ESTADOS */
+
+.estado-activo,
+.estado-inactivo{
+    padding: 10px 18px;
+
+    border-radius: 12px;
+
+    font-family: 'Fjalla One', Arial;
+    color: white;
+}
+
+.estado-activo{
+    background-color: var(--verde);
+}
+
+.estado-inactivo{
+    background-color: var(--rosa);
+}
+
+/* TIEMPO */
+
+.cliente-tiempo{
+    font-family: 'Fjalla One', Arial;
+    color: var(--azul);
+}
+
+/* BOTON */
+
+.btn-cliente{
+    background-color: var(--azul);
+    color: white;
+
+    border-radius: 12px;
+
+    padding: 10px 18px;
+
+    border: none;
+
+    font-family: 'Fjalla One', Arial;
+}
+
+.btn-cliente:hover{
+    background-color: var(--verde);
+    color: white;
+}
+
+/* ================= PRODUCTOS ================= */
+.contenedor-btn-producto{
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+.btn-agregar-producto{
+    background-color: var(--verde);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-family: 'Fjalla One', Arial;
+    transition: 0.2s;
+}
+
+.btn-agregar-producto:hover{
+    background-color: var(--azul);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.producto-miniatura{
+    width: 75px;
+    height: 75px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        var(--rosa),
+        #ffc8d2
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 2rem;
+}
+
+.productos-icon{
+    background-color: var(--rosa);
+}
+
+.stock-icon{
+    background-color: var(--verde);
+}
+
+.agotado-icon{
+    background-color: #ff6b6b;
+}
+
+/* ================= INPUT NUMBER ================= */
+
+/* SACAR FLECHITAS EN CHROME */
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* SACAR FLECHITAS EN FIREFOX */
+
+input[type=number]{
+    -moz-appearance: textfield;
+}
+
+/* ================= SELECT CATEGORIA ================= */
+
+.custom-select-container {
+    position: relative;
+    width: 100%;
+    font-family: 'Fjalla One', Arial;
+    user-select: none;
+}
+
+/* El disparador: se ve EXACTAMENTE igual a tus otros inputs */
+.select-trigger {
+    border-radius: 10px;
+    background-color: rgb(255, 235, 236);
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+    color: #757575; /* Color sutil para el placeholder */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Flecha decorativa a la derecha (opcional, le da toque de select real) */
+.select-trigger::after {
+    content: '▼';
+    font-size: 0.7rem;
+    color: var(--verde);
+    transition: transform 0.2s ease;
+}
+
+/* Comportamiento Focus: Cuando pasas el mouse o interactúas, cambia a blanco con tu sombra */
+.custom-select-container:hover .select-trigger {
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(255, 200, 200, 0.6);
+    color: #333;
+}
+
+/* Contenedor de la lista de opciones */
+.custom-options {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 3px;
+    margin-top: 0px;
+    padding: 5px 0;
+    list-style: none;
+    z-index: 99;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 200, 200, 0.4);
+    overflow: hidden; /* Asegura que el hover azul respete las esquinas redondeadas */
+}
+
+/* Mostrar las opciones al hacer hover en el contenedor */
+.custom-select-container:hover .custom-options {
+    display: block;
+}
+
+/* Rotar flecha al abrir */
+.custom-select-container:hover .select-trigger::after {
+    transform: rotate(180deg);
+}
+
+/* Estilo de cada opción individual */
+.custom-options li {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* ¡Tu hover azul integrado! Cambia al color azul de tu proyecto */
+.custom-options li:hover {
+    background-color: var(--azul, #007bff); /* Usa tu variable --azul, sino cae en azul clásico */
+    color: white;
+}
+
+/* ================= INPUT FILE ================= */
+
+input[type="file"]::file-selector-button{
+
+    background-color: var(--rosa);
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 16px;
+
+    border-radius: 10px;
+
+    margin-right: 12px;
+
+    font-family: 'Fjalla One', Arial;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+input[type="file"]::file-selector-button:hover{
+    background-color: var(--rosa);
+}
+
+/* ================= DETALLE PRODUCTO ================= */
+
+.producto-detalle-card{
+    background: #fcfcfc;
+    border: 4px solid var(--rosa);
+    border-radius: 20px;
+
+    padding: 35px;
+
+    max-width: 1150px;
+
+    margin: auto;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+
+.producto-detalle-card:hover{
+    transform: none;
+}
+
+.producto-imagen-container{
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.producto-detalle-img{
+    width: 100%;
+    height: 380px;
+    object-fit: contain;
+}
+
+/* INFO */
+
+.producto-info{
+    font-family: 'Fjalla One', Arial;
+}
+
+.producto-titulo{
+    font-family: 'Titan One', cursive;
+    color: var(--azul);
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+}
+
+.producto-categoria{
+    color: #777;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.producto-precio{
+    color: var(--rosa);
+    font-size: 2.5rem;
+    font-weight: bold;
+
+    margin-bottom: 25px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 2px dashed rgba(233,166,167,.4);
+}
+
+/* DESCRIPCION */
+
+.producto-descripcion{
+    background: white;
+
+    border-left: 6px solid var(--verde);
+
+    border-radius: 15px;
+
+    padding: 22px;
+
+    margin-bottom: 30px;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,.05);
+}
+
+.producto-descripcion h5{
+    color: var(--verde);
+
+    font-family: 'Fjalla One', Arial;
+
+    font-size: 1.4rem;
+
+    margin-bottom: 12px;
+}
+
+.producto-descripcion p{
+    margin: 0;
+
+    color: #555;
+
+    line-height: 1.8;
+
+    font-size: 1rem;
+}
+
+/* FAVORITO */
+
+.btn-favorito-detalle{
+    width: 55px;
+    height: 55px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,.12);
+
+    transition: .25s;
+}
+
+.btn-favorito-detalle i{
+    color: var(--rosa);
+    font-size: 1.4rem;
+}
+
+.btn-favorito-detalle:hover{
+    transform: scale(1.08);
+}
+
+/* BOTONES */
+
+.acciones-detalle{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-agregar-carrito{
+    background: var(--rosa);
+    color: white;
+
+    border: none;
+    border-radius: 12px;
+
+    padding: 12px 28px;
+
+    font-family: 'Fjalla One', Arial;
+    font-size: 1rem;
+
+    transition: .25s;
+}
+
+.btn-agregar-carrito:hover{
+    background: #ff76a8;
+    color: white;
+}
+
+.btn-volver-detalle{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    text-decoration: none;
+
+    background: white;
+
+    border: 2px solid var(--rosa);
+
+    color: var(--rosa);
+
+    padding: 10px 18px;
+
+    border-radius: 12px;
+
+    font-family: 'Fjalla One', Arial;
+
+    margin-bottom: 25px;
+
+    transition: .25s;
+}
+
+.btn-volver-detalle:hover{
+    background: var(--rosa);
+    color: white;
 }

@@ -2,64 +2,87 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Producto;
 use Illuminate\Http\Request;
+
+use App\Models\Producto;
+use App\Models\Categoria;
 
 class ProductoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $productos = Producto::with('categoria')
+            ->latest()
+            ->get();
+
+        return view(
+            'backend.administrador.productosAdmin',
+            compact('productos')
+        );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function crear()
     {
-        //
+        $categorias = Categoria::where('activo', true)
+            ->get();
+
+        return view(
+            'backend.administrador.crearProducto',
+            compact('categorias')
+        );
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function guardar(Request $request)
     {
-        //
-    }
+        $request->validate([
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Producto $producto)
-    {
-        //
-    }
+            'nombre' => 'required|max:255',
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Producto $producto)
-    {
-        //
-    }
+            'precio_venta' => 'required|numeric|min:0',
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Producto $producto)
-    {
-        //
-    }
+            'stock_actual' => 'required|integer|min:0',
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Producto $producto)
-    {
-        //
+            'stock_minimo' => 'required|integer|min:0',
+
+            'categoria_id' => 'required|exists:categorias,id',
+
+            'imagen' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
+        ]);
+
+        $rutaImagen = null;
+
+        if ($request->hasFile('imagen')) {
+
+            $archivo = $request->file('imagen');
+
+            $nombre = time() . '_' . $archivo->getClientOriginalName();
+
+            $archivo->move(public_path('img/catalogo'), $nombre);
+
+            $rutaImagen = 'img/catalogo/' . $nombre;
+        }
+
+        Producto::create([
+
+            'nombre' => $request->nombre,
+
+            'descripcion' => $request->descripcion,
+
+            'precio_venta' => $request->precio_venta,
+
+            'stock_actual' => $request->stock_actual,
+
+            'stock_minimo' => $request->stock_minimo,
+
+            'categoria_id' => $request->categoria_id,
+
+            'imagen' => $rutaImagen,
+
+            'activo' => true
+        ]);
+
+        return redirect()
+            ->route('crear.producto')
+            ->with('success', 'Producto creado correctamente');
     }
 }

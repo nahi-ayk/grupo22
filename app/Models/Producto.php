@@ -19,6 +19,7 @@ class Producto extends Model
         'stock_actual',
         'stock_minimo',
         'activo',
+        'imagen',
         'categoria_id',
     ];
 
@@ -31,5 +32,15 @@ class Producto extends Model
     public function categoria()
     {
         return $this->belongsTo(Categoria::class, 'categoria_id');
+    }
+
+    public function usuariosFavoritos()
+    {
+        return $this->belongsToMany(
+            Usuario::class,
+            'favoritos',
+            'producto_id',
+            'usuario_id'
+        );
     }
 }

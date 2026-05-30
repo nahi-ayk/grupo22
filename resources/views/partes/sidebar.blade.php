@@ -11,15 +11,18 @@
 
             @if(Auth::user()->rol_id == 1)
 
-                <a href="">Productos</a>
-                <a href="">Clientes</a>
-                <a href="">Estadísticas</a>
+                <a href="{{ route('admin.cuenta') }}">Estadisticas Generales</a>
+                <a href="{{ route('admin.clientes') }}">Clientes</a>
+                <a href="{{ route('admin.productos') }}">Productos</a>
+                <a href="">Pedidos</a>
+                <a href="">Consultas</a>
 
             @else
 
                 <a href="{{ route('cliente.cuenta') }}">Mis datos</a>
                 <a href="{{ route('clienteCompras') }}">Mis compras</a>
                 <a href="{{ route('clienteCarrito') }}">Mi carrito</a>
+                <a href="">Favoritos</a>
 
             @endif
 

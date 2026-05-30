@@ -126,13 +126,41 @@
                     <div class="col-md-6 mb-3">
 
                         <label class="form-label">
-                            Ciudad
+                            Provincia
                         </label>
 
                         <input 
                             type="text"
                             class="form-control"
-                            placeholder="Ciudad"
+                            placeholder="Provincia"
+                        >
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Localidad
+                        </label>
+
+                        <input 
+                            type="text"
+                            class="form-control"
+                            placeholder="Localidad"
+                        >
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Cod. Postal
+                        </label>
+
+                        <input 
+                            type="text"
+                            class="form-control"
+                            placeholder="Cod. Postal"
                         >
 
                     </div>

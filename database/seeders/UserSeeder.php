@@ -38,6 +38,15 @@ class UserSeeder extends Seeder
                 'password' => '123456',
                 'rol_id' => 2
             ],
+
+            [
+                'nombre' => 'Tobias',
+                'apellido' => 'Sanchez',
+                'dni' => '47223845',
+                'email' => 'tobiasagustin069@gmail.com',
+                'password' => 'algo123',
+                'rol_id' => 2
+            ],
         ];
 
         foreach ($usuarios as $usuario) {

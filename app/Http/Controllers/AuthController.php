@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Models\HistorialLogin;
 
 class AuthController extends Controller{
     public function formularioRegistro(){
@@ -39,6 +40,7 @@ class AuthController extends Controller{
     }
 
     public function autenticar(Request $request){
+
         $credenciales = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
@@ -48,7 +50,18 @@ class AuthController extends Controller{
 
             $request->session()->regenerate();
 
-            if (Auth::user()->rol->nombre === 'admin') {
+            $user = Auth::user();
+
+            $user->update([
+                'ultimo_login' => now()
+            ]);
+
+            HistorialLogin::create([
+                'usuario_id' => $user->id,
+                'fecha_login' => now(),
+            ]);
+
+            if ($user->rol->nombre === 'admin') {
                 return redirect()->route('admin.cuenta');
             }
 
