@@ -18,6 +18,7 @@ class Envio extends Model
         'pedido_id',
         'direccion',
         'localidad',
+        'provincia',
         'codigo_postal',
         'costo_envio',
         'estado_envio',

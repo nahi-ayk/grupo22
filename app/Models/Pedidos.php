@@ -17,7 +17,9 @@ class Pedido extends Model
         'usuario_id',
         'subtotal',
         'total',
-        'metodo_pago',
+        'estado',
+        'metodo_pago_id',
+        'fecha_venta',
     ];
 
     protected $casts = [
@@ -31,7 +33,7 @@ class Pedido extends Model
      */
     public function usuario()
     {
-        return $this->belongsTo(User::class, 'usuario_id'); // O 'Usuario::class' si cambiaste el nombre del modelo Auth
+        return $this->belongsTo(Usuario::class, 'usuario_id'); 
     }
 
     /**
@@ -50,5 +52,13 @@ class Pedido extends Model
     public function detalles()
     {
         return $this->hasMany(PedidoDetalle::class, 'pedido_id'); 
+    }
+
+    /**
+     * Relación: Un Pedido pertenece a un Método de Pago (Muchos a Uno)
+     * */
+    public function metodoPago()
+    {
+        return $this->belongsTo(MetodoPago::class, 'metodo_pago_id');
     }
 }
