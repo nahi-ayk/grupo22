@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CatalogoController;
 use App\Http\Controllers\FavoritoController;
+use App\Http\Controllers\CarritoController;
 
 //ruta de inicio
 Route::get('/', function () {
@@ -55,20 +56,53 @@ Route::get('/privacidad', function () {
 //vistas del backend cliente
 Route::middleware('cliente')->group(function () {
 
-    Route::get('backend/cliente/clienteCarrito', function () {
+    // Muestra el carrito con sus items
+    Route::get('backend/cliente/clienteCarrito', [CarritoController::class, 'index'])
+    ->name('cliente.carrito');
+
+    // Agregar un producto al carrito o actualizar su cantidad si ya existe
+    Route::post('backend/cliente/clienteCarrito/agregar', [CarritoController::class, 'agregar'])
+    ->name('carrito.agregar');
+
+    // Eliminar un producto del carrito
+    Route::delete('backend/cliente/clienteCarrito/eliminar/{id}', [CarritoController::class, 'eliminar'])
+    ->name('carrito.eliminar');
+
+    // Confirmar la compra
+    Route::post('backend/cliente/clienteCarrito/confirmar', [CarritoController::class, 'confirmar'])
+    ->name('carrito.confirmar');
+
+    // Vista de compra confirmada (protegida: redirige si no hay sesión)
+    Route::get('/compra-confirmada', function () {
+    if (!session('total')) {
+    return redirect()->route('cliente.cuenta')->with('error', 'No tienes una compra reciente para mostrar    ');
+    }
+    return view('backend.cliente.compra-confirmada');
+    })->name('compra.confirmada');
+
+    // Vacia el carrito
+    Route::delete('/carrito/vaciar', [CarritoController::class, 'vaciar'])->name('carrito.vaciar');
+
+
+
+    /* Route::get('backend/cliente/clienteCarrito', function () {
         return view('backend.cliente.clienteCarrito');
     })->name('clienteCarrito');
-
+    */
+    
+    // Muestra el apartado de compras del cliente
     Route::get('backend/cliente/clienteCompras', function () {
         return view('backend.cliente.clienteCompras');
-    })->name('clienteCompras');
-
+    })->name('cliente.compras');
+    
     Route::get('backend/cliente/cuentaCliente', [ClienteController::class, 'cuenta'])
     ->name('cliente.cuenta');
 
+    // Actualiza los datos del cliente
     Route::put('backend/cliente/cuentaCliente', [ClienteController::class, 'actualizar'])
     ->name('cliente.actualizar');
 
+    // Toggle favorito (agregar o quitar)
     Route::post('/favoritos/{producto}', [FavoritoController::class, 'toggle'])
     ->name('favoritos.toggle');
 });

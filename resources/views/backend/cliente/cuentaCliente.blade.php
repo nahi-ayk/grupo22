@@ -1,7 +1,7 @@
 @extends('backend.plantillaBackend')
 @section('contenidoBackend')
 
-<title>mis_datos</title>
+<title>Mis Datos</title>
 
 <div class="container-fluid py-4">
 

@@ -11,18 +11,23 @@
             <button class="btn btn-buscar">Buscar</button>
         </form>
         <!--iconos-->
-        <div class="d-flex align-items-center gap-3 fs-4">
-            <i class="bi bi-cart-fill icono-topbar"></i>
-
+          <div class="d-flex align-items-center gap-3 fs-4">
             @auth
                 @if(Auth::user()->rol->nombre === 'admin')
                     <a href="{{ route('admin.cuenta') }}">
                         <i class="bi bi-person-circle icono-topbar"></i>
                     </a>
                 @else
+
+                    <a href="{{ route('cliente.carrito') }}">
+                        <i class="bi bi-cart-fill icono-topbar"></i>
+                    </a>
+                    
                     <a href="{{ route('cliente.cuenta') }}">
                         <i class="bi bi-person-circle icono-topbar"></i>
                     </a>
+
+
                 @endif
 
             @else

@@ -20,9 +20,9 @@
             @else
 
                 <a href="{{ route('cliente.cuenta') }}">Mis datos</a>
-                <a href="{{ route('clienteCompras') }}">Mis compras</a>
-                <a href="{{ route('clienteCarrito') }}">Mi carrito</a>
-                <a href="">Favoritos</a>
+                <a href="{{ route('cliente.compras') }}">Mis compras</a>
+                <a href="{{ route('cliente.carrito') }}">Mi carrito</a>
+                <a href="#">Favoritos</a>
 
             @endif
 
