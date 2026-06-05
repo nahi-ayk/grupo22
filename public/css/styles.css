@@ -1429,6 +1429,7 @@ body {
     display: flex;
     justify-content: center;
     margin: 25px 0;
+    gap: 15px;
 }
 
 .btn-agregar-producto{
@@ -1447,26 +1448,6 @@ body {
     transform: translateY(-2px);
 }
 
-.producto-miniatura{
-    width: 75px;
-    height: 75px;
-
-    border-radius: 50%;
-
-    background: linear-gradient(
-        135deg,
-        var(--rosa),
-        #ffc8d2
-    );
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: white;
-    font-size: 2rem;
-}
-
 .productos-icon{
     background-color: var(--rosa);
 }
@@ -1477,6 +1458,80 @@ body {
 
 .agotado-icon{
     background-color: #ff6b6b;
+}
+
+/* CONTENEDOR FILTROS */
+.filtros-productos{
+    background: #fff;
+    font-family: 'Fjalla One', arial;
+    padding: 20px;
+    border-radius: 24px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.05);
+    border: none;
+}
+
+/* INPUT Y SELECT */
+.filtros-productos .form-control,
+.filtros-productos .form-select{
+    height: 50px;
+    border-radius: 14px;
+    border: 2px solid #edf0f5;
+    background: #fafafa;
+    transition: all .2s ease;
+}
+
+.filtros-productos .form-control:hover,
+.filtros-productos .form-select:hover{
+    border-color: var(--rosa);
+    background: #fff;
+}
+
+.filtros-productos .form-control:focus,
+.filtros-productos .form-select:focus{
+    border-color: var(--rosa);
+    background: #fff;
+    box-shadow: none;
+}
+
+/* BOTON BUSCAR */
+.btn-filtrar{
+    height: 50px;
+    border-radius: 14px;
+    font-weight: 700;
+    transition: .2s;
+}
+
+.btn-filtrar:hover{
+    transform: translateY(-2px);
+}
+
+/* MINIATURA PRODUCTO */
+.producto-miniatura {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: none;
+}
+
+/* STOCK MINIMO */
+.estado-pendiente {
+    background: #fff3cd;
+    color: #856404;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* SIN STOCK */
+.estado-inactivo {
+    background: #f8d7da;
+    color: #842029;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
 }
 
 /* ================= INPUT NUMBER ================= */
@@ -1788,4 +1843,3 @@ input[type="file"]::file-selector-button:hover{
     background: var(--rosa);
     color: white;
 }
-

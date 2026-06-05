@@ -148,11 +148,25 @@ Route::middleware('admin')->group(function () {
     Route::post('/admin/productos/guardar', [ProductoController::class, 'guardar'])
     ->name('admin.productos.guardar');
 
+    Route::get('/admin/productos/editar/{producto}', [ProductoController::class, 'editar'])
+    ->name('producto.editar');
+
+    Route::put('/admin/productos/actualizar/{producto}', [ProductoController::class, 'actualizar'])
+    ->name('producto.actualizar');
+
+    //categorias
     Route::get('/admin/categorias/crear',[CategoriaController::class, 'crear'])
     ->name('admin.categorias.crear');
 
     Route::post('/admin/categorias/guardar',[CategoriaController::class, 'guardar'])
     ->name('admin.categorias.guardar');
+
+    //consultas
+    Route::get('/backend/administrador/consultasAdmin', [ContactoController::class, 'index'])
+    ->name('admin.consultas.index');
+
+    Route::post('/backend/administrador/consultas/{id}/responder', [ContactoController::class, 'responder'])
+    ->name('admin.consultas.responder');
 });
 
 //ruta de controlador de formulario

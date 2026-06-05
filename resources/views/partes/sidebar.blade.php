@@ -15,7 +15,7 @@
                 <a href="{{ route('admin.clientes') }}">Clientes</a>
                 <a href="{{ route('admin.productos') }}">Productos</a>
                 <a href="">Pedidos</a>
-                <a href="">Consultas</a>
+                <a href="{{ route('admin.consultas.index') }}">Consultas</a>
 
             @else
 
