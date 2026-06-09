@@ -1,6 +1,10 @@
 @extends('plantilla')
 @section('contenido')
 
+<head>
+    <title>@yield('titulo', 'Panel de Control - Mi Juguetería')</title>
+</head>
+
 <div class="layout-backend">
 
     <!-- SIDEBAR -->

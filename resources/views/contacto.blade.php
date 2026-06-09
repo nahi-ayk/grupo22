@@ -73,6 +73,11 @@
                         title="El email debe terminar en un punto seguido de 2 o 3 letras (ej: .com, .es, .net)">
                         </div>
 
+                        <div class="mb-3">
+                        <label class="form-label">Asunto</label>
+                        <input type="text" name="asunto" class="form-control" placeholder="Motivo de tu consulta" required>
+                        </div>
+
                             <div class="mb-3">
                                 <label class="form-label">Mensaje</label>
                                 <textarea name="mensaje" class="form-control" rows="5" placeholder="Tu mensaje" required></textarea>

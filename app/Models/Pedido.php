@@ -25,6 +25,7 @@ class Pedido extends Model
     protected $casts = [
         'subtotal' => 'float',
         'total' => 'float',
+        'fecha_venta' => 'datetime',
     ];
 
     /**

@@ -24,8 +24,8 @@
                 <div class="producto-imagen-container">
 
                     <img src="{{ asset($producto->imagen) }}"
-                         alt="{{ $producto->nombre }}"
-                         class="producto-detalle-img">
+                        alt="{{ $producto->nombre }}"
+                        class="producto-detalle-img">
 
                 </div>
 

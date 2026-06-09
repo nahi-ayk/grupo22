@@ -568,7 +568,7 @@ body {
 
 /* ================= ANIMACIONES ================= */
 .aparecer {
-  animation: fadeUp 1s ease forwards;
+  animation: fadeUp 0.3s ease forwards;
 }
 
 @keyframes fadeUp {
@@ -1842,4 +1842,98 @@ input[type="file"]::file-selector-button:hover{
 .btn-volver-detalle:hover{
     background: var(--rosa);
     color: white;
+}
+
+
+.btn-cantidad{
+    flex: 1;
+
+    background: white;
+
+    border: 2px solid var(--azul);
+
+    color: var(--azul);
+
+    border-radius: 8px;
+
+    font-family: 'Fjalla One';
+
+    text-decoration: none;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 2px;
+}
+
+.btn-cantidad:hover{
+    background: var(--azul);
+
+    color: white;
+}
+
+/* Estilo base del botón (le agregamos una transición suave) */
+.btn-verde-compra { 
+    background-color: #2e9e63; 
+    border-color: #2e9e63; 
+    color: white; 
+    transition: all 0.3s ease-in-out; 
+}
+
+/* NUEVO HOVER LLAMATIVO */
+.btn-verde-compra:hover { 
+    background-color: #35b873; /* Un verde un poco más vibrante */
+    border-color: #35b873; 
+    color: #ffffff !important; /* Fuerza a que las letras sigan siendo blancas */
+    transform: translateY(-3px); /* Levanta el botón un poquito hacia arriba */
+    box-shadow: 0 8px 15px rgba(46, 158, 99, 0.4) !important; /* Le da un resplandor verde */
+}
+
+.consulta-detalle-card {
+    background: #fcfcfc;
+    border: 4px solid var(--rosa); /* Ahora sí se verá */
+    border-radius: 20px;
+    padding: 35px;
+    max-width: 1150px;
+    margin: auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+
+/* Opcional: Dale un poco de espacio al header si lo necesitas */
+.header-custom {
+    border-color: rgba(0,0,0,0.1) !important;
+}
+
+.footer-custom .btn {
+    background-color: var(--amarillo);
+    color: black;
+    border: none;
+    font-family: 'Fjalla One', Arial;
+}
+
+.footer-custom .btn:hover {
+    background-color: var(--azul);
+    color: #fff;
+}
+
+.contador-total{
+    background-color: var(--azul);
+    color: #fff;
+}
+
+.btn-custom-colores {
+    background-color: var(--azul);
+    border-color: var(--azul);
+    color: white; /* Color de texto blanco para contrastar con el azul */
+    font-family: 'Fjalla One', Arial;
+    transition: all 0.3s ease; /* Hace que el cambio de color sea suave */
+}
+
+.btn-custom-colores:hover {
+    background-color: var(--rosa);
+    border-color: var(--rosa);
+    color: white; /* Mantiene el texto blanco, o puedes cambiarlo si prefieres */
 }

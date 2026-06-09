@@ -10,7 +10,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
 
         <div>
-            <h2 class="admin-titulo mb-1">
+            <h2 class="admin-titulo mb-1 fw-bold">
                 Clientes
             </h2>
 

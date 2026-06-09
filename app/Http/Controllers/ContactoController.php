@@ -15,6 +15,7 @@ class ContactoController extends Controller
         $request->validate([
             'nombre'  => 'required|string|max:255',
             'email'   => 'required|email|max:255',
+            'asunto' => 'required|string|max:255',
             'mensaje' => 'required|string',
         ]);
 
@@ -22,6 +23,7 @@ class ContactoController extends Controller
         Consulta::create([
             'nombre'  => $request->nombre,
             'email'   => $request->email,
+            'asunto'  => $request->asunto,
             'mensaje' => $request->mensaje,
         ]);
 
@@ -79,6 +81,12 @@ class ContactoController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'La respuesta fue enviada con éxito y la consulta se marcó como contestada.');
+    }
+
+    public function show($id)
+    {
+    $consulta = Consulta::findOrFail($id);
+    return view('backend.administrador.detalleConsultasAdmin', compact('consulta'));
     }
 }
 

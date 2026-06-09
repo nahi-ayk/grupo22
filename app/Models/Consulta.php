@@ -13,6 +13,6 @@ use HasFactory, SoftDeletes;
 
     protected $table = 'consultas';
 
-    protected $fillable = ['nombre', 'email', 'mensaje', 'contestado'];
+    protected $fillable = ['nombre', 'email', 'asunto', 'mensaje', 'contestado'];
     
 }

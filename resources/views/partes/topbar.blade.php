@@ -11,7 +11,7 @@
             <button class="btn btn-buscar">Buscar</button>
         </form>
         <!--iconos-->
-          <div class="d-flex align-items-center gap-3 fs-4">
+        <div class="d-flex align-items-center gap-3 fs-4">
             @auth
                 @if(Auth::user()->rol->nombre === 'admin')
                     <a href="{{ route('admin.cuenta') }}">

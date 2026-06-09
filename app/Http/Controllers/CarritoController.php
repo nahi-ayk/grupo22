@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Pedido;   
 use App\Models\Producto;
 use App\Models\Envio;
+use App\Models\MetodoPago;
 
 class CarritoController extends Controller
 {
@@ -36,7 +37,8 @@ public function index()
     $carrito = $this->obtenerCarrito();
     // with('producto') evita N+1: una sola consulta para todos los productos
     $items = $carrito->detalles()->with('producto')->get();
-    return view('backend.cliente.clienteCarrito', compact('carrito', 'items'));
+    $metodosPago = MetodoPago::all();
+    return view('backend.cliente.clienteCarrito', compact('carrito', 'items', 'metodosPago'));
 }
 
 
@@ -89,24 +91,28 @@ $this->recalcularTotal($carrito);
 return back()->with('success', 'Producto eliminado');
 }
 
-// Confirma el pedido: cambia estado a 'confirmado', guarda fecha y muestra resumen
 public function confirmar(Request $request)
 {
+    // 1. Validaciones iniciales
+    $request->validate([
+        'metodo_pago_id' => 'required|exists:metodos_pago,id',
+        'tipo_entrega'   => 'required|in:retiro,envio',
+    ]);
+
     $carrito = $this->obtenerCarrito();
 
-    // 1. Validación de seguridad rigurosa
+    // 2. Validación de seguridad rigurosa
     if (!$carrito || $carrito->detalles()->count() === 0) {
         return redirect()->route('cliente.carrito')->with('error', 'Tu carrito está vacío o el pedido ya fue procesado.');
     }
 
-    // 2. Guardamos ítems y totales antes de cerrar el pedido
+    // 3. Guardamos ítems y totales antes de cerrar el pedido
     $items = $carrito->detalles()->with('producto')->get();
     $total = $carrito->total;
-    $tipoEntrega = $request->input('tipo_entrega', 'retiro');
+    $tipoEntrega = $request->input('tipo_entrega');
 
-    // 3. SI ES ENVÍO: Registramos los datos en la tabla 'envios'
+    // 4. SI ES ENVÍO: Registramos los datos en la tabla 'envios'
     if ($tipoEntrega === 'envio') {
-        // Validamos que los datos del formulario del modal hayan llegado
         $request->validate([
             'direccion'     => 'required|string|max:255',
             'provincia'     => 'required|string|max:255',
@@ -114,29 +120,62 @@ public function confirmar(Request $request)
             'codigo_postal' => 'required|string|max:10',
         ]);
 
-        // Creamos el registro usando la relación de tu modelo Pedido
         $carrito->envio()->create([
             'direccion'     => $request->direccion,
             'provincia'     => $request->provincia,
             'localidad'     => $request->localidad,
             'codigo_postal' => $request->codigo_postal,
-            'costo_envio'   => 0, // Como es académico, lo dejamos en 0 o el valor base que quieras
+            'costo_envio'   => 0,
             'estado_envio'  => 'Pendiente de preparación'
         ]);
     }
 
-    // 4. Cambia el estado del pedido para que deje de ser un "carrito" activo
+    // 5. Actualizamos el carrito confirmando el pedido y guardando el método de pago
     $carrito->update([
-        'estado'      => 'confirmado', 
-        'fecha_venta' => now(),
+        'estado'         => 'confirmado', 
+        'fecha_venta'    => now(),
+        'metodo_pago_id' => $request->metodo_pago_id, // <--- Guardamos el método seleccionado
     ]);
 
-    // 5. Redireccionamos a la pantalla de éxito con los datos cargados en sesión array
+    // 6. Redireccionamos a la pantalla de éxito
     return redirect()->route('compra.confirmada')
         ->with('items', $items->toArray())
         ->with('total', $total)
         ->with('numero_pedido', $carrito->numero_pedido)
         ->with('tipo_entrega', $tipoEntrega);
+}
+
+// Actualiza la cantidad de un producto específico en el carrito
+public function actualizar(Request $request, $id)
+{
+    // 1. Validar que la cantidad sea correcta
+    $request->validate([
+        'cantidad' => 'required|integer|min:1',
+    ]);
+
+    $carrito = $this->obtenerCarrito();
+
+    // 2. Buscar el ítem asegurando que pertenezca al carrito del usuario actual
+    $item = $carrito->detalles()->where('id', $id)->first();
+
+    if (!$item) {
+        return back()->with('error', 'El producto no se encontró en el pedido.');
+    }
+
+    // 3. Verificar stock antes de actualizar
+    if ($item->producto->stock_actual < $request->cantidad) {
+        return back()->with('error', 'No hay suficiente stock para la cantidad solicitada.');
+    }
+
+    // 4. Actualizar cantidad y subtotal del ítem
+    $item->cantidad = $request->cantidad;
+    $item->subtotal = $item->cantidad * $item->precio_unitario;
+    $item->save();
+
+    // 5. Recalcular el total general del carrito
+    $this->recalcularTotal($carrito);
+
+    return back()->with('success', 'Cantidad actualizada correctamente.');
 }
 
 

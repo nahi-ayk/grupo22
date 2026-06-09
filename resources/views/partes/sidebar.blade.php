@@ -14,7 +14,7 @@
                 <a href="{{ route('admin.cuenta') }}">Estadisticas Generales</a>
                 <a href="{{ route('admin.clientes') }}">Clientes</a>
                 <a href="{{ route('admin.productos') }}">Productos</a>
-                <a href="">Pedidos</a>
+                <a href="{{ route('admin.pedidos.index') }}">Pedidos</a>
                 <a href="{{ route('admin.consultas.index') }}">Consultas</a>
 
             @else
