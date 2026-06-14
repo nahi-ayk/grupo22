@@ -9,16 +9,18 @@
 <section class= "comercio-conteiner aparecer">
 
     <!--titulos-->
-    <h2 class= "titulo-bienvenida text-center">Cómo podés comprar en TN Toys!</h2>
+    <p class= "titulo-bienvenida text-center">información Comercial!</p>
+
+    <p class= "texto-bienvenida text-center"> Detalles sobre métodos de pago, envíos y cómo realizar tu compra con éxito </p>
 
     <!--Medios de pago-->
     <div class= "comercio-box">
-        <h2 class="text-center subtitulo mb-4">Medios de pago</h2>
+        <h2 class="text-center subtitulo mb-3">Medios de pago</h2>
 
         <!--cards-->
         <div class="row text-center">
             <div class="col-md-4 mb-3">
-                <div class="card h-100 shadow-sm">
+                <div class="card comercio-card h-100">
                     <div class="card-body">
                         <i class="bi bi-cash-coin"></i>
                         <h5 class="card-title">Efectivo</h5>
@@ -30,7 +32,7 @@
             </div>
 
             <div class="col-md-4 mb-3">
-                <div class="card h-100 shadow-sm">
+                <div class="card comercio-card h-100">
                     <div class="card-body">
                         <i class="bi bi-credit-card"></i>
                         <h5 class="card-title">Tarjetas</h5>
@@ -42,7 +44,7 @@
             </div>
 
             <div class="col-md-4 mb-3">
-                <div class="card h-100 shadow-sm">
+                <div class="card comercio-card h-100">
                     <div class="card-body">
                         <i class="bi bi-phone"></i>
                         <h5 class="card-title">Billeteras Virtuales</h5>
@@ -64,7 +66,7 @@
         <div class="row text-center justify-content-center">
 
             <div class="col-md-4 mb-3">
-                <div class="card h-100 shadow-sm">
+                <div class="card comercio-card h-100">
                     <div class="card-body">
                         <i class="bi bi-shop"></i>
                         <h5 class="card-title">Entrega en el local</h5>
@@ -76,7 +78,19 @@
             </div>
 
             <div class="col-md-4 mb-3">
-                <div class="card h-100 shadow-sm">
+                <div class="card comercio-card h-100">
+                    <div class="card-body">
+                        <i class="bi bi-scooter"></i>
+                        <h5 class="card-title">Motomandado</h5>
+                        <p class="card-text">
+                            Entregamos tu compra de forma rápida y segura dentro de Corrientes Capital.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div class="card comercio-card h-100">
                     <div class="card-body">
                         <i class="bi bi-truck"></i>
                         <h5 class="card-title">Envios a todo el pais</h5>
@@ -93,7 +107,7 @@
     <!--Preguntas frecuentes-->
     <div class="comercio-box">
         <div class="row text-start acordeon-style">
-            <h3>Preguntas frecuentes</h3>
+            <p class= "subtitulo">Preguntas frecuentes</p>
             <div class="accordion" id="accordionExample">
 
                 <!-- PREGUNTA 1 -->

@@ -14,11 +14,10 @@ use App\Http\Controllers\FavoritoController;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\InicioController;
 
 // Retorna vista al inicio de la pagina
-Route::get('/', function () {
-    return view('inicio');
-});
+Route::get('/', [InicioController::class, 'index']);
 
 //========= CatalogoController ==========
 // Retorna la vista del catalogo junto con los productos que estan activos y las categorias de los productos
@@ -79,6 +78,10 @@ Route::middleware(['auth', 'cliente'])->group(function () {
     // Elimina un producto del carrito
     Route::delete('backend/cliente/clienteCarrito/eliminar/{id}', [CarritoController::class, 'eliminar'])
     ->name('carrito.eliminar');
+
+    // Favoritos del cliente
+    Route::get('/cliente/favoritos', [FavoritoController::class, 'index'])
+    ->name('cliente.favoritos');
 
     // Confirmar la compra 
     Route::post('backend/cliente/clienteCarrito/confirmar', [CheckoutController::class, 'store'])

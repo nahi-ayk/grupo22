@@ -7,6 +7,13 @@ use App\Models\Producto;
 
 class FavoritoController extends Controller
 {
+    public function index()
+    {
+        $favoritos = Auth::user()->favoritos;
+
+        return view('backend.cliente.clienteFavoritos', compact('favoritos'));
+    }
+
     public function toggle($productoId)
     {
         $usuario = Auth::user();

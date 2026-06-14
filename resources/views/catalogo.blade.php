@@ -14,15 +14,21 @@
 
 <div class="container mt-4">
     <div class="filtros-catalogo">
-        <a href="{{ route('catalogo') }}" class="btn-filtro">
+
+        <a href="{{ route('catalogo') }}"
+           class="btn-filtro {{ request()->routeIs('catalogo') ? 'activo' : '' }}">
             Todas
         </a>
-        
+
         @foreach($categorias as $categoria)
-            <a href="{{ route('catalogo.categoria', $categoria->id) }}" class="btn-filtro">
+
+            <a href="{{ route('catalogo.categoria', $categoria->id) }}"
+               class="btn-filtro {{ request()->route('id') == $categoria->id ? 'activo' : '' }}">
                 {{ $categoria->nombre }}
             </a>
+
         @endforeach
+
     </div>
 </div>
 

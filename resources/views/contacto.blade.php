@@ -7,7 +7,7 @@
 
 <!--titulos-->
 <div class="container mt-4 mb-5">
-    <h1 class="titulo-bienvenida text-center">¿Tenés alguna consulta?</h1>
+    <p class="titulo-bienvenida text-center">¿Tenés alguna consulta?</p>
     <p class="texto-bienvenida text-center">
         Escribinos y nuestro equipo te contactará a la brevedad!
     </p>
@@ -21,7 +21,7 @@
 
                     <!-- info de contacto -->
                     <div class="col-12 col-md-6 contacto-info">
-                        <h2 class="text-center mb-4">Información de contacto</h2>
+                        <p class="subtitulo mb-4">Información de contacto</p>
 
                         <div class="mb-3">
                             <strong><i class="bi bi-telephone"></i> Teléfono</strong><br>
@@ -43,11 +43,21 @@
                             <span>Lun - Vie: 9:00 - 12:00 / 17:00 - 21:00</span><br>
                             <span>Sab: 9:00 - 13:00</span>
                         </div>
+                          
+                        <div class="mb-3">
+                            <strong><i class="bi bi-instagram icono-ig"></i> Instagram</strong><br>
+                            <span>@tntoys.jugueteria</span>
+                        </div>
+
+                        <div class="mb-3">
+                            <strong><i class="bi bi-facebook icono-fb"></i> Facebook </strong><br>
+                            <span>/TNToysJugueteria</span>
+                        </div>
                     </div>
 
                     <!-- fomrulario de consulta -->
                     <div class="col-12 col-md-6 contacto-form">
-                        <h2 class="text-center mb-4">Envíanos un Mensaje</h2>
+                        <p class="subtitulo mb-4">Envíanos un Mensaje</p>
 
                         <div id="alerta"></div>
 
@@ -61,29 +71,30 @@
                                 title="Solo se permiten letras y espacios">
                             </div>
 
-                        <div class="mb-3">
-                        <label class="form-label">Email</label>
-                        <input 
-                        type="email" 
-                        name="email" 
-                        class="form-control" 
-                        placeholder="tu@email.com" 
-                        required
-                        pattern="^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,3}$"
-                        title="El email debe terminar en un punto seguido de 2 o 3 letras (ej: .com, .es, .net)">
-                        </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input 
+                                    type="email" 
+                                    name="email" 
+                                    class="form-control" 
+                                    placeholder="tu@email.com" 
+                                    required
+                                    pattern="^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,3}$"
+                                    title="El email debe terminar en un punto seguido de 2 o 3 letras (ej: .com, .es, .net)"
+                                >
+                            </div>
 
-                        <div class="mb-3">
-                        <label class="form-label">Asunto</label>
-                        <input type="text" name="asunto" class="form-control" placeholder="Motivo de tu consulta" required>
-                        </div>
+                            <div class="mb-3">
+                                <label class="form-label">Asunto</label>
+                                <input type="text" name="asunto" class="form-control" placeholder="Motivo de tu consulta" required>
+                            </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Mensaje</label>
                                 <textarea name="mensaje" class="form-control" rows="5" placeholder="Tu mensaje" required></textarea>
                             </div>
 
-                            <button type="submit" class="btn w-100">
+                            <button type="submit" class="btn btn-catalogo w-100">
                                 <i class="bi bi-send"></i> Enviar mensaje
                             </button>
                         </form>

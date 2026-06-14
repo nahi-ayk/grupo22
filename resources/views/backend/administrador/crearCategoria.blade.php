@@ -14,7 +14,7 @@
                 Crear categoría
             </h2>
 
-            <form action="{{ route('admin.categorias.guardar') }}"
+            <form action="{{ route('admin.categorias.guardar') }}" enctype="multipart/form-data"
                 method="POST">
 
                 @csrf
@@ -42,6 +42,16 @@
                         class="form-control"
                         rows="4"></textarea>
 
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Imagen
+                    </label>
+
+                    <input type="file"
+                        name="imagen"
+                        class="form-control">
                 </div>
 
                 <button class="btn btn-guardar">

@@ -74,7 +74,7 @@
                         @if(strtolower($pedido->estado) == 'carrito')
                             <p class="mb-0 text-secondary fw-medium"><i class="bi bi-wallet2"></i> A definir al finalizar compra</p>
                         @else
-                            <p class="mb-0 fw-medium">{{ $pedido->metodoPago->nombre ?? 'No especificado' }}</p>
+                            <p class="mb-0 fw-medium">{{ $pedido->metodoPago->descripcion ?? 'No especificado' }}</p>
                         @endif
                     </div>
 

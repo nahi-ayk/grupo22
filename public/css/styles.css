@@ -20,552 +20,6 @@ body {
   background-size: cover;
 }
 
-/* ================= CARRUSEL ================= */
-.carousel-item img {
-  width: 100%;
-  height: auto;
-  background-color: #f8f9fa; 
-}
-
-#carouselExampleIndicators{
-  max-width: 700px;
-  margin: 30px auto;
-}
-
-/* ================= NAVBAR ================= */
-.navbar-custom {
-  background-color: var(--rosa);
-  font-family: 'Fjalla One', sans-serif;
-  font-size: 18px;
-}
-
-.navbar-custom .nav-link,
-.navbar-custom .navbar-brand {
-  color: white;
-}
-
-.navbar-custom .nav-link.active,
-.navbar-custom .nav-link:hover {
-  color: var(--azul);
-}
-
-/* ================= TOPBAR ================= */
-.topbar {
-  background-color: var(--amarillo);
-  padding: 30px 50px;
-}
-
-.topbar .form-control {
-  max-width: 400px;
-}
-
-.icono-topbar {
-  font-size: 30px;
-  color: var(--azul);
-}
-
-.btn-buscar {
-  background-color: var(--rosa);
-  color: white;
-  border: none;
-  font-family: 'Fjalla One', sans-serif;
-  pointer-events: none;
-}
-
-.btn-buscar:hover {
-  background-color: var(--azul);
-  color: white;
-}
-
-/* ================= TEXTOS ================= */
-.titulo-bienvenida {
-  font-family: 'Titan One', sans-serif;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  color: var(--azul);
-}
-
-.texto-bienvenida {
-  font-family: 'Fjalla One', Arial;
-  font-size: clamp(1.2rem, 2.5vw, 1.3rem);
-  color: var(--rosa);
-}
-
-/* ================= CARDS ================= */
-.card {
-  border: 5px solid var(--rosa);
-  border-radius: 15px;
-  transition: 0.3s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.card:hover {
-  transform: scale(1.02);
-}
-
-.card-title {
-  font-family: 'Fjalla One', cursive;
-  color: var(--verde);
-}
-
-.card-text {
-  font-family: 'Fjalla One', sans-serif;
-  text-align: justify;
-}
-
-.card .col-4 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ================= BOTONES ================= */
-.btn-categoria,
-.btn-catalogo,
-.btn-bcategoria {
-  border: none;
-  border-radius: 8px;
-  color: white;
-  transition: 0.3s;
-  font-family: 'Fjalla One', sans-serif;
-}
-
-.btn-categoria { background-color: var(--verde); }
-.btn-catalogo { background-color: var(--azul); }
-.btn-bcategoria { background-color: var(--azul); }
-
-.btn-categoria:hover,
-.btn-catalogo:hover,
-.btn-bcategoria:hover {
-  transform: scale(1.05);
-}
-
-.btn-categoria:hover{
-  background-color: var(--azul);
-  color:#fff;
-}
-
-.btn-catalogo:hover{
-  background-color: var(--verde);
-  color:#fff;
-}
-.btn-bcategoria:hover {
-  background-color: var(--verde);
-  color: #fff;
-}
-
-.btn-bcategoria:focus,
-.btn-bcategoria.show {
-  background-color: var(--verde);
-  color: #fff;
-  box-shadow: none;
-}
-
-/* ================= CARRUSEL CARDS DEL INICIO================= */
-.carousel-card {
-  height: 150px;
-  width: 100%;
-  overflow: hidden;
-}
-
-.carousel-card .carousel-inner,
-.carousel-card .carousel-item {
-  height: 100%;
-}
-
-.carousel-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 15px;
-  background-color: white;
-}
-
-/* ================= FOOTER ================= */
-.footer {
-  background-color: var(--rosa);
-  color: white;
-  font-family: "Fjalla One", arial;
-}
-
-.footer a {
-  color: white;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
-
-.logo-footer {
-  width: 150px;
-  display: block;
-  margin: 0 auto;
-}
-
-.icono {
-  width: 20px;
-  margin-right: 8px;
-}
-
-.footer i {
-  margin-right: 8px;
-}
-
-/* ================= CATALOGO ================= */
-.catalogo .card-body{
-    display: flex;
-    flex-direction: column;
-}
-
-/* CARD PRODUCTO */
-
-.producto-card{
-    position: relative;
-
-    border: none;
-
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    transition: .3s;
-
-    background: white;
-
-    box-shadow: 0 3px 10px rgba(0,0,0,.08);
-
-    height: 100%;
-}
-
-.producto-card:hover{
-    transform: translateY(-5px);
-
-    box-shadow: 0 8px 20px rgba(0,0,0,.15);
-}
-
-.producto-card .card-img-top{
-    height: 180px;
-
-    object-fit: contain;
-
-    padding: 15px;
-}
-
-.producto-card .card-body{
-    display: flex;
-
-    flex-direction: column;
-
-    padding: 15px;
-}
-/* FAVORITOS */
-
-.btn-favorito{
-    position: absolute;
-
-    top: 12px;
-    right: 12px;
-
-    width: 38px;
-    height: 38px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background: white;
-
-    box-shadow: 0 2px 8px rgba(0,0,0,.15);
-
-    z-index: 10;
-}
-
-.btn-favorito i{
-    color: #ff6b8a;
-}
-
-.btn-favorito:hover{
-    transform: scale(1.1);
-}
-
-/* TITULO */
-
-.producto-card .card-title{
-    min-height: 50px;
-
-    text-align: center;
-
-    font-family: 'Fjalla One', arial;
-}
-
-/* PRECIO */
-
-.precio{
-    text-align: center;
-
-    color: var(--rosa);
-
-    font-size: 1.5rem;
-
-    font-weight: bold;
-
-    margin-bottom: 15px;
-}
-
-/* BOTONES */
-
-.acciones-producto{
-    display: flex;
-
-    gap: 8px;
-
-    margin-top: auto;
-}
-
-.btn-vermas{
-    flex: 1;
-
-    background: white;
-
-    border: 2px solid var(--azul);
-
-    color: var(--azul);
-
-    border-radius: 8px;
-
-    font-family: 'Fjalla One';
-
-    text-decoration: none;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    padding: 8px;
-}
-
-.btn-vermas:hover{
-    background: var(--azul);
-
-    color: white;
-}
-
-.btn-carrito{
-    flex: 1;
-
-    background: var(--rosa);
-
-    color: white;
-
-    border: none;
-
-    border-radius: 8px;
-
-    font-family: 'Fjalla One';
-
-    padding: 8px;
-}
-
-.btn-carrito:hover{
-    background: #ff76a8;
-
-    color: white;
-}
-
-/* CATEGORIAS */
-
-/* FILTROS */
-
-.filtros-catalogo{
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    margin-bottom: 35px;
-}
-
-.btn-filtro{
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding: 12px 20px;
-
-    border: 2px solid var(--azul);
-
-    border-radius: 999px;
-
-    background: white;
-
-    color: var(--azul);
-
-    text-decoration: none;
-
-    font-family: 'Fjalla One', arial;
-
-    transition: .25s;
-}
-
-.btn-filtro:hover{
-
-    background: var(--azul);
-
-    color: white;
-
-    transform: translateY(-2px);
-}
-
-.btn-filtro.activo{
-
-    background: var(--azul);
-
-    color: white;
-}
-
-/* ================= TITULOS GENERALES ================= */
-.titulo {
-  font-family: 'Titan One', cursive;
-  font-size: clamp(2rem, 5vw, 4rem);
-  color: var(--azul);
-}
-
-.subtitulo {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-family: 'Fjalla One', arial;
-  color: var(--azul);
-}
-
-.subtitulo::after {
-  content: "";
-  width: 60px;
-  height: 5px;
-  background: var(--azul);
-  display: block;
-  margin-top: 10px;
-  border-radius: 5px;
-}
-
-/* ================= CONTACTO ================= */
-.contacto-box {
-    border-radius: 25px;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.contacto-info {
-    background-color: var(--amarillo);
-    padding: 30px;
-    font-family: 'Fjalla One', Arial;
-    text-align: center;
-    font-size: 1.15rem; 
-}
-
-.contacto-form {
-    background-color: var(--rosa);
-    padding: 30px;
-    font-family: 'Fjalla One', Arial;
-}
-
-.contacto-form .form-control {
-    border-radius: 10px;
-    border: none;
-    background-color: rgb(255, 235, 236);
-}
-
-.contacto-form .btn {
-    background-color: var(--amarillo);
-    color: black;
-    border: none;
-}
-
-.contacto-form .btn:hover {
-    background-color: var(--azul);
-    color: #fff;
-}
-
-.mapa-box {
-    background-color: rgb(254, 255, 220);
-    border-radius: 25px;
-    padding: 25px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    margin-top: 30px;
-}
-
-.mapa-box h2 {
-    font-family: 'Fjalla One', Arial;
-}
-
-.mapa-contenedor iframe {
-    border-radius: 15px;
-    width: 100%;
-    display: block;
-}
-
-/* ================= NOSOTROS ================= */
-.img-mediana {
-  width: 50%;
-  max-width: 500px;
-  border-radius: 15px;
-}
-
-.contenido1, .contenido2, .contenido3 {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  padding: 30px 0;
-  border-radius: 20px;
-  text-align: justify;
-  font-family: 'Fjalla One', arial;
-  font-size: 18px;
-}
-
-.contenido1 { background-color: #fcfcfc; }
-.contenido2 { background-color: var(--rosa); }
-.contenido3 { background-color: var(--amarillo); }
-
-.contenido3 .subtitulo {
-  display: block;
-  width: fit-content;  
-  margin: 0 auto;       
-  position: relative;
-}
-
-.contenido3 .subtitulo::after {
-  content: "";
-  width: 60px;
-  height: 5px;
-  background: var(--azul);
-  position: absolute;
-  left: 0;              
-  bottom: -10px;
-  border-radius: 5px;
-}
-
-/* ================= STAFF ================= */
-.staff-img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 50%; 
-  border: 4px solid #e9a6a7;
-  transition: 0.3s;
-}
-
-.staff-img:hover {
-  transform: scale(1.05);
-}
-
 /* ================= ANIMACIONES ================= */
 .aparecer {
   animation: fadeUp 0.3s ease forwards;
@@ -668,6 +122,571 @@ body {
     .btn-agregar-carrito{
         width: 100%;
     }
+
+    /* categorias inicio */
+    .categoria-item{
+        min-width: 100px;
+    }
+
+    .categoria-item img{
+        width: 110px;
+        height: 110px;
+    }
+
+    .categoria-item span{
+        font-size: .9rem;
+    }
+
+    .contenido-bloque {
+        flex-direction: column;
+        text-align: center;
+    }
+    .col-imagen {
+        max-width: 80%;
+    }
+
+    .layout-backend{
+        display: block;
+    }
+
+    .sidebar{
+        display: none;
+    }
+}
+
+/* ================= CARRUSEL DE INICIO================= */
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  background-color: #f8f9fa; 
+}
+
+#carouselExampleIndicators{
+  max-width: 1100px;
+  margin: 30px auto;
+}
+
+/* ================= NAVBAR ================= */
+.navbar-custom {
+  background-color: var(--rosa);
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 18px;
+}
+
+.navbar-custom .nav-link,
+.navbar-custom .navbar-brand {
+  color: white;
+}
+
+.navbar-custom .nav-link.active,
+.navbar-custom .nav-link:hover {
+  color: var(--azul);
+}
+
+/* ================= TOPBAR ================= */
+.topbar {
+  background-color: var(--amarillo);
+  padding: 30px 50px;
+}
+
+.topbar .form-control {
+  max-width: 400px;
+}
+
+.icono-topbar {
+  font-size: 30px;
+  color: var(--azul);
+}
+
+.btn-buscar {
+  background-color: var(--rosa);
+  color: white;
+  border: none;
+  font-family: 'Fjalla One', sans-serif;
+  pointer-events: none;
+}
+
+.btn-buscar:hover {
+  background-color: var(--azul);
+  color: white;
+}
+
+/* ================= TEXTOS INICIO================= */
+.titulo-bienvenida {
+  font-family: 'Titan One', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--azul);
+}
+
+.texto-bienvenida {
+  font-family: 'Fjalla One', Arial;
+  font-size: clamp(1.2rem, 2.5vw, 1.3rem);
+  color: var(--rosa);
+}
+
+/* ================= CATEGORIAS DE INICIO================= */
+.categorias-slider{
+    overflow: hidden;
+    width: 100%;
+    padding: 15px 0;
+}
+
+.categorias-track{
+    display: flex;
+    gap: 70px;
+    width: max-content;
+    animation: scrollCategorias 40s linear infinite;
+}
+
+.categorias-track:hover{
+    animation-play-state: paused;
+}
+
+.categoria-item{
+    text-decoration: none;
+    text-align: center;
+    min-width: 180px;
+}
+
+.categoria-item img{
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: white;
+    box-shadow: 0 8px 25px rgba(0,0,0,.15);
+    transition: all .3s ease;
+}
+
+.categoria-item:hover img{ transform: scale(1.08);}
+
+.categoria-item span{
+    display: block;
+    margin-top: 18px;
+    font-family: 'Fjalla One', arial;
+    color: var(--azul);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+@keyframes scrollCategorias{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-50%);
+    }
+}
+
+.btn-catalogo{
+  border: none;
+  border-radius: 8px;
+  color: white;
+  transition: 0.3s;
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.btn-catalogo { background-color: var(--azul); }
+
+.btn-catalogo:hover{ transform: scale(1.05);}
+
+.btn-catalogo:hover{
+  background-color: var(--verde);
+  color:#fff;
+}
+
+/* =============== FAVORITOS DEL INICIO ================== */
+
+.favorito-principal-img{
+    height: 320px !important;
+    object-fit: contain !important;
+    padding: 25px !important;
+}
+
+.favorito-secundario-img{
+    height: 110px !important;
+    object-fit: contain !important;
+    padding: 15px !important;
+}
+
+.favorito-card{ height: auto !important;}
+
+/* ================ TUTORIAL ====================== */
+
+.tutorial-img{
+    width: 750px;
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+    display: block;
+    margin: 0 auto 20px;
+}
+
+/* ================= CARDS ================= */
+.card {
+  border: 5px solid var(--rosa);
+  border-radius: 15px;
+  transition: 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card:hover {transform: scale(1.02);}
+
+.card-title {
+  font-family: 'Fjalla One', cursive;
+  color: var(--verde);
+}
+
+.card-text {
+  font-family: 'Fjalla One', sans-serif;
+  text-align: justify;
+}
+
+.card .col-4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  background-color: var(--rosa);
+  color: white;
+  font-family: "Fjalla One", arial;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer a:hover {text-decoration: underline;}
+
+.logo-footer {
+  width: 150px;
+  display: block;
+  margin: 0 auto;
+}
+
+.icono {
+  width: 20px;
+  margin-right: 8px;
+}
+
+.footer i {margin-right: 8px;}
+
+/* ================= CATALOGO ================= */
+.catalogo .card-body{
+    display: flex;
+    flex-direction: column;
+}
+
+.producto-card{
+    position: relative;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: .3s;
+    background: white;
+    box-shadow: 0 3px 10px rgba(0,0,0,.08);
+    height: 100%;
+}
+
+.producto-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+}
+
+.producto-card .card-img-top{
+    height: 180px;
+    object-fit: contain;
+    padding: 15px;
+}
+
+.producto-card .card-body{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.btn-favorito{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    z-index: 10;
+}
+
+.btn-favorito i{color: #ff6b8a;}
+
+.btn-favorito:hover{transform: scale(1.1);}
+
+.producto-card .card-title{
+    min-height: 50px;
+    text-align: center;
+    font-family: 'Fjalla One', arial;
+}
+
+.precio{
+    text-align: center;
+    color: var(--rosa);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.acciones-producto{
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.btn-vermas{
+    flex: 1;
+    background: white;
+    border: 2px solid var(--azul);
+    color: var(--azul);
+    border-radius: 8px;
+    font-family: 'Fjalla One';
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
+
+.btn-vermas:hover{
+    background: var(--azul);
+    color: white;
+}
+
+.btn-carrito{
+    flex: 1;
+    background: var(--rosa);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Fjalla One';
+    padding: 8px;
+}
+
+.btn-carrito:hover{
+    background: #ff76a8;
+    color: white;
+}
+
+.filtros-catalogo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.btn-filtro{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: 2px solid var(--azul);
+    border-radius: 999px;
+    background: white;
+    color: var(--azul);
+    text-decoration: none;
+    font-family: 'Fjalla One', arial;
+    transition: .25s;
+}
+
+.btn-filtro:hover{
+    background: var(--azul);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-filtro.activo{
+    background: var(--azul);
+    color: white;
+}
+
+/* ================= CONTACTO ================= */
+.subtitulo {
+  font-size: 35px;
+  font-family: 'Fjalla One', arial;
+  color: var(--azul);
+}
+
+.contacto-box {
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border: 5px solid var(--rosa);
+}
+
+.contacto-info {
+    background-color: white;
+    padding: 30px;
+    font-family: 'Fjalla One', Arial;
+    font-size: 18px; 
+    color: #666;
+}
+
+.contacto-form {
+    background-color:  rgb(255, 231, 231);
+    padding: 30px;
+    font-family: 'Fjalla One', Arial;
+    color: #666
+}
+
+.contacto-form .form-control {
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+}
+
+.mapa-box {
+    background-color: white;
+    border: 5px solid var(--rosa);
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-top: 30px;
+}
+
+.mapa-contenedor iframe {
+    border-radius: 15px;
+    width: 100%;
+    display: block;
+}
+
+/* ================= NOSOTROS ================= */
+.nosotros-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Fjalla One', arial; 
+}
+
+.bloque-nosotros {
+    background-color: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    font-family: 'Fjalla One', arial;
+    text-align: justify;
+}
+
+.franja-superior {
+    padding: 15px;
+    text-align: center;
+}
+
+.franja-superior h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-family: 'Fjalla One', arial;
+    color: white;
+}
+
+.bloque-rosa .franja-superior { background-color: var(--rosa); }    
+.bloque-verde .franja-superior { background-color: var(--verde); }  
+.bloque-celeste .franja-superior { background-color: var(--azul); } 
+
+.contenido-bloque {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    gap: 30px;
+}
+
+.col-imagen {
+    flex: 1;
+    max-width: 35%;
+    display: flex;
+    justify-content: center;
+}
+
+.col-imagen img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px; 
+    object-fit: cover;
+}
+
+.col-texto {
+    flex: 2;
+    color: #555555;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+.col-texto h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.col-texto ul {
+    padding-left: 20px;
+}
+
+.staff-slider {
+    width: 100%;
+    overflow: hidden;
+    padding: 40px 0;
+    background-color: #ffffff;
+    position: relative;
+}
+
+.staff-track {
+    display: inline-flex; 
+    white-space: nowrap;  
+    animation: scrollStaff 30s linear infinite;
+}
+
+.staff-slider:hover .staff-track {
+    animation-play-state: paused;
+}
+
+.staff-item-slide {
+    display: flex;
+    align-items: center;
+    width: 450px; 
+    padding: 0 30px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    white-space: normal; 
+}
+
+.col-imagen .staff-img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.col-texto {
+    padding-left: 15px;
+}
+
+.col-texto h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+@keyframes scrollStaff {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); 
+    }
 }
 
 /* ================= TERMINOS Y PRIVACIDAD ================= */
@@ -685,7 +704,6 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-
 .terminos-box h2 {
     margin-top: 20px;
     color: #2c5d8a;
@@ -700,8 +718,6 @@ body {
     text-align: justify;
 }
 
-
-
 /* ================= COMERCIALIZACION ================= */
 
 .comercio-conteiner{
@@ -711,72 +727,43 @@ body {
 }
 
 .comercio-box{
-    background-color: #fff;
-    border-radius: 16px;
-    padding: 30px;
-    text-align: center;   
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-
+    padding: 20px 0;
 }
 
-/* Cards SOLO del sector comercio */
-.comercio-box .card {
-    border: 3px solid var(--azul);
+.comercio-card{
+    border: none;
     border-radius: 20px;
-    background-color: var(--amarillo);
-    transition: 0.3s;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    transition: .3s;
+    overflow: hidden;
 }
 
-/* Hover */
-.comercio-box .card:hover {
+.comercio-card:hover{
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
 }
 
-/* Título */
-.comercio-box .card-title {
+.comercio-card .card-body{padding: 30px 20px;}
+
+.comercio-card .card-title{
     color: var(--azul);
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    margin-top: 10px;
 }
 
-/* Texto */
-.comercio-box .card-text {
+.comercio-card .card-text{
     text-align: center;
-    color: #333;
+    color: #666;
 }
 
-.comercio-box i {
-    font-size: 80px;
+.comercio-card i{
+    font-size: 60px;
     color: var(--rosa);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-.comercio-box h3{
-  font-family: 'Fjalla One', arial;
-  color: var(--azul);
-}
-
-.comercio-box .subtitulo {
-  display: block;
-  width: fit-content;  
-  margin: auto;       
-  position: relative;
-}
-
-.comercio-box .subtitulo::after{
-  content: "";
-  width: 60px;
-  height: 5px;
-  background: var(--azul);
-  position: absolute;
-  left: 0;              
-  bottom: -10px;
-  border-radius: 5px;
-}
-
-.comercio-box .row {
-  margin-top: 30px;
-}
+.comercio-box .row {margin-top: 20px;}
 
 .acordeon-style .accordion-button {
    background-color: var(--amarillo);
@@ -785,14 +772,13 @@ body {
    font-family: 'Fjalla One', arial;
 }
 
-.accordion-button::after {
-  filter: invert(1); /* blanco */
-}
+.accordion-button::after {filter: invert(1); }
 
 .acordeon-style .accordion-item {
    border: none;
    margin-bottom: 10px;
    font-family: 'Fjalla One', arial;
+   color: #666;
 }
 
 .acordeon-style .accordion-body {
@@ -801,52 +787,8 @@ body {
 }
 
 /* ================= LOGIN Y REGISTER ================= */
-.login-card {
-  border: none;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  background-color: var(--rosa);
-  width: 100%;
-  max-width: 520px;
-  font-family: 'Fjalla One', Arial;
-  border-radius: 18px;
-}
-
-.login-card:hover {
-  transform: none;
-}
-
-/* FORM */
-.login-form .form-control{
-  border-radius: 10px;
-  border: none;
-  background-color: rgb(255, 235, 236);
-  padding: 0.55rem 0.8rem;
-}
-
-.login-form .form-control:focus{
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 200, 200, 0.6);
-}
-
-/* BOTÓN PRINCIPAL */
-.login-form .btn{
-  background-color: var(--amarillo);
-  border: none;
-  color: black;
-  border-radius: 10px;
-  padding: 0.6rem;
-  font-weight: 600;
-  transition: 0.2s ease;
-}
-
-.login-form .btn:hover{
-  background-color: var(--azul);
-  color: white;
-  transform: translateY(-1px);
-}
-
 /* INVITADO */
-.login-form .btn-outline-secondary{
+.contacto-form .btn-invitado{
   border-radius: 10px;
   padding: 0.65rem;
   border: 2px solid rgba(97, 87, 87, 0.2);
@@ -855,19 +797,9 @@ body {
   margin-top: 10px;
 }
 
-.login-form .btn-outline-secondary:hover{
+.contacto-form .btn-invitado:hover{
   background-color: rgba(255, 148, 148, 0.432);
   transform: translateY(-1px);
-}
-
-/* ESPACIADO GENERAL */
-.login-form h2{
-  margin-bottom: 1.5rem;
-}
-
-.login-form p{
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
 }
 
 .password-wrapper {
@@ -888,19 +820,17 @@ body {
   color: #000;
 }
 
-/*================ BACKEND =================*/
+/*================ SIDEBAR ===============*/
 .layout-backend{
     display: flex;
-    align-items: stretch;
 }
 
-/* SIDEBAR */
-
+/* SIDEBAR DESKTOP */
 .sidebar{
-    width: 230px;
-    min-width: 230px;
-    background-color: #fcfcfc;
-    padding: 35px 25px;
+    width: 250px;
+    min-height: 100vh;
+    background: #fcfcfc;
+    padding: 30px 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -908,27 +838,23 @@ body {
 }
 
 /* SALUDO */
-
 .saludo-sidebar{
     font-family: 'Fjalla One', Arial;
-    font-size: 1.7rem;
-    line-height: 1.1;
+    font-size: 1.6rem;
     color: var(--azul);
     margin-bottom: 20px;
 }
 
 /* MENU */
-
 .menu-sidebar{
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 15px;
 }
 
 .menu-sidebar a{
     text-decoration: none;
     font-family: 'Fjalla One', Arial;
-    font-size: 1rem;
     color: #333;
     transition: 0.2s;
 }
@@ -938,45 +864,31 @@ body {
     transform: translateX(5px);
 }
 
-
-/* ==========================================================================
-   DESDE ACÁ ABAJO ES LO QUE REEMPLAZAMOS (Borrá lo viejo y pegá esto)
-   ========================================================================== */
-
-/* USUARIO ABAJO */
-.usuario-sidebar {
+/* USUARIO */
+.usuario-sidebar{
     border-top: 1px solid #eee;
-    padding-top: 20px;
-    margin-top: auto; /* Esto reemplaza los 80px para mandarlo al fondo */
-    font-family: 'Fjalla One', Arial, sans-serif;
-    position: relative;
-    width: 100%;
+    padding-top: 15px;
 }
 
 /* AVATAR */
-.avatar-sidebar {
-    width: 42px;
-    height: 42px;
-    min-width: 42px;
+.avatar-sidebar{
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background-color: var(--rosa);
+    background: var(--rosa);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.2rem;
 }
 
-/* EL BOTÓN DE BOOTSTRAP */
-.usuario-btn {
-    border: none !important;
+/* BOTÓN */
+.usuario-btn{
     background: transparent !important;
+    border: none !important;
     width: 100%;
-    padding: 0 !important;
     text-align: left;
-    box-shadow: none !important;
-    color: #333 !important;
-    transition: color 0.2s ease;
+    font-family: 'Fjalla One', arial;
 }
 
 .usuario-btn .d-flex {
@@ -993,7 +905,6 @@ body {
     display: none !important;
 }
 
-/* EL DESPLEGABLE DE CERRAR SESIÓN */
 .usuario-sidebar .dropdown-menu {
     width: 100%;
     border: 1px solid #eee;
@@ -1004,7 +915,7 @@ body {
 }
 
 .usuario-sidebar .dropdown-item {
-    font-family: 'Fjalla One' Arial;
+    font-family: 'Fjalla One', Arial;
     font-size: 0.9rem;
     padding: 10px 15px;
     color: #555;
@@ -1017,12 +928,10 @@ body {
 }
 
 /* CONTENIDO */
-
 .contenido-backend{
     flex: 1;
     padding: 40px;
 }
-
 
 /* ================= MI CUENTA ================= */
 

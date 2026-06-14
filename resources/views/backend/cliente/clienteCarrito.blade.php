@@ -16,10 +16,14 @@
 
 <div class="container my-5" style="max-width: 950px;">
     
-    <div class="text-center mb-4">
+    <div class="mb-4">
         <h2 class="fw-bold admin-titulo">
-            <i class="bi bi-cart3 me-2"></i> Mi Carrito
+            Mi Carrito
         </h2>
+
+        <p class="admin-subtitulo">
+            Tus productos seleccionados para tu proxima compra
+        </p>
     </div>
 
     @if(session('success'))

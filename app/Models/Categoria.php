@@ -14,6 +14,7 @@ class Categoria extends Model
         'nombre',
         'descripcion',
         'activo',
+        'imagen', 
     ];
 
     protected $casts = [
