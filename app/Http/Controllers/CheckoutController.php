@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\MetodoPago;
 use App\Models\Pedido;
 use App\Models\Envio;
+use App\Models\TarifaEnvio;
 use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
@@ -48,33 +49,50 @@ class CheckoutController extends Controller
             return redirect()->route('cliente.carrito')->with('error', 'Tu carrito está vacío o la sesión expiró.');
         }
 
+        // --- NUEVA VALIDACIÓN DE STOCK ANTES DE COMPRAR ---
+        foreach ($pedido->detalles as $detalle) {
+            $producto = $detalle->producto;
+            
+            // Verificamos si la cantidad pedida es mayor al stock real
+            if ($detalle->cantidad > $producto->stock_actual) {
+                return redirect()->route('cliente.carrito')->with('error', 'Lo sentimos, no hay stock suficiente para el producto: ' . $producto->nombre . '. Stock disponible: ' . $producto->stock_actual);
+            }
+        }
+
         // 3. Obtener el subtotal sumando los detalles (por seguridad)
         $subtotal = $pedido->detalles()->sum('subtotal');
         $costo_envio = 0;
+        
+        // 4. Lógica de costo de envío dinámica
+        $tarifa_id = null;
 
-        // 4. Lógica de costo de envío
         if ($request->tipo_entrega === 'envio') {
             $localidad = strtolower(trim($request->localidad));
             $cp = trim($request->codigo_postal);
             
-            // Evaluamos tarifas según la zona
+            // Buscamos la tarifa en la BD dependiendo de la zona
             if ($cp === '3400' || str_contains($localidad, 'corrientes')) {
-                $costo_envio = 1500; // Tarifa local
+                $tarifa = TarifaEnvio::find(1); // ID 1: Local
             } elseif (str_contains($localidad, 'resistencia') || $cp === '3500') {
-                $costo_envio = 2500; // Tarifa interurbana
+                $tarifa = TarifaEnvio::find(2); // ID 2: Interprovincial
             } else {
-                $costo_envio = 4500; // Tarifa nacional
+                $tarifa = TarifaEnvio::find(3); // ID 3: Nacional
             }
+
+            // Si por alguna razón borraron la tarifa de la BD, ponemos 0 para no romper el sistema
+            $costo_envio = $tarifa ? $tarifa->precio : 0;
+            $tarifa_id = $tarifa ? $tarifa->id : null;
 
             // Crear y guardar los datos logísticos en la tabla "envios"
             $envio = new Envio();
-            $envio->pedido_id     = $pedido->id;
-            $envio->direccion     = $request->direccion;
-            $envio->provincia     = $request->provincia;
-            $envio->localidad     = $request->localidad;
-            $envio->codigo_postal = $request->codigo_postal;
-            $envio->costo_envio   = $costo_envio;
-            $envio->estado_envio  = 'preparacion'; 
+            $envio->pedido_id       = $pedido->id;
+            $envio->tarifa_envio_id = $tarifa_id; // Guardamos la FK
+            $envio->direccion       = $request->direccion;
+            $envio->provincia       = $request->provincia;
+            $envio->localidad       = $request->localidad;
+            $envio->codigo_postal   = $request->codigo_postal;
+            $envio->costo_envio     = $costo_envio; // Congelamos el precio histórico
+            $envio->estado_envio    = 'preparacion'; 
             $envio->save();
         }
 
@@ -82,10 +100,23 @@ class CheckoutController extends Controller
         $totalPedido = $subtotal + $costo_envio;
 
         // 6. Actualizamos el pedido que era "carrito" para convertirlo en una compra real
+        // Por defecto, asumimos que si es tarjeta, ya está confirmado/pagado
+        $estadoFinal = 'confirmado'; 
+
+        // Buscamos el método de pago seleccionado
+        $metodo = MetodoPago::find($request->metodo_pago_id);
+
+        // Si es Efectivo o Transferencia, cambiamos el estado a pendiente
+        // OJO: Asegúrate de que los textos coincidan EXACTAMENTE con lo que tienes en la columna 'descripcion' (o 'nombre') de tu tabla 'metodos_pago'
+        if ($metodo && in_array($metodo->descripcion, ['Efectivo al retirar', 'Transferencia Bancaria'])) {
+            $estadoFinal = 'pendiente_pago';
+        }
+
+        // Actualizamos el pedido que era "carrito" para convertirlo en una compra real
         $pedido->update([
             'subtotal'       => $subtotal,
             'total'          => $totalPedido,
-            'estado'         => 'confirmado', // Cambiamos el estado para cerrar el carrito
+            'estado'         => $estadoFinal, // Usamos la variable dinámica que creamos arriba
             'metodo_pago_id' => $request->metodo_pago_id,
             'fecha_venta'    => now(),
         ]);

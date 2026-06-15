@@ -12,7 +12,7 @@ class Usuario extends Authenticatable{
     use HasFactory, Notifiable, SoftDeletes;
 
     protected $table = 'usuarios';
-    protected $fillable = ['nombre', 'apellido', 'dni', 'email', 'password', 'ultimo_login', 'rol_id'];
+    protected $fillable = ['nombre', 'apellido', 'dni', 'email', 'password', 'ultimo_login', 'rol_id', 'direccion_id'];
     protected $hidden = ['password', 'remember_token']; // nunca expuestos en JSON
 
     protected function casts(): array {
@@ -36,4 +36,11 @@ class Usuario extends Authenticatable{
             'producto_id'
         );
     }
+
+    // Relación: Un Usuario tiene una Dirección (o le pertenece una dirección)
+    public function miDireccion()
+    {
+        return $this->belongsTo(Direccion::class, 'direccion_id');
+    }
 }
+

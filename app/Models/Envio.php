@@ -37,4 +37,13 @@ class Envio extends Model
     {
         return $this->belongsTo(Pedido::class, 'pedido_id');
     }
+
+    /**
+     * Relación: Un Envío pertenece a una Tarifa de Envío (Muchos a Uno)
+     */
+    public function tarifaEnvio()
+    {
+    return $this->belongsTo(TarifaEnvio::class, 'tarifa_envio_id');
+    }
+    
 }

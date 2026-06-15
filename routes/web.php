@@ -231,5 +231,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     // Devuelve la vista detallePedidosAdmin para ver el detalle de cada pedido
     Route::get('/admin/pedidos/{pedido}', [App\Http\Controllers\PedidoController::class, 'show'])->name('pedidos.show');
+
+    // Confirma un pedido pendiente de pago
+    Route::patch('/admin/pedidos/{pedido}/confirmar', [App\Http\Controllers\PedidoController::class, 'confirmarPago'])->name('pedidos.confirmar');
 });
 

@@ -154,16 +154,42 @@
                                 <div class="row g-3">
                                     <div class="col-12">
                                         <label for="direccion" class="form-label small text-muted fw-bold mb-1"><i class="bi bi-geo-alt me-1"></i> Dirección de entrega</label>
-                                        <input type="text" class="form-control text-muted" id="direccion" name="direccion" placeholder="Ej: Av. Corrientes 1234, Depto 4">
+                                        <input 
+                                            type="text" 
+                                            class="form-control text-muted" 
+                                            id="direccion" 
+                                            name="direccion" 
+                                            placeholder="Ej: Av. Corrientes 1234, Depto 4"
+                                            value="{{ old('direccion', Auth::user()->miDireccion->direccion ?? '') }}">
                                     </div>
                                     <div class="col-md-5">
-                                        <input type="text" class="form-control text-muted" id="provincia" name="provincia" placeholder="Provincia">
+                                    <input 
+                                        type="text" 
+                                        class="form-control text-muted" 
+                                        id="provincia" 
+                                        name="provincia" 
+                                        placeholder="Provincia"
+                                        value="{{ old('provincia', Auth::user()->miDireccion->provincia ?? '') }}">
+                                        
                                     </div>
                                     <div class="col-md-5">
-                                        <input type="text" class="form-control text-muted" id="localidad" name="localidad" placeholder="Localidad">
+                                    <input 
+                                        type="text" 
+                                        class="form-control text-muted" 
+                                        id="localidad" 
+                                        name="localidad" 
+                                        placeholder="Localidad"
+                                        value="{{ old('localidad', Auth::user()->miDireccion->localidad ?? '') }}">
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="text" class="form-control text-muted" id="codigo_postal" name="codigo_postal" placeholder="C.P.">
+                                        <input 
+                                        type="text" 
+                                        class="form-control text-muted" 
+                                        id="codigo_postal" 
+                                        name="codigo_postal" 
+                                        placeholder="C.P."
+                                        value="{{ old('codigo_postal', Auth::user()->miDireccion->codigo_postal ?? '') }}">
+
                                     </div>
                                 </div>
                             </div>

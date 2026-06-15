@@ -1846,3 +1846,4 @@ input[type="file"]::file-selector-button:hover{
     border-color: var(--rosa);
     color: white; /* Mantiene el texto blanco, o puedes cambiarlo si prefieres */
 }
+

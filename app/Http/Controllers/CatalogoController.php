@@ -9,7 +9,9 @@ class CatalogoController extends Controller
 {
     public function index()
     {
-        $productos = Producto::where('activo', true)->get();
+        $productos = Producto::where('activo', true)
+                            ->where('stock_actual', '>', 0)
+                            ->get();
 
         $categorias = Categoria::where('activo', true)->get();
 
@@ -28,6 +30,7 @@ class CatalogoController extends Controller
     {
         $productos = Producto::where('categoria_id', $id)
             ->where('activo', true)
+            ->where('stock_actual', '>', 0)
             ->get();
 
         $categorias = Categoria::where('activo', true)->get();

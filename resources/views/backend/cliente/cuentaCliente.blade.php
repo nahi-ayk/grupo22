@@ -119,6 +119,8 @@
                             type="text"
                             class="form-control"
                             placeholder="Dirección"
+                            name="direccion"
+                            value="{{ $usuario->miDireccion->direccion ?? '' }}"
                         >
 
                     </div>
@@ -133,6 +135,8 @@
                             type="text"
                             class="form-control"
                             placeholder="Provincia"
+                            name="provincia"
+                            value="{{ $usuario->miDireccion->provincia ?? '' }}"
                         >
 
                     </div>
@@ -147,6 +151,8 @@
                             type="text"
                             class="form-control"
                             placeholder="Localidad"
+                            name="localidad"
+                            value="{{ $usuario->miDireccion->localidad ?? '' }}"
                         >
 
                     </div>
@@ -161,6 +167,8 @@
                             type="text"
                             class="form-control"
                             placeholder="Cod. Postal"
+                            name="codigo_postal"
+                            value="{{ $usuario->miDireccion->codigo_postal ?? '' }}"
                         >
 
                     </div>

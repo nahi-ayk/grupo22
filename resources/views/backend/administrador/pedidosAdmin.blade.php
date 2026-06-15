@@ -31,16 +31,30 @@
                     <h5 class="mb-0 fw-semibold text-secondary">Pedidos Recientes</h5>
                 </div>
                 <div class="col-md-8 col-lg-9 text-end">
-                    <div class="d-inline-flex flex-column flex-sm-row gap-2 w-100 justify-content-end" style="max-width: 550px;">
+                    <div class="d-inline-flex flex-column flex-sm-row gap-2 w-100 justify-content-end align-items-center" style="max-width: 800px;">
+                        
+                        <div class="input-group shadow-sm" style="width: auto; height: 38px; flex-wrap: nowrap; border-radius: 50rem;">
+                            <span class="input-group-text bg-white text-muted border-end-0" style="border-color: #dee2e6; border-top-left-radius: 50rem !important; border-bottom-left-radius: 50rem !important;">
+                                Desde
+                            </span>
+                            <input type="date" id="fecha-desde" class="form-control border-start-0 text-secondary" style="border-color: #dee2e6;" title="Fecha inicial">
+                            
+                            <span class="input-group-text bg-white text-muted border-start-0 border-end-0" style="border-color: #dee2e6;">
+                                Hasta
+                            </span>
+                            <input type="date" id="fecha-hasta" class="form-control border-start-0 text-secondary" style="border-color: #dee2e6; border-top-right-radius: 50rem !important; border-bottom-right-radius: 50rem !important;" title="Fecha final">
+                        </div>
+
                         <select id="filtro-estado" class="form-select rounded-pill text-secondary shadow-sm" style="width: auto; height: 38px; border-color: #dee2e6;">
                             <option value="todos">Todos los estados</option>
-                            <option value="confirmado">Confirmados / Pagados</option>
+                            <option value="confirmado">Confirmados</option>
+                            <option value="pendiente_pago">Pendientes de pago</option>
                             <option value="carrito">En Carrito</option>
                         </select>
 
-                        <div class="position-relative w-100">
+                        <div class="position-relative w-100" style="max-width: 250px;">
                             <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted" style="z-index: 5;"></i>
-                            <input type="text" id="buscador" class="form-control rounded-pill ps-5 shadow-sm" placeholder="Buscar por N° pedido o cliente..." style="height: 38px; border-color: #dee2e6;">
+                            <input type="text" id="buscador" class="form-control rounded-pill ps-5 shadow-sm" placeholder="Buscar..." style="height: 38px; border-color: #dee2e6;">
                         </div>
                     </div>
                 </div>
@@ -61,7 +75,9 @@
                 </thead>
                 <tbody class="border-top-0">
                     @forelse ($pedidos as $pedido)
-                        <tr class="fila-pedido" data-estado="{{ strtolower($pedido->estado) }}">
+                        <tr class="fila-pedido" 
+                            data-estado="{{ strtolower($pedido->estado) }}" 
+                            data-fecha="{{ \Carbon\Carbon::parse($pedido->fecha_venta ?? $pedido->created_at)->format('Y-m-d') }}">
                             <td class="px-4 py-3 fw-semibold text-dark dato-numero">
                                 #{{ $pedido->numero_pedido }}
                             </td>
@@ -69,35 +85,54 @@
                                 {{ \Carbon\Carbon::parse($pedido->fecha_venta ?? $pedido->created_at)->format('d/m/Y H:i') }}
                             </td>
                             <td class="px-3 py-3 dato-cliente">
-                            <span class="text-decoration-none" style="color: var(--azul); font-weight: 500;">
-                            {{ $pedido->usuario ? $pedido->usuario->nombre . ' ' . $pedido->usuario->apellido : 'Usuario Desconocido' }}
-                            </span>
-</td>
+                                <span class="text-decoration-none" style="color: var(--azul); font-weight: 500;">
+                                    {{ $pedido->usuario ? $pedido->usuario->nombre . ' ' . $pedido->usuario->apellido : 'Usuario Desconocido' }}
+                                </span>
+                            </td>
                             <td class="px-3 py-3 fw-bold text-success">
                                 ${{ number_format($pedido->total, 2, ',', '.') }}
                             </td>
                             <td class="px-3 py-3">
-                            @if(strtolower($pedido->estado) == 'confirmado' || strtolower($pedido->estado) == 'pagado')
-                                <span class="badge bg-success-subtle text-success border border-success-subtle px-2.5 py-1 rounded-pill">
-                                <i class="bi bi-check-circle me-1"></i> {{ ucfirst($pedido->estado) }}
-                                </span>
-                            @elseif(strtolower($pedido->estado) == 'carrito' || strtolower($pedido->estado) == 'carrito')
-                            <span class="badge px-2.5 py-1 rounded-pill" style="background-color: #fff3cd !important; color: #664d03 !important; border: 1px solid #ffe69c !important;">
-                            <i class="bi bi-clock me-1"></i> {{ ucfirst($pedido->estado) }}
-                            </span>
-                            @else
-                            <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2.5 py-1 rounded-pill">
-                            {{ ucfirst($pedido->estado) }}
-                            </span>
-                            @endif
+                                @if(strtolower($pedido->estado) == 'confirmado')
+                                    <span class="badge bg-success-subtle text-success border border-success-subtle px-2.5 py-1 rounded-pill">
+                                        <i class="bi bi-check-circle me-1"></i> {{ ucfirst($pedido->estado) }}
+                                    </span>
+                                @elseif(strtolower($pedido->estado) == 'pendiente_pago')
+                                    <span class="badge px-2.5 py-1 rounded-pill" style="background-color: #fff3cd !important; color: #664d03 !important; border: 1px solid #ffe69c !important;">
+                                        <i class="bi bi-clock me-1"></i> Pendiente de pago
+                                    </span>
+                                @elseif(strtolower($pedido->estado) == 'carrito')
+                                    <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2.5 py-1 rounded-pill">
+                                        <i class="bi bi-cart me-1"></i> Carrito
+                                    </span>
+                                @else
+                                    <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2.5 py-1 rounded-pill">
+                                        {{ ucfirst($pedido->estado) }}
+                                    </span>
+                                @endif
                             </td>
                             
                             <td class="px-4 py-3 text-secondary small">
-                            <a href="{{ route('pedidos.show', $pedido->id) }}" 
-                            class="btn btn-sm btn-vermas text-decoration-none" 
-                            style="font-size: 0.75rem; height: 24px; width: 65px; flex: none !important;">
-                            <i class="bi bi-eye me-1"></i> Detalles
-                            </a>
+                                <div class="d-flex align-items-center gap-2">
+                                    <a href="{{ route('pedidos.show', $pedido->id) }}" 
+                                       class="btn btn-sm btn-vermas text-decoration-none" 
+                                       style="font-size: 0.75rem; height: 26px; width: 75px; flex: none !important; display: inline-flex; align-items: center; justify-content: center;">
+                                        <i class="bi bi-eye me-1"></i> Detalles
+                                    </a>
+
+                                    @if(strtolower($pedido->estado) == 'pendiente_pago')
+                                        <form action="{{ route('pedidos.confirmar', $pedido->id) }}" method="POST" class="m-0 p-0">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button type="submit" 
+                                                    class="btn btn-verde-compra text-decoration-none shadow-sm" 
+                                                    style="font-size: 0.75rem; height: 26px; display: inline-flex; align-items: center; justify-content: center;"
+                                                    title="Confirmar Pago">
+                                                <i class="bi bi-check2-all me-1"></i> Confirmar
+                                            </button>
+                                        </form>
+                                    @endif
+                                </div>
                             </td>
                         </tr>
                     @empty
@@ -124,28 +159,45 @@
 <script>
     const buscador = document.getElementById('buscador');
     const filtroEstado = document.getElementById('filtro-estado');
+    const fechaDesde = document.getElementById('fecha-desde');
+    const fechaHasta = document.getElementById('fecha-hasta');
+    const badgeTotal = document.getElementById('total-badge');
     const filas = document.querySelectorAll('.fila-pedido');
     const sinResultados = document.getElementById('sin-resultados');
 
     function filtrarPedidos() {
         const termino = buscador.value.toLowerCase().trim();
         const estadoSeleccionado = filtroEstado.value;
+        const valorDesde = fechaDesde.value; // Formato nativo: "YYYY-MM-DD"
+        const valorHasta = fechaHasta.value; // Formato nativo: "YYYY-MM-DD"
+        
         let filasVisibles = 0;
 
         filas.forEach(fila => {
             const numero = fila.querySelector('.dato-numero').textContent.toLowerCase();
             const cliente = fila.querySelector('.dato-cliente').textContent.toLowerCase();
             
-            // Obtenemos el estado desde el data-attribute
+            // Estado
             let estadoFila = fila.getAttribute('data-estado');
-            
-            // Unificamos 'pagado' a 'confirmado' para la lógica del filtro
             if (estadoFila === 'pagado') estadoFila = 'confirmado';
+            
+            // Fecha de la fila
+            const fechaFila = fila.getAttribute('data-fecha');
 
+            // Lógica de coincidencias
             const coincideTexto = numero.includes(termino) || cliente.includes(termino);
             const coincideEstado = estadoSeleccionado === 'todos' || estadoFila === estadoSeleccionado;
+            
+            let coincideFecha = true;
+            if (valorDesde && fechaFila < valorDesde) {
+                coincideFecha = false;
+            }
+            if (valorHasta && fechaFila > valorHasta) {
+                coincideFecha = false;
+            }
 
-            if (coincideTexto && coincideEstado) {
+            // Aplicar visibilidad
+            if (coincideTexto && coincideEstado && coincideFecha) {
                 fila.classList.remove('d-none');
                 filasVisibles++;
             } else {
@@ -153,6 +205,12 @@
             }
         });
 
+        // Actualizar el número del badge Total dinámicamente
+        if (badgeTotal) {
+            badgeTotal.textContent = filasVisibles;
+        }
+
+        // Manejar el mensaje de "sin resultados"
         if (filas.length > 0) {
             if (filasVisibles === 0) {
                 sinResultados.classList.remove('d-none');
@@ -162,9 +220,11 @@
         }
     }
 
-    // Eventos para ambos campos
+    // Escuchar eventos en todos los filtros
     buscador.addEventListener('input', filtrarPedidos);
     filtroEstado.addEventListener('change', filtrarPedidos);
+    fechaDesde.addEventListener('change', filtrarPedidos);
+    fechaHasta.addEventListener('change', filtrarPedidos);
 </script>
 
 @endsection

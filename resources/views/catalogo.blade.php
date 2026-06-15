@@ -16,14 +16,14 @@
     <div class="filtros-catalogo">
 
         <a href="{{ route('catalogo') }}"
-           class="btn-filtro {{ request()->routeIs('catalogo') ? 'activo' : '' }}">
+        class="btn-filtro {{ request()->routeIs('catalogo') ? 'activo' : '' }}">
             Todas
         </a>
 
         @foreach($categorias as $categoria)
 
             <a href="{{ route('catalogo.categoria', $categoria->id) }}"
-               class="btn-filtro {{ request()->route('id') == $categoria->id ? 'activo' : '' }}">
+            class="btn-filtro {{ request()->route('id') == $categoria->id ? 'activo' : '' }}">
                 {{ $categoria->nombre }}
             </a>
 
@@ -39,13 +39,16 @@
             <div class="col">
                 <div class="card producto-card h-100">
 
+                    
                     @if(auth()->check())
-                        <form action="{{ route('favoritos.toggle', $producto->id) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn-favorito">
-                                <i class="bi {{ in_array($producto->id, $favoritos) ? 'bi-heart-fill' : 'bi-heart' }}"></i>
-                            </button>
-                        </form>
+                        @if(auth()->user()->rol?->nombre === 'cliente')
+                            <form action="{{ route('favoritos.toggle', $producto->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn-favorito">
+                                    <i class="bi {{ in_array($producto->id, $favoritos) ? 'bi-heart-fill' : 'bi-heart' }}"></i>
+                                </button>
+                            </form>
+                        @endif
                     @else
                         <a href="{{ url('/login') }}" class="btn-favorito">
                             <i class="bi bi-heart"></i>

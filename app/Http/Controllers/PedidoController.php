@@ -32,7 +32,7 @@ class PedidoController extends Controller
     {
 
         $pedidos = Pedido::where('usuario_id', Auth::id())
-                    ->where('estado', '!=', 'carrito') 
+                    ->where('estado', 'confirmado') 
                     ->orderBy('created_at', 'desc')
                     ->get();
     
@@ -68,6 +68,18 @@ class PedidoController extends Controller
 
     // Retornamos la descarga del archivo
     return $pdf->download('Comprobante_Pedido_'.$pedido->id.'.pdf');
+    }
+
+    // Método para que el admin confirme manualmente un pago pendiente
+    public function confirmarPago(Pedido $pedido)
+    {
+        // Actualizamos el estado
+        $pedido->update([
+            'estado' => 'confirmado'
+        ]);
+
+        // Redirigimos de vuelta a la tabla con un mensaje de éxito
+        return back()->with('success', 'El pago del pedido #' . $pedido->numero_pedido . ' ha sido confirmado.');
     }
 
 }
