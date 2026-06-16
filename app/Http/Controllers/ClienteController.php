@@ -27,50 +27,84 @@ public function actualizar(Request $request)
         $usuario->email = $request->email;
 
         // Lógica para los datos de envío
-        // Comprobamos si el usuario escribió algo en los campos de dirección
         if ($request->filled('direccion') || $request->filled('provincia') || $request->filled('localidad') || $request->filled('codigo_postal')) {
             
-            $direccionActual = $usuario->miDireccion;
-            $crearNueva = false;
+            
+            $direccionActual = $usuario->direccion;
+            
+            // Limpiamos los inputs del formulario
+            $dirReq  = trim($request->direccion);
+            $provReq = trim($request->provincia);
+            $locReq  = trim($request->localidad);
+            $cpReq   = trim($request->codigo_postal);
 
             if (!$direccionActual) {
-                // Si es la primera vez que guarda una dirección, se marca para crear
-                $crearNueva = true;
-            } else {
-                // Si ya tiene una, verificamos si algún dato cambió
-                if (
-                    strtolower(trim($direccionActual->direccion)) !== strtolower(trim($request->direccion)) ||
-                    strtolower(trim($direccionActual->provincia)) !== strtolower(trim($request->provincia)) ||
-                    strtolower(trim($direccionActual->localidad)) !== strtolower(trim($request->localidad)) ||
-                    trim($direccionActual->codigo_postal) !== trim($request->codigo_postal)
-                ) {
-                    $crearNueva = true;
-                    // Archiva la dirección vieja (Soft Delete) para no romper el historial de envíos
-                    $direccionActual->delete(); 
-                }
-            }
-
-            if ($crearNueva) {
-                // Creamos el nuevo registro inmutable
+                // Solo si realmente NO tiene dirección, creamos una nueva
                 $nuevaDireccion = \App\Models\Direccion::create([
-                    'direccion'     => trim($request->direccion),
-                    'provincia'     => trim($request->provincia),
-                    'localidad'     => trim($request->localidad),
-                    'codigo_postal' => trim($request->codigo_postal),
+                    'direccion'     => $dirReq,
+                    'provincia'     => $provReq,
+                    'localidad'     => $locReq,
+                    'codigo_postal' => $cpReq,
                 ]);
                 
-                // Le asignamos el ID de esta nueva dirección a nuestro usuario
                 $usuario->direccion_id = $nuevaDireccion->id;
+                
+            } else {
+                // Extraemos y limpiamos los datos actuales de la BD para comparar correctamente
+                $dbDir  = trim($direccionActual->direccion);
+                $dbProv = trim($direccionActual->provincia);
+                $dbLoc  = trim($direccionActual->localidad);
+                $dbCp   = trim($direccionActual->codigo_postal);
+
+                
+                $cambioCalle = $dbDir !== $dirReq;
+                $cambioProv  = $dbProv !== $provReq;
+                $cambioLoc   = $dbLoc !== $locReq;
+                $cambioCP    = $dbCp !== $cpReq;
+
+                // Si HUBO un cambio (ya sea una letra, un espacio o toda la calle)
+                if ($cambioCalle || $cambioProv || $cambioLoc || $cambioCP) {
+                    
+                    // Verificamos si fue un CAMBIO REAL (Ignorando mayúsculas/minúsculas)
+                    $cambioReal = (
+                        mb_strtolower($dbDir) !== mb_strtolower($dirReq) ||
+                        mb_strtolower($dbProv) !== mb_strtolower($provReq) ||
+                        mb_strtolower($dbLoc) !== mb_strtolower($locReq) ||
+                        $dbCp !== $cpReq
+                    );
+
+                    if ($cambioReal) {
+                        
+                        $direccionActual->delete(); 
+                        
+                        $nuevaDireccion = \App\Models\Direccion::create([
+                            'direccion'     => $dirReq,
+                            'provincia'     => $provReq,
+                            'localidad'     => $locReq,
+                            'codigo_postal' => $cpReq,
+                        ]);
+                        
+                        $usuario->direccion_id = $nuevaDireccion->id;
+
+                    } else {
+                        // Es un CAMBIO COSMÉTICO (Solo mayúsculas/minúsculas): Forzamos update en BD
+                        \App\Models\Direccion::where('id', $direccionActual->id)->update([
+                            'direccion'     => $dirReq,
+                            'provincia'     => $provReq,
+                            'localidad'     => $locReq,
+                            'codigo_postal' => $cpReq,
+                        ]);
+                    }
+                }
             }
         }
 
-        // Guarda los cambios en el modelo usuario (se guarda el nombre, etc. y el direccion_id si es nuevo)
+        // Guardamos los cambios
         $usuario->save();
 
         return redirect()
             ->route('cliente.cuenta')
             ->with('success', 'Datos y dirección actualizados correctamente');
     }
-
     
 }

@@ -42,7 +42,7 @@ class CheckoutController extends Controller
             'codigo_postal'  => 'required_if:tipo_entrega,envio|nullable|string',
         ]);
 
-        // 2. Buscar el carrito actual del usuario (El pedido en estado 'carrito')
+        // 2. Buscar el carrito actual del usuario
         $pedido = Pedido::where('usuario_id', Auth::id())
                         ->where('estado', 'carrito')
                         ->first();
@@ -65,72 +65,108 @@ class CheckoutController extends Controller
         // 3. Obtener el subtotal sumando los detalles (por seguridad)
         $subtotal = $pedido->detalles()->sum('subtotal');
         $costo_envio = 0;
-        
-        // 4. Lógica de costo de envío dinámica y actualización de direcciones
         $tarifa_id = null;
 
+        // 4. Lógica de costo de envío dinámica y actualización de direcciones
         if ($request->tipo_entrega === 'envio') {
             $usuario = Auth::user();
             $direccionActual = $usuario->direccion;
             $direccionFinalId = null;
             $crearNueva = false;
 
-            // Verificamos si el usuario ya tenía una dirección o si debemos crear una nueva
-            if (!$direccionActual) {
-                $crearNueva = true; 
-            } else {
-                // Comparamos si algún dato del formulario es distinto al de la BD
-                if (
-                    strtolower(trim($direccionActual->direccion)) !== strtolower(trim($request->direccion)) ||
-                    strtolower(trim($direccionActual->provincia)) !== strtolower(trim($request->provincia)) ||
-                    strtolower(trim($direccionActual->localidad)) !== strtolower(trim($request->localidad)) ||
-                    trim($direccionActual->codigo_postal) !== trim($request->codigo_postal)
-                ) {
-                    $crearNueva = true;
-                    // Aplicamos Soft Delete a la dirección vieja para no romper envíos pasados
-                    $direccionActual->delete(); 
-                }
-            }
+            // Limpiamos los inputs del formulario
+            $dirReq  = trim($request->direccion);
+            $provReq = trim($request->provincia);
+            $locReq  = trim($request->localidad);
+            $cpReq   = trim($request->codigo_postal);
 
-            // Si detectamos cambios (o no existía), creamos el nuevo registro
-            if ($crearNueva) {
+            if (!$direccionActual) {
+                // Es la primera vez que compra con envío
                 $nuevaDireccion = \App\Models\Direccion::create([
-                    'direccion'     => trim($request->direccion),
-                    'provincia'     => trim($request->provincia),
-                    'localidad'     => trim($request->localidad),
-                    'codigo_postal' => trim($request->codigo_postal),
+                    'direccion'     => $dirReq,
+                    'provincia'     => $provReq,
+                    'localidad'     => $locReq,
+                    'codigo_postal' => $cpReq,
                 ]);
                 
                 $direccionFinalId = $nuevaDireccion->id;
-
-                // Vinculamos la nueva dirección al usuario como su dirección principal
                 $usuario->direccion_id = $direccionFinalId;
                 $usuario->save();
+
             } else {
-                $direccionFinalId = $direccionActual->id;
+                // Extraemos los datos actuales de la BD
+                $dbDir  = trim($direccionActual->direccion);
+                $dbProv = trim($direccionActual->provincia);
+                $dbLoc  = trim($direccionActual->localidad);
+                $dbCp   = trim($direccionActual->codigo_postal);
+
+                // Comparamos usando operadores estrictos (===)
+                $cambioCalle = $dbDir !== $dirReq;
+                $cambioProv  = $dbProv !== $provReq;
+                $cambioLoc   = $dbLoc !== $locReq;
+                $cambioCP    = $dbCp !== $cpReq;
+
+                if ($cambioCalle || $cambioProv || $cambioLoc || $cambioCP) {
+                    
+                    // Verificamos si fue un CAMBIO REAL (Ignorando mayúsculas/minúsculas)
+                    $cambioReal = (
+                        mb_strtolower($dbDir) !== mb_strtolower($dirReq) ||
+                        mb_strtolower($dbProv) !== mb_strtolower($provReq) ||
+                        mb_strtolower($dbLoc) !== mb_strtolower($locReq) ||
+                        $dbCp !== $cpReq
+                    );
+
+                    if ($cambioReal) {
+                        // Es un cambio real: Soft Delete a la vieja y creamos nueva
+                        $direccionActual->delete(); 
+                        
+                        $nuevaDireccion = \App\Models\Direccion::create([
+                            'direccion'     => $dirReq,
+                            'provincia'     => $provReq,
+                            'localidad'     => $locReq,
+                            'codigo_postal' => $cpReq,
+                        ]);
+                        
+                        $direccionFinalId = $nuevaDireccion->id;
+                        $usuario->direccion_id = $direccionFinalId;
+                        $usuario->save();
+
+                    } else {
+                        // Es un cambio cosmético: Actualizamos el registro actual forzando la BD
+                        \App\Models\Direccion::where('id', $direccionActual->id)->update([
+                            'direccion'     => $dirReq,
+                            'provincia'     => $provReq,
+                            'localidad'     => $locReq,
+                            'codigo_postal' => $cpReq,
+                        ]);
+                        $direccionFinalId = $direccionActual->id;
+                    }
+                } else {
+                    // No hubo ningún tipo de cambio
+                    $direccionFinalId = $direccionActual->id;
+                }
             }
 
+            // Lógica de cálculo de tarifas
             $localidad = strtolower(trim($request->localidad));
             $cp = trim($request->codigo_postal);
             
-            // Buscamos la tarifa en la BD dependiendo de la zona
             if ($cp === '3400' || str_contains($localidad, 'corrientes')) {
-                $tarifa = TarifaEnvio::find(1); // ID 1: Local
+                $tarifa = TarifaEnvio::find(1); 
             } elseif (str_contains($localidad, 'resistencia') || $cp === '3500') {
-                $tarifa = TarifaEnvio::find(2); // ID 2: Interprovincial
+                $tarifa = TarifaEnvio::find(2); 
             } else {
-                $tarifa = TarifaEnvio::find(3); // ID 3: Nacional
+                $tarifa = TarifaEnvio::find(3); 
             }
 
-            // Si por alguna razón borraron la tarifa de la BD, ponemos 0 para no romper el sistema
             $costo_envio = $tarifa ? $tarifa->precio : 0;
             $tarifa_id = $tarifa ? $tarifa->id : null;
 
-            // Crear y guardar los datos logísticos en la tabla "envios"
+            // ¡CORRECCIÓN AQUÍ! Usamos $pedido en lugar de $carrito
             $envio = new Envio();
             $envio->pedido_id       = $pedido->id;
             $envio->tarifa_envio_id = $tarifa_id; 
-            $envio->direccion_id    = $direccionFinalId; // Guardamos la FK hacia direcciones
+            $envio->direccion_id    = $direccionFinalId; 
             $envio->costo_envio     = $costo_envio; 
             $envio->estado_envio    = 'preparacion'; 
             $envio->save();
@@ -139,18 +175,15 @@ class CheckoutController extends Controller
         // 5. Calculamos el gran total
         $totalPedido = $subtotal + $costo_envio;
 
-        // 6. Actualizamos el pedido que era "carrito" para convertirlo en una compra real
+        // 6. Actualizamos el pedido
         $estadoFinal = 'confirmado'; 
-
-        // Buscamos el método de pago seleccionado
         $metodo = MetodoPago::find($request->metodo_pago_id);
 
-        // Si es Efectivo o Transferencia, cambiamos el estado a pendiente
         if ($metodo && in_array($metodo->descripcion, ['Efectivo al retirar', 'Transferencia Bancaria'])) {
             $estadoFinal = 'pendiente_pago';
         }
 
-        // Actualizamos el pedido 
+        
         $pedido->update([
             'subtotal'       => $subtotal,
             'total'          => $totalPedido,
@@ -159,22 +192,14 @@ class CheckoutController extends Controller
             'fecha_venta'    => now(),
         ]);
 
-        // ---------------------------------------------------------
-        // 7. LÓGICA NUEVA: DESCONTAR STOCK DE LOS PRODUCTOS
-        // ---------------------------------------------------------
+        // 7. DESCONTAR STOCK DE LOS PRODUCTOS
         foreach ($pedido->detalles as $detalle) {
             $producto = $detalle->producto;
-            
             if ($producto) {
-                // Restamos la cantidad comprada al stock actual
                 $producto->stock_actual -= $detalle->cantidad;
-                
-                // Medida de seguridad: evitar que el stock quede en negativo
                 if ($producto->stock_actual < 0) {
                     $producto->stock_actual = 0;
                 }
-                
-                // Guardamos el cambio en la base de datos
                 $producto->save();
             }
         }
