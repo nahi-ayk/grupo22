@@ -4,252 +4,231 @@
 
 <title>Productos</title>
 
-<div class="container-fluid py-4">
+<div class="container my-5">
 
-    {{-- TITULO --}}
-    <div class="d-flex justify-content-between align-items-center mb-4">
-
+    {{-- HEADER --}}
+    <div class="panel-header">
         <div>
-            <h2 class="admin-titulo mb-1 fw-bold">
-                Productos
-            </h2>
-
-            <p class="admin-subtitulo mb-0">
-                Gestión de productos en venta
-            </p>
+            <h1 class="panel-titulo">Productos</h1>
+            <p class="panel-subtitulo">Gestión de productos en venta</p>
         </div>
-
     </div>
 
-    {{-- RESUMEN SUPERIOR --}}
-    <div class="row g-4 mb-5">
+    {{-- RESUMEN --}}
+    <div class="row g-4 mb-4">
 
-        {{-- TOTAL PRODUCTOS --}}
         <div class="col-md-4">
             <div class="dashboard-card">
                 <div class="card-body d-flex justify-content-between align-items-center">
-
                     <div>
-                        <p class="dashboard-text">
-                            Total Productos
-                        </p>
-
-                        <h3 class="dashboard-number">
-                            {{ $totalProductos }}
-                        </h3>
+                        <p class="dashboard-text">Total Productos</p>
+                        <h3 class="dashboard-number">{{ $totalProductos }}</h3>
                     </div>
-
                     <div class="dashboard-icon icono-usuarios">
                         <i class="bi bi-box-seam"></i>
                     </div>
-
                 </div>
             </div>
         </div>
 
-        {{-- STOCK MINIMO --}}
         <div class="col-md-4">
             <div class="dashboard-card">
                 <div class="card-body d-flex justify-content-between align-items-center">
-
                     <div>
-                        <p class="dashboard-text">
-                            Productos en Stock Mínimo
-                        </p>
-
-                        <h3 class="dashboard-number">
-                            {{ $productosStockMinimo }}
-                        </h3>
+                        <p class="dashboard-text">Stock Mínimo</p>
+                        <h3 class="dashboard-number">{{ $productosStockMinimo }}</h3>
                     </div>
-
                     <div class="dashboard-icon icono-productos">
                         <i class="bi bi-boxes"></i>
                     </div>
-
                 </div>
             </div>
         </div>
 
-        {{-- SIN STOCK --}}
         <div class="col-md-4">
             <div class="dashboard-card">
                 <div class="card-body d-flex justify-content-between align-items-center">
-
                     <div>
-                        <p class="dashboard-text">
-                            Productos Sin Stock
-                        </p>
-
-                        <h3 class="dashboard-number">
-                            {{ $productosSinStock }}
-                        </h3>
+                        <p class="dashboard-text">Sin Stock</p>
+                        <h3 class="dashboard-number">{{ $productosSinStock }}</h3>
                     </div>
-
                     <div class="dashboard-icon icono-pedidos">
                         <i class="bi bi-x-circle"></i>
                     </div>
-
                 </div>
             </div>
         </div>
 
     </div>
 
-    {{-- FILTROS --}}
-    <div class="filtros-productos">
-        <form method="GET" action="{{ route('admin.productos') }}" class="row g-3">
+    {{-- PANEL --}}
+    <div class="panel-card">
 
-            <div class="col-md-4">
-                <input
-                    type="text"
-                    name="buscar"
-                    class="form-control"
-                    placeholder="Buscar producto..."
-                    value="{{ request('buscar') }}"
-                >
-            </div>
+        {{-- FILTROS (MISMO ESTILO QUE PEDIDOS/CONSULTAS) --}}
+        <div class="panel-filtros">
 
-            <div class="col-md-3">
-                <select name="categoria" class="form-select">
+            <form method="GET" action="{{ route('admin.productos') }}">
 
-                    <option value="">
-                        Todas las categorías
-                    </option>
+                <div class="row align-items-center g-3">
 
-                    @foreach($categorias as $categoria)
+                    <div class="col-md-4">
+                        <input type="text"
+                               name="buscar"
+                               class="form-control filtro-control"
+                               placeholder="Buscar producto..."
+                               value="{{ request('buscar') }}">
+                    </div>
 
-                        <option
-                            value="{{ $categoria->id }}"
-                            {{ request('categoria') == $categoria->id ? 'selected' : '' }}
-                        >
-                            {{ $categoria->nombre }}
-                        </option>
+                    <div class="col-md-3">
+                        <select name="categoria" class="form-select filtro-control">
 
-                    @endforeach
+                            <option value="">Todas las categorías</option>
 
-                </select>
-            </div>
+                            @foreach($categorias as $categoria)
+                                <option value="{{ $categoria->id }}"
+                                    {{ request('categoria') == $categoria->id ? 'selected' : '' }}>
+                                    {{ $categoria->nombre }}
+                                </option>
+                            @endforeach
 
-            <div class="col-md-3">
-                <select name="estado" class="form-select">
+                        </select>
+                    </div>
 
-                    <option value="">
-                        Todos los productos
-                    </option>
+                    <div class="col-md-3">
+                        <select name="estado" class="form-select filtro-control">
 
-                    <option
-                        value="sin_stock"
-                        {{ request('estado') == 'sin_stock' ? 'selected' : '' }}
-                    >
-                        Sin stock
-                    </option>
+                            <option value="">Todos</option>
+                            <option value="sin_stock">Sin stock</option>
+                            <option value="stock_minimo">Stock mínimo</option>
 
-                    <option
-                        value="stock_minimo"
-                        {{ request('estado') == 'stock_minimo' ? 'selected' : '' }}
-                    >
-                        Stock mínimo
-                    </option>
+                        </select>
+                    </div>
 
-                </select>
-            </div>
-
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-cliente w-100">
-                    Buscar
-                </button>
-            </div>
-        </form>
-    </div>
-
-    {{-- LISTA DE PRODUCTOS --}}
-    <div class="lista-clientes mt-4">
-
-        @forelse($productos as $producto)
-
-            <div class="cliente-card">
-
-                <div class="cliente-info">
-
-                    <img
-                        src="{{ $producto->imagen ? asset($producto->imagen) : asset('img/logo.png') }}"
-                        class="producto-miniatura"
-                    >
-
-                    <div>
-
-                        <h5 class="cliente-nombre">
-                            {{ $producto->nombre }}
-                        </h5>
-
-                        <p class="cliente-email mb-1">
-                            Categoría:
-                            {{ $producto->categoria->nombre ?? 'Sin categoría' }}
-                        </p>
-
-                        <small class="cliente-fecha">
-                            ${{ number_format($producto->precio_venta, 0, ',', '.') }}
-                        </small>
-
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-catalogo w-100">
+                            Buscar
+                        </button>
                     </div>
 
                 </div>
 
-                <div class="cliente-extra">
+            </form>
 
-                    @if($producto->stock_actual == 0)
+        </div>
 
-                        <div class="estado-inactivo">
-                            Sin stock
-                        </div>
+        {{-- TABLA DE PRODUCTOS --}}
+        <div class="table-scroll table-responsive">
 
-                    @elseif($producto->stock_actual <= $producto->stock_minimo)
+            <table class="table panel-table table-hover align-middle mb-0">
 
-                        <div class="estado-pendiente">
-                            Stock mínimo
-                        </div>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
 
-                    @else
+                <tbody>
 
-                        <div class="estado-activo">
-                            {{ $producto->stock_actual }} en stock
-                        </div>
+                    @forelse($productos as $producto)
 
-                    @endif
+                        <tr>
 
-                    <a href="{{ route('producto.editar', $producto->id) }}" class="btn btn-cliente">
-                        Editar
-                    </a>
+                            {{-- PRODUCTO --}}
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
 
-                </div>
+                                    <img src="{{ $producto->imagen ? asset($producto->imagen) : asset('img/logo.png') }}"
+                                        style="width:45px;height:45px;object-fit:cover;border-radius:10px;">
 
-            </div>
+                                    <span class="fw-semibold">
+                                        {{ $producto->nombre }}
+                                    </span>
 
-        @empty
+                                    @if($producto->id == $topProductoId)
+                                        <span class="badge bg-danger ms-2">
+                                            <i class="bi bi-fire"></i>Más vendido
+                                        </span>
+                                    @endif
 
-            <div class="alert alert-warning">
-                No se encontraron productos.
-            </div>
+                                </div>
+                            </td>
 
-        @endforelse
+                            {{-- CATEGORÍA --}}
+                            <td class="text-secondary">
+                                {{ $producto->categoria->nombre ?? 'Sin categoría' }}
+                            </td>
 
+                            {{-- PRECIO --}}
+                            <td class="fw-bold text-success">
+                                ${{ number_format($producto->precio_venta, 0, ',', '.') }}
+                            </td>
+
+                            {{-- STOCK --}}
+                            <td>
+                                {{ $producto->stock_actual }}
+                            </td>
+
+                            {{-- ESTADO --}}
+                            <td>
+                                @if($producto->stock_actual == 0)
+                                    <span class="badge badge-pendiente">Sin stock</span>
+
+                                @elseif($producto->stock_actual <= $producto->stock_minimo)
+                                    <span class="badge bg-warning text-dark">Stock mínimo</span>
+
+                                @else
+                                    <span class="badge badge-compras">
+                                        En Stock
+                                    </span>
+                                @endif
+                            </td>
+
+                            {{-- ACCIONES --}}
+                            <td>
+                                <a href="{{ route('producto.editar', $producto->id) }}"
+                                class="btn btn-vermas-pedido btn-sm">
+                                    <i class="bi bi-pencil"></i>Ver
+                                </a>
+                            </td>
+
+                        </tr>
+
+                    @empty
+
+                        <tr>
+                            <td colspan="6" class="text-center py-5 text-muted">
+                                <i class="bi bi-box fs-2 d-block mb-2"></i>
+                                No se encontraron productos.
+                            </td>
+                        </tr>
+
+                    @endforelse
+
+                </tbody>
+
+            </table>
+        </div>
     </div>
 
-    {{-- BOTONES --}}
-    <div class="contenedor-btn-producto">
+    {{-- BOTONES ABAJO --}}
+        <div class="d-flex justify-content-end gap-2 mt-4">
 
-        <a href="{{ route('crear.producto') }}" class="btn btn-agregar-producto">
-            <i class="bi bi-plus-circle"></i>
-            Agregar producto
-        </a>
+            <a href="{{ route('crear.producto') }}" class="btn btn-catalogo">
+                <i class="bi bi-plus-circle me-1"></i>
+                Agregar producto
+            </a>
 
-        <a href="{{ route('admin.categorias.crear') }}" class="btn btn-agregar-producto">
-            <i class="bi bi-plus-circle"></i>
-            Agregar Categoría
-        </a>
+            <a href="{{ route('admin.categorias.crear') }}" class="btn btn-catalogo">
+                <i class="bi bi-tags me-1"></i>
+                Agregar categoría
+            </a>
 
-    </div>
-
+        </div>
 </div>
 
 @endsection

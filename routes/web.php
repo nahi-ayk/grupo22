@@ -15,6 +15,8 @@ use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\InicioController;
+use App\Http\Controllers\TarifaEnvioController;
+
 
 // Retorna vista al inicio de la pagina
 Route::get('/', [InicioController::class, 'index']);
@@ -31,6 +33,11 @@ Route::get('/categorias/{id}', [CatalogoController::class, 'categoria'])
 // Envía el producto y los favoritos a una vista diferente llamada infoProducto (la ficha técnica del producto).
 Route::get('/producto/{id}', [CatalogoController::class, 'mostrar'])
 ->name('producto.mostrar');
+
+Route::get('/buscar', [CatalogoController::class, 'index'])
+->name('buscar');
+
+Route::get('/buscar-productos', [CatalogoController::class, 'buscarAjax']);
 
 //ruta de contacto
 Route::get('/contacto', function () {
@@ -234,5 +241,20 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     // Confirma un pedido pendiente de pago
     Route::patch('/admin/pedidos/{pedido}/confirmar', [App\Http\Controllers\PedidoController::class, 'confirmarPago'])->name('pedidos.confirmar');
+
+    Route::prefix('admin')->group(function () {
+
+    Route::get('/tarifas-envio', [TarifaEnvioController::class, 'index'])
+        ->name('admin.tarifas.index');
+
+    Route::post('/tarifas-envio', [TarifaEnvioController::class, 'store'])
+        ->name('admin.tarifas.store');
+
+    Route::put('/tarifas-envio/{id}', [TarifaEnvioController::class, 'update'])
+        ->name('admin.tarifas.update');
+
+    Route::delete('/tarifas-envio/{id}', [TarifaEnvioController::class, 'destroy'])
+        ->name('admin.tarifas.destroy');
+});
 });
 

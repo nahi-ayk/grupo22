@@ -8,8 +8,8 @@
 
     {{-- TITULO --}}
     <div class="mb-4">
-        <h2 class="fw-bold admin-titulo">Estadisticas Generales </h2>
-        <p class="admin-subtitulo">
+        <h2 class="panel-titulo">Estadisticas Generales </h2>
+        <p class="panel-subtitulo">
             Resumen general del sistema
         </p>
     </div>
@@ -51,7 +51,7 @@
                         </p>
 
                         <h3 class="dashboard-number">
-                            180
+                            {{ $totalProductos }}
                         </h3>
                     </div>
 
@@ -74,7 +74,7 @@
                         </p>
 
                         <h3 class="dashboard-number">
-                            95
+                            {{ $totalPedidos }}
                         </h3>
                     </div>
 
@@ -98,17 +98,29 @@
                 <div class="card-body">
 
                     <h5 class="mb-4 graficos-text">
-                        Inicios de sesión - Último mes
+                        Inicios de sesión - Últimos 30 días
                     </h5>
 
-                    <div class="fake-chart">
-                        @foreach($logins as $login)
-                            <div class="bar-group">
-                                <div class="bar"
-                                    style="height: {{ min($login->total * 20, 100) }}%;"></div>
-                                <small>{{ $login->dia }}</small>
-                            </div>
-                        @endforeach
+                    <div class="chart-scroll">
+                        <div class="fake-chart">
+
+                            @foreach($logins as $login)
+                                <div class="bar-group">
+
+                                    <span class="bar-value">{{ $login->total }}</span>
+
+                                    <div class="bar-container">
+                                        <div class="bar"
+                                            style="height: {{ ($login->total / $maxLogin) * 100 }}%;">
+                                        </div>
+                                    </div>
+
+                                    <small>{{ \Carbon\Carbon::parse($login->dia)->format('d/m') }}</small>
+
+                                </div>
+                            @endforeach
+
+                        </div>
                     </div>
 
                 </div>
@@ -135,7 +147,7 @@
                         </div>
 
                         <span class="activity-badge badge-compras">
-                            120
+                            {{ $comprasUltimos30Dias }}
                         </span>
                     </div>
 
@@ -148,7 +160,7 @@
                         </div>
 
                         <span class="activity-badge badge-consultas">
-                            58
+                            {{ $consultasUltimos30Dias }}
                         </span>
                     </div>
 

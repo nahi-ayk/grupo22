@@ -2,70 +2,71 @@
 
 @section('contenidoBackend')
 
-<title>crear_categoria</title>
+<title>Crear Categoría</title>
 
-<div class="container py-4">
+<div class="container my-5">
 
-    <div class="mi-cuenta-card">
+    {{-- HEADER --}}
+    <div class="panel-header">
+        <div>
+            <h1 class="panel-titulo">Crear categoría</h1>
+            <p class="panel-subtitulo">Añade nuevas categorías al sistema</p>
+        </div>
+    </div>
 
-        <div class="card-body">
+    {{-- CARD --}}
+    <div class="panel-card">
 
-            <h2 class="mi-cuenta-titulo">
-                Crear categoría
-            </h2>
+        <div class="panel-form">
 
-            <form action="{{ route('admin.categorias.guardar') }}" enctype="multipart/form-data"
-                method="POST">
+            <form action="{{ route('admin.categorias.guardar') }}"
+                  method="POST"
+                  enctype="multipart/form-data">
 
                 @csrf
 
-                <div class="mb-4">
-
-                    <label class="form-label">
-                        Nombre
-                    </label>
-
-                    <input type="text"
-                        name="nombre"
-                        class="form-control">
-
-                </div>
-
-                <div class="mb-4">
-
-                    <label class="form-label">
-                        Descripción
-                    </label>
-
-                    <textarea
-                        name="descripcion"
-                        class="form-control"
-                        rows="4"></textarea>
-
-                </div>
-
+                {{-- NOMBRE --}}
                 <div class="mb-3">
-                    <label class="form-label">
-                        Imagen
-                    </label>
-
-                    <input type="file"
-                        name="imagen"
-                        class="form-control">
+                    <label class="form-label">Nombre</label>
+                    <input type="text"
+                           name="nombre"
+                           class="form-control"
+                           placeholder="Nombre de la categoría">
                 </div>
 
-                <button class="btn btn-guardar">
+                {{-- DESCRIPCIÓN --}}
+                <div class="mb-3">
+                    <label class="form-label">Descripción</label>
+                    <textarea name="descripcion"
+                              rows="4"
+                              class="form-control"
+                              placeholder="Descripción de la categoría"></textarea>
+                </div>
 
-                    Guardar categoría
+                {{-- IMAGEN --}}
+                <div class="mb-3">
+                    <label class="form-label">Imagen</label>
+                    <input type="file"
+                           name="imagen"
+                           class="form-control">
+                </div>
 
-                </button>
+                <div class="form-separador"></div>
 
-                <a href="{{ route('admin.productos') }}"
-                    class="btn btn-guardar">
+                {{-- BOTONES --}}
+                <div class="d-flex gap-2 mt-4">
 
-                    Salir
+                    <button type="submit" class="btn btn-catalogo flex-fill">
+                        <i class="bi bi-save me-2"></i>
+                        Guardar categoría
+                    </button>
 
-                </a>
+                    <a href="{{ route('admin.productos') }}" class="btn btn-catalogo flex-fill">
+                        <i class="bi bi-x-circle me-2"></i>
+                        Cancelar
+                    </a>
+
+                </div>
 
             </form>
 

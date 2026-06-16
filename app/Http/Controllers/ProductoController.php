@@ -38,6 +38,12 @@ class ProductoController extends Controller
 
         $productos = $query->latest()->get();
 
+        $topProductoId = \App\Models\Pedido::join('detalle_pedidos', 'pedidos.id', '=', 'detalle_pedidos.pedido_id')
+            ->selectRaw('detalle_pedidos.producto_id, SUM(detalle_pedidos.cantidad) as total_vendido')
+            ->groupBy('detalle_pedidos.producto_id')
+            ->orderByDesc('total_vendido')
+            ->first()?->producto_id;
+
         $categorias = Categoria::where('activo', true)->get();
 
         $totalProductos = Producto::count();
@@ -60,7 +66,8 @@ class ProductoController extends Controller
                 'categorias',
                 'totalProductos',
                 'productosStockMinimo',
-                'productosSinStock'
+                'productosSinStock',
+                'topProductoId'
             )
         );
     }

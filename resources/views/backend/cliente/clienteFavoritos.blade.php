@@ -93,11 +93,11 @@
 
                 <i class="bi bi-heart fs-1 text-danger"></i>
 
-                <h4 class="mt-3">
+                <h4 class="texto-bienvenida mt-3">
                     No tenés productos favoritos
                 </h4>
 
-                <p class="text-muted">
+                <p class="panel-subtitulo text-muted mb-3">
                     Agregá productos a favoritos desde el catálogo.
                 </p>
 

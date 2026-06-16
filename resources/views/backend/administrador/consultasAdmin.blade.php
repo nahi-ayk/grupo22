@@ -4,137 +4,172 @@
 <title>Bandeja de consultas</title>
 
 <div class="container my-5">
+
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm mb-4" role="alert" style="border-radius: 12px;">
             <i class="bi bi-check-circle-fill me-2"></i>{{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     @endif
 
-    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
+    {{-- HEADER (igual estilo pedidos) --}}
+    <div class="panel-header">
         <div>
-            <h1 class="h3 fw-bold admin-titulo mb-1">Bandeja de Consultas</h1>
-            <p class="admin-subtitulo small mb-0">Gestión de mensajes y contactos de usuarios.</p>
+            <h1 class="panel-titulo">Bandeja de Consultas</h1>
+            <p class="panel-subtitulo">Gestión de mensajes y contactos de usuarios.</p>
         </div>
+
         <div>
-            <span class="badge bg-dark-subtle px-3 py-2 rounded-pill fw-semibold admin-subtitulo">
+            <span class="badge bg-dark-subtle px-3 py-2 rounded-pill fw-semibold panel-subtitulo">
                 Total: <span id="total-badge">{{ $consultas->count() }}</span>
             </span>
         </div>
     </div>
 
-    <div class="card shadow-sm" style="transform: none !important; transition: none !important; overflow: hidden; border-radius: 12px;">
-        
-        <div class="card-header bg-white border-bottom py-3 px-4 admin-subtitulo">
+    <div class="panel-card">
+
+        {{-- FILTROS (MISMO LAYOUT QUE PEDIDOS) --}}
+        <div class="panel-filtros">
             <div class="row align-items-center g-3">
+
                 <div class="col-md-4 col-lg-3">
-                    <h5 class="mb-0 fw-semibold text-secondary">Mensajes Recibidos</h5>
+                    <h5 class="mb-0 fw-semibold panel-subtitulo">
+                        Mensajes Recibidos
+                    </h5>
                 </div>
+
                 <div class="col-md-8 col-lg-9 text-end">
-                    <div class="d-inline-flex flex-column flex-sm-row gap-2 w-100 justify-content-end align-items-center" style="max-width: 850px;">
-                        
-                        <div class="input-group shadow-sm" style="width: auto; height: 38px; flex-wrap: nowrap; border-radius: 50rem;">
-                            <span class="input-group-text bg-white text-muted border-end-0" style="border-color: #dee2e6; border-top-left-radius: 50rem !important; border-bottom-left-radius: 50rem !important;">
-                                Desde
-                            </span>
-                            <input type="date" id="fecha-desde" class="form-control border-start-0 text-secondary" style="border-color: #dee2e6;" title="Fecha inicial">
-                            
-                            <span class="input-group-text bg-white text-muted border-start-0 border-end-0" style="border-color: #dee2e6;">
-                                Hasta
-                            </span>
-                            <input type="date" id="fecha-hasta" class="form-control border-start-0 text-secondary" style="border-color: #dee2e6; border-top-right-radius: 50rem !important; border-bottom-right-radius: 50rem !important;" title="Fecha final">
+
+                    <div class="d-inline-flex flex-column flex-sm-row gap-2 w-100 justify-content-end align-items-center"
+                         style="max-width: 800px;">
+
+                        {{-- FECHAS --}}
+                        <div class="input-group filtro-fechas">
+                            <span class="input-group-text">Desde</span>
+                            <input type="date" id="fecha-desde" class="form-control">
+
+                            <span class="input-group-text">Hasta</span>
+                            <input type="date" id="fecha-hasta" class="form-control">
                         </div>
 
-                        <select id="filtro-estado" class="form-select rounded-pill text-secondary" style="width: auto; height: 38px;">
-                            <option value="todos">Todos los estados</option>
+                        {{-- ESTADO --}}
+                        <select id="filtro-estado" class="form-select filtro-control">
+                            <option value="todos">Todos</option>
                             <option value="contestado">Contestado</option>
                             <option value="pendiente">Pendiente</option>
                         </select>
 
-                        <div class="position-relative w-100">
-                            <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted" style="z-index: 5;"></i>
-                            <input type="text" id="buscador" class="form-control rounded-pill ps-5" placeholder="Buscar por nombre, email o asunto..." style="height: 38px;">
+                        {{-- BUSCADOR --}}
+                        <div class="position-relative w-100" style="max-width: 250px;">
+                            <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"
+                               style="z-index: 5;"></i>
+                            <input type="text"
+                                   id="buscador"
+                                   class="form-control filtro-control ps-5"
+                                   placeholder="Buscar...">
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="table-responsive admin-subtitulo">
-            <table class="table table-hover align-middle mb-0" id="tabla-consultas">
+        <div class="table-scroll table-responsive">
+
+            <table class="table table-hover panel-table align-middle mb-0" id="tabla-consultas">
+
                 <thead>
                     <tr>
-                        <th scope="col" class="px-4 py-3 fw-bold">Fecha</th>
-                        <th scope="col" class="px-3 py-3 fw-bold">Nombre</th>
-                        <th scope="col" class="px-3 py-3 fw-bold">Email</th>
-                        <th scope="col" class="px-3 py-3 fw-bold">Asunto</th>
-                        <th scope="col" class="px-3 py-3 fw-bold">Estado</th>
-                        <th scope="col" class="px-4 py-3 fw-bold">Mensaje</th>
+                        <th>Fecha</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Asunto</th>
+                        <th>Estado</th>
+                        <th>Mensaje</th>
                     </tr>
                 </thead>
-                <tbody class="border-top-0">
+
+                <tbody>
+
                     @forelse ($consultas as $consulta)
-                        <tr class="fila-consulta" 
+
+                        <tr class="fila-consulta"
                             data-estado="{{ $consulta->contestado ? 'contestado' : 'pendiente' }}"
                             data-fecha="{{ $consulta->created_at->format('Y-m-d') }}">
-                            <td class="px-4 py-3 text-secondary small">
+
+                            <td class="text-secondary small">
                                 {{ $consulta->created_at->format('d/m/Y H:i') }}
                             </td>
-                            <td class="px-3 py-3 fw-semibold text-dark dato-nombre">
+
+                            <td class="fw-semibold text-dark">
                                 {{ $consulta->nombre }}
                             </td>
-                            <td class="px-3 py-3 dato-email">
-                                <a href="mailto:{{ $consulta->email }}" class="text-decoration-none" style="color: var(--azul); font-weight: 500;">
+
+                            <td>
+                                <a href="mailto:{{ $consulta->email }}"
+                                style="color: var(--azul); font-weight: 500; text-decoration: none;">
                                     {{ $consulta->email }}
                                 </a>
                             </td>
-                            <td class="px-3 py-3 text-secondary fw-medium dato-asunto">
+
+                            <td class="text-secondary fw-medium">
                                 {{ Str::limit($consulta->asunto, 25, '...') }}
                             </td>
-                            <td class="px-3 py-3">
+
+                            <td>
                                 @if($consulta->contestado)
-                                    <span class="badge" style="background-color: rgba(107, 214, 161, 0.2); color: #2d7a4f; border: 1px solid var(--verde); padding: 5px 12px; border-radius: 20px;">
+                                    <span class="badge badge-compras">
                                         <i class="bi bi-check2-all me-1"></i> Contestado
                                     </span>
                                 @else
-                                    <span class="badge" style="background-color: rgba(233, 166, 167, 0.2); color: #a13d3f; border: 1px solid var(--rosa); padding: 5px 12px; border-radius: 20px;">
+                                    <span class="badge badge-pendiente">
                                         <i class="bi bi-clock me-1"></i> Pendiente
                                     </span>
                                 @endif
                             </td>
-                            
-                            <td class="px-4 py-3 text-secondary small">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <span class="text-truncate pe-2" style="max-width: 180px;">
+
+                            <td>
+                                <div class="d-flex justify-content-between align-items-center">
+
+                                    <span class="text-truncate" style="max-width: 180px;">
                                         {{ Str::limit($consulta->mensaje, 40, '...') }}
                                     </span>
 
-                                    <a href="{{ route('admin.consultas.show', $consulta->id) }}" 
-                                       class="btn btn-sm btn-vermas text-decoration-none" 
-                                       style="font-size: 0.75rem; height: 24px; width: 65px; flex: none !important;">
+                                    <a href="{{ route('admin.consultas.show', $consulta->id) }}"
+                                    class="btn btn-vermas-pedido btn-sm">
                                         <i class="bi bi-eye me-1"></i> Ver
                                     </a>
-                                </div> 
+
+                                </div>
                             </td>
+
                         </tr>
+
                     @empty
+
                         <tr id="fila-vacia-bd">
                             <td colspan="6" class="text-center py-5 text-muted">
-                                <i class="bi bi-inbox fs-2 d-block mb-2 text-black-50"></i>
-                                No se encontraron consultas registradas en el sistema.
+                                <i class="bi bi-inbox fs-2 d-block mb-2"></i>
+                                No se encontraron consultas registradas.
                             </td>
                         </tr>
+
                     @endforelse
-                    
+
                     <tr id="sin-resultados" class="d-none">
                         <td colspan="6" class="text-center py-5 text-muted">
-                            <i class="bi bi-search fs-2 d-block mb-2" style="color: var(--rosa);"></i>
-                            <span class="fw-medium" style="color: var(--rosa);">No hay coincidencias para el término buscado.</span>
+                            <i class="bi bi-search fs-2 d-block mb-2 texto-rosa"></i>
+                            <span class="fw-medium texto-rosa">
+                                No hay coincidencias para el término buscado.
+                            </span>
                         </td>
                     </tr>
+
                 </tbody>
+
             </table>
         </div>
+
     </div>
 </div>
 

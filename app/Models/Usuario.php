@@ -42,5 +42,10 @@ class Usuario extends Authenticatable{
     {
         return $this->belongsTo(Direccion::class, 'direccion_id');
     }
+
+    public function pedidos()
+    {
+        return $this->hasMany(Pedido::class, 'usuario_id');
+    }
 }
 

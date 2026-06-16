@@ -1,115 +1,93 @@
 @extends('backend.plantillaBackend')
+
 @section('contenidoBackend')
 
 <title>Editar Producto</title>
 
-<div class="container-fluid py-4">
+<div class="container my-5">
 
-    <div class="mi-cuenta-card">
+    {{-- HEADER --}}
+    <div class="panel-header">
+        <div>
+            <h1 class="panel-titulo">Editar Producto</h1>
+            <p class="panel-subtitulo">Modifica la información del producto</p>
+        </div>
+    </div>
 
-        <div class="card-body">
+    {{-- CARD --}}
+    <div class="panel-card">
 
-            <h2 class="mi-cuenta-titulo">
-                Editar Producto
-            </h2>
+        <div class="panel-form">
 
             <form action="{{ route('producto.actualizar', $producto->id) }}"
-                method="POST"
-                enctype="multipart/form-data">
+                  method="POST"
+                  enctype="multipart/form-data">
 
                 @csrf
                 @method('PUT')
 
+                {{-- FILA 1 --}}
                 <div class="row">
 
-                    {{-- NOMBRE --}}
-                    <div class="col-md-6 mb-4">
-
-                        <label class="form-label">
-                            Nombre
-                        </label>
-
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Nombre</label>
                         <input type="text"
-                            name="nombre"
-                            class="form-control"
-                            value="{{ old('nombre', $producto->nombre) }}">
-
+                               name="nombre"
+                               class="form-control"
+                               value="{{ old('nombre', $producto->nombre) }}">
                     </div>
 
-                    {{-- PRECIO --}}
-                    <div class="col-md-6 mb-4">
-
-                        <label class="form-label">
-                            Precio
-                        </label>
-
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Precio</label>
                         <input type="number"
-                            step="0.01"
-                            name="precio_venta"
-                            class="form-control"
-                            value="{{ old('precio_venta', $producto->precio_venta) }}">
-
+                               step="0.01"
+                               name="precio_venta"
+                               class="form-control"
+                               value="{{ old('precio_venta', $producto->precio_venta) }}">
                     </div>
 
                 </div>
 
-                {{-- DESCRIPCION --}}
-                <div class="mb-4">
-
-                    <label class="form-label">
-                        Descripción
-                    </label>
-
+                {{-- DESCRIPCIÓN --}}
+                <div class="mb-3">
+                    <label class="form-label">Descripción</label>
                     <textarea class="form-control"
-                        name="descripcion"
-                        rows="5">{{ old('descripcion', $producto->descripcion) }}</textarea>
-
+                              name="descripcion"
+                              rows="4">{{ old('descripcion', $producto->descripcion) }}</textarea>
                 </div>
 
+                <div class="form-separador"></div>
+
+                {{-- STOCK + CATEGORÍA --}}
                 <div class="row">
 
-                    {{-- STOCK --}}
-                    <div class="col-md-4 mb-4">
-
-                        <label class="form-label">
-                            Stock
-                        </label>
-
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Stock</label>
                         <input type="number"
-                            name="stock_actual"
-                            class="form-control"
-                            value="{{ old('stock_actual', $producto->stock_actual) }}">
-
+                               name="stock_actual"
+                               class="form-control"
+                               value="{{ old('stock_actual', $producto->stock_actual) }}">
                     </div>
 
-                    {{-- STOCK MINIMO --}}
-                    <div class="col-md-4 mb-4">
-
-                        <label class="form-label">
-                            Stock mínimo
-                        </label>
-
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Stock mínimo</label>
                         <input type="number"
-                            name="stock_minimo"
-                            class="form-control"
-                            value="{{ old('stock_minimo', $producto->stock_minimo) }}">
-
+                               name="stock_minimo"
+                               class="form-control"
+                               value="{{ old('stock_minimo', $producto->stock_minimo) }}">
                     </div>
 
-                    {{-- CATEGORIA --}}
-                    <div class="col-md-4 mb-4">
+                    {{-- CATEGORÍA (custom select intacto) --}}
+                    <div class="col-md-4 mb-3">
 
-                        <label class="form-label">
-                            Categoría
-                        </label>
+                        <label class="form-label">Categoría</label>
 
                         <div class="custom-select-container">
 
-                            <input
-                                type="hidden"
-                                name="categoria_id"
-                                id="categoria_seleccionada"
-                                value="{{ $producto->categoria_id }}">
+                            <input type="hidden"
+                                   name="categoria_id"
+                                   id="categoria_seleccionada"
+                                   value="{{ $producto->categoria_id }}">
 
                             <div class="select-trigger" id="select_trigger_text">
                                 {{ $producto->categoria->nombre ?? 'Seleccionar categoría' }}
@@ -118,15 +96,10 @@
                             <ul class="custom-options">
 
                                 @foreach($categorias as $categoria)
-
-                                    <li
-                                        data-value="{{ $categoria->id }}"
+                                    <li data-value="{{ $categoria->id }}"
                                         class="{{ $producto->categoria_id == $categoria->id ? 'selected' : '' }}">
-
                                         {{ $categoria->nombre }}
-
                                     </li>
-
                                 @endforeach
 
                             </ul>
@@ -138,52 +111,34 @@
                 </div>
 
                 {{-- IMAGEN --}}
-                <div class="mb-4">
+                <div class="mb-3">
 
-                    <label class="form-label">
-                        Imagen actual
-                    </label>
+                    <label class="form-label">Imagen actual</label>
 
                     <div class="text-center mb-3">
-
-                        <img
-                            src="{{ $producto->imagen ? asset($producto->imagen) : asset('img/logo.png') }}"
-                            alt="{{ $producto->nombre }}"
-                            style="
-                                width: 150px;
-                                height: 150px;
-                                object-fit: cover;
-                                border-radius: 15px;
-                                border: 2px solid #eee;
-                            ">
-
+                        <img src="{{ $producto->imagen ? asset($producto->imagen) : asset('img/logo.png') }}"
+                             alt="{{ $producto->nombre }}"
+                             style="width:150px;height:150px;object-fit:cover;border-radius:15px;border:2px solid #eee;">
                     </div>
 
-                    <label class="form-label">
-                        Cambiar imagen
-                    </label>
-
-                    <input
-                        type="file"
-                        name="imagen"
-                        class="form-control">
+                    <label class="form-label">Cambiar imagen</label>
+                    <input type="file" name="imagen" class="form-control">
 
                 </div>
 
-                <div class="text-center">
+                <div class="form-separador"></div>
 
-                    <button type="submit" class="btn btn-guardar">
+                {{-- BOTONES --}}
+                <div class="d-flex gap-2 mt-4">
 
-                        <i class="bi bi-check-circle"></i>
+                    <button type="submit" class="btn btn-catalogo flex-fill">
+                        <i class="bi bi-check-circle me-2"></i>
                         Guardar cambios
-
                     </button>
 
-                    <a href="{{ route('admin.productos') }}" class="btn btn-guardar">
-
-                        <i class="bi bi-box-arrow-left"></i>
+                    <a href="{{ route('admin.productos') }}" class="btn btn-catalogo flex-fill">
+                        <i class="bi bi-box-arrow-left me-2"></i>
                         Salir
-
                     </a>
 
                 </div>
@@ -210,24 +165,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     options.forEach(option => {
-
         option.addEventListener('click', function(e) {
-
             e.stopPropagation();
 
-            const valor = this.getAttribute('data-value');
-            const texto = this.textContent.trim();
-
-            hiddenInput.value = valor;
-            trigger.textContent = texto;
+            hiddenInput.value = this.getAttribute('data-value');
+            trigger.textContent = this.textContent.trim();
 
             container.classList.remove('active');
 
             options.forEach(li => li.classList.remove('selected'));
-
             this.classList.add('selected');
         });
-
     });
 
     document.addEventListener('click', () => {

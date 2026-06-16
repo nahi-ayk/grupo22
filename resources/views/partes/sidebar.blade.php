@@ -21,18 +21,49 @@
 
                 @if(Auth::user()->rol_id == 1)
 
-                    <a href="{{ route('admin.cuenta') }}">Estadísticas Generales</a>
-                    <a href="{{ route('admin.clientes') }}">Clientes</a>
-                    <a href="{{ route('admin.productos') }}">Productos</a>
-                    <a href="{{ route('admin.pedidos.index') }}">Pedidos</a>
-                    <a href="{{ route('admin.consultas.index') }}">Consultas</a>
+                    <a href="{{ route('admin.cuenta') }}"
+                        class="{{ request()->routeIs('admin.cuenta') ? 'activo' : '' }}">
+                        Estadísticas Generales
+                    </a>
+                    <a href="{{ route('admin.clientes') }}"
+                        class="{{ request()->routeIs('admin.clientes') ? 'activo' : '' }}">
+                        Clientes
+                    </a>
+                    <a href="{{ route('admin.productos') }}"
+                        class="{{ request()->routeIs('admin.productos') ? 'activo' : '' }}">
+                        Productos
+                    </a>
+                    <a href="{{ route('admin.pedidos.index') }}"
+                        class="{{ request()->routeIs('admin.pedidos.index') ? 'activo' : '' }}">
+                        Pedidos
+                    </a>
+                    <a href="{{ route('admin.consultas.index') }}"
+                        class="{{ request()->routeIs('admin.consultas.index') ? 'activo' : '' }}">
+                        Consultas
+                    </a>
+                    <a href="{{ route('admin.tarifas.index') }}"
+                        class="{{ request()->routeIs('admin.tarifas.index') ? 'activo' : '' }}">
+                        Tarifas de Envio
+                    </a>
 
                 @else
 
-                    <a href="{{ route('cliente.cuenta') }}">Mis datos</a>
-                    <a href="{{ route('cliente.compras') }}">Mis compras</a>
-                    <a href="{{ route('cliente.carrito') }}">Mi carrito</a>
-                    <a href="{{ route('cliente.favoritos')}}">Favoritos</a>
+                    <a href="{{ route('cliente.cuenta') }}"
+                        class="{{ request()->routeIs('cliente.cuenta') ? 'activo' : '' }}">
+                        Mis datos
+                    </a>
+                    <a href="{{ route('cliente.compras') }}"
+                        class="{{ request()->routeIs('cliente.compras') ? 'activo' : '' }}">
+                        Mis compras
+                    </a>
+                    <a href="{{ route('cliente.carrito') }}"
+                        class="{{ request()->routeIs('cliente.carrito') ? 'activo' : '' }}">
+                        Mi carrito
+                    </a>
+                    <a href="{{ route('cliente.favoritos')}}"
+                        class="{{ request()->routeIs('cliente.favoritos') ? 'activo' : '' }}">
+                        Favoritos
+                    </a>
 
                 @endif
 
