@@ -37,15 +37,15 @@ class Usuario extends Authenticatable{
         );
     }
 
-    // Relación: Un Usuario tiene una Dirección (o le pertenece una dirección)
-    public function miDireccion()
-    {
-        return $this->belongsTo(Direccion::class, 'direccion_id');
-    }
 
     public function pedidos()
     {
         return $this->hasMany(Pedido::class, 'usuario_id');
+    }
+
+    public function direccion()
+    {
+        return $this->belongsTo(Direccion::class, 'direccion_id');
     }
 }
 

@@ -145,8 +145,8 @@
             <td>
                 <div class="info-heading">Detalles de Entrega</div>
                 @if($pedido->envio && $pedido->envio->costo_envio > 0)
-                    {{ $pedido->envio->direccion ?? '' }}<br>
-                    {{ $pedido->envio->localidad ?? '' }}, {{ $pedido->envio->provincia ?? '' }}<br>
+                    {{ $pedido->envio->direccion->direccion ?? '' }}<br>
+                    {{ $pedido->envio->direccion->localidad ?? '' }}, {{ $pedido->envio->direccion->provincia ?? '' }}<br>
                     CP: {{ $pedido->envio->codigo_postal ?? '' }}
                 @else
                     <span>Puedes pasar a retirar por nuestro local principal con tu DNI y número de comprobante.</span>

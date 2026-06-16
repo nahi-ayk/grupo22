@@ -106,12 +106,21 @@ public function confirmar(Request $request)
         return redirect()->route('cliente.carrito')->with('error', 'Tu carrito está vacío o el pedido ya fue procesado.');
     }
 
-    // 3. Guardamos ítems y totales antes de cerrar el pedido
+    // --- NUEVA VALIDACIÓN DE STOCK ANTES DE COMPRAR ---
+    foreach ($carrito->detalles as $detalle) {
+        $producto = $detalle->producto;
+        if ($detalle->cantidad > $producto->stock_actual) {
+            return redirect()->route('cliente.carrito')->with('error', 'Lo sentimos, no hay stock suficiente para: ' . $producto->nombre);
+        }
+    }
+
+    // 3. Guardamos ítems y preparamos totales
     $items = $carrito->detalles()->with('producto')->get();
     $total = $carrito->total;
     $tipoEntrega = $request->input('tipo_entrega');
+    $costo_envio = 0;
 
-    // 4. SI ES ENVÍO: Registramos los datos en la tabla 'envios'
+    // 4. LÓGICA DE ENVÍO Y DIRECCIONES INMUTABLES
     if ($tipoEntrega === 'envio') {
         $request->validate([
             'direccion'     => 'required|string|max:255',
@@ -120,24 +129,100 @@ public function confirmar(Request $request)
             'codigo_postal' => 'required|string|max:10',
         ]);
 
+        $usuario = auth()->user();
+        $direccionActual = $usuario->direccion;
+        $direccionFinalId = null;
+        $crearNueva = false;
+
+        // Evaluamos si necesitamos crear una nueva dirección (Soft Delete)
+        if (!$direccionActual) {
+            $crearNueva = true; 
+        } else {
+            if (
+                strtolower(trim($direccionActual->direccion)) !== strtolower(trim($request->direccion)) ||
+                strtolower(trim($direccionActual->provincia)) !== strtolower(trim($request->provincia)) ||
+                strtolower(trim($direccionActual->localidad)) !== strtolower(trim($request->localidad)) ||
+                trim($direccionActual->codigo_postal) !== trim($request->codigo_postal)
+            ) {
+                $crearNueva = true;
+                $direccionActual->delete(); // Ocultamos la vieja sin romper el historial
+            }
+        }
+
+        // Creamos la nueva dirección si hubo cambios
+        if ($crearNueva) {
+            $nuevaDireccion = \App\Models\Direccion::create([
+                'direccion'     => trim($request->direccion),
+                'provincia'     => trim($request->provincia),
+                'localidad'     => trim($request->localidad),
+                'codigo_postal' => trim($request->codigo_postal),
+            ]);
+            
+            $direccionFinalId = $nuevaDireccion->id;
+
+            // Actualizamos la libreta del usuario
+            $usuario->direccion_id = $direccionFinalId;
+            $usuario->save();
+        } else {
+            $direccionFinalId = $direccionActual->id;
+        }
+
+        // Lógica de cálculo de tarifas
+        $localidad = strtolower(trim($request->localidad));
+        $cp = trim($request->codigo_postal);
+        
+        if ($cp === '3400' || str_contains($localidad, 'corrientes')) {
+            $tarifa = \App\Models\TarifaEnvio::find(1); 
+        } elseif (str_contains($localidad, 'resistencia') || $cp === '3500') {
+            $tarifa = \App\Models\TarifaEnvio::find(2); 
+        } else {
+            $tarifa = \App\Models\TarifaEnvio::find(3); 
+        }
+
+        $costo_envio = $tarifa ? $tarifa->precio : 0;
+        $tarifa_id = $tarifa ? $tarifa->id : null;
+
+        // Registramos los datos en la tabla 'envios' usando la nueva FK
         $carrito->envio()->create([
-            'direccion'     => $request->direccion,
-            'provincia'     => $request->provincia,
-            'localidad'     => $request->localidad,
-            'codigo_postal' => $request->codigo_postal,
-            'costo_envio'   => 0,
-            'estado_envio'  => 'Pendiente de preparación'
+            'tarifa_envio_id' => $tarifa_id,
+            'direccion_id'    => $direccionFinalId, // <- Aquí está la magia relacional
+            'costo_envio'     => $costo_envio,
+            'estado_envio'    => 'preparacion'
         ]);
+
+        // Sumamos el costo de envío al total
+        $total += $costo_envio;
     }
 
-    // 5. Actualizamos el carrito confirmando el pedido y guardando el método de pago
+    // 5. DETERMINAR EL ESTADO FINAL
+    $estadoFinal = 'confirmado'; 
+    $metodo = \App\Models\MetodoPago::find($request->metodo_pago_id);
+
+    if ($metodo && in_array($metodo->descripcion, ['Efectivo al retirar', 'Transferencia Bancaria'])) {
+        $estadoFinal = 'pendiente_pago';
+    }
+
+    // 6. ACTUALIZAR CARRITO A PEDIDO REAL
     $carrito->update([
-        'estado'         => 'confirmado', 
+        'total'          => $total,
+        'estado'         => $estadoFinal, 
         'fecha_venta'    => now(),
-        'metodo_pago_id' => $request->metodo_pago_id, // <--- Guardamos el método seleccionado
+        'metodo_pago_id' => $request->metodo_pago_id, 
     ]);
 
-    // 6. Redireccionamos a la pantalla de éxito
+    // 7. DESCONTAR STOCK DE LOS PRODUCTOS
+    foreach ($carrito->detalles as $detalle) {
+        $producto = $detalle->producto;
+        if ($producto) {
+            $producto->stock_actual -= $detalle->cantidad;
+            if ($producto->stock_actual < 0) {
+                $producto->stock_actual = 0;
+            }
+            $producto->save();
+        }
+    }
+
+    // 8. REDIRECCIONAR AL ÉXITO
     return redirect()->route('compra.confirmada')
         ->with('items', $items->toArray())
         ->with('total', $total)

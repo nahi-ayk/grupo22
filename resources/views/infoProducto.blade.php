@@ -51,10 +51,6 @@
                                     </button>
                                 </form>
                             @endif
-                        @else
-                            <a href="{{ url('/login') }}" class="btn-favorito-detalle">
-                                <i class="bi bi-heart"></i>
-                            </a>
                         @endauth
 
                     </div>

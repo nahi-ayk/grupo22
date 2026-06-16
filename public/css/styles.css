@@ -1836,3 +1836,12 @@ input[type="file"]::file-selector-button:hover{
     color: white; 
 }
 
+/*Alerta vencimiento de tarjeta*/
+div.swal2-container {
+    font-family: 'Fjalla One', Arial !important; 
+}
+
+.swal2-title {
+    font-weight: 700 !important;
+}
+

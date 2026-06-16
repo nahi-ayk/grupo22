@@ -210,17 +210,17 @@
 
                         <small class="text-muted d-block mt-1">
 
-                            {{ $pedido->envio->provincia ?? '' }},
-                            {{ $pedido->envio->localidad ?? '' }}
+                            {{ $pedido->envio->direccion->provincia ?? '' }},
+                            {{ $pedido->envio->direccion->localidad ?? '' }}
 
                             |
 
                             CP:
-                            {{ $pedido->envio->codigo_postal ?? '' }}
+                            {{ $pedido->envio->direccion->codigo_postal ?? '' }}
 
                             <br>
 
-                            {{ $pedido->envio->direccion ?? '' }}
+                            {{ $pedido->envio->direccion->direccion ?? '' }}
 
                         </small>
 

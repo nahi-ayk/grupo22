@@ -70,7 +70,7 @@
                         <input type="text" class="form-control"
                             name="direccion"
                             placeholder="Dirección"
-                            value="{{ $usuario->miDireccion->direccion ?? '' }}">
+                            value="{{ $usuario->direccion->direccion ?? '' }}">
                     </div>
 
                     <div class="col-md-6 mb-3">
@@ -78,7 +78,7 @@
                         <input type="text" class="form-control"
                             name="provincia"
                             placeholder="Provincia"
-                            value="{{ $usuario->miDireccion->provincia ?? '' }}">
+                            value="{{ $usuario->direccion->provincia ?? '' }}">
                     </div>
 
                     <div class="col-md-6 mb-3">
@@ -86,7 +86,7 @@
                         <input type="text" class="form-control"
                             name="localidad"
                             placeholder="Localidad"
-                            value="{{ $usuario->miDireccion->localidad ?? '' }}">
+                            value="{{ $usuario->direccion->localidad ?? '' }}">
                     </div>
 
                     <div class="col-md-6 mb-3">
@@ -94,7 +94,7 @@
                         <input type="text" class="form-control"
                             name="codigo_postal"
                             placeholder="Cod. Postal"
-                            value="{{ $usuario->miDireccion->codigo_postal ?? '' }}">
+                            value="{{ $usuario->direccion->codigo_postal ?? '' }}">
                     </div>
 
                 </div>

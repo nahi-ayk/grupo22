@@ -16,10 +16,8 @@ class Envio extends Model
     // Campos que permitimos cargar masivamente
     protected $fillable = [
         'pedido_id',
-        'direccion',
-        'localidad',
-        'provincia',
-        'codigo_postal',
+        'tarifa_envio_id',
+        'direccion_id',
         'costo_envio',
         'estado_envio',
     ];
@@ -46,4 +44,10 @@ class Envio extends Model
     return $this->belongsTo(TarifaEnvio::class, 'tarifa_envio_id');
     }
     
+    public function direccion()
+    {
+        // Indicamos que incluya las direcciones borradas lógicamente
+        // para que el historial de envíos viejos siga funcionando.
+        return $this->belongsTo(Direccion::class, 'direccion_id')->withTrashed();
+    }
 }

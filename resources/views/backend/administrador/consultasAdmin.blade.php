@@ -101,18 +101,18 @@
                                 {{ $consulta->created_at->format('d/m/Y H:i') }}
                             </td>
 
-                            <td class="fw-semibold text-dark">
+                            <td class="fw-semibold text-dark dato-nombre">
                                 {{ $consulta->nombre }}
                             </td>
 
-                            <td>
+                            <td class= "dato-email">
                                 <a href="mailto:{{ $consulta->email }}"
                                 style="color: var(--azul); font-weight: 500; text-decoration: none;">
                                     {{ $consulta->email }}
                                 </a>
                             </td>
 
-                            <td class="text-secondary fw-medium">
+                            <td class="text-secondary fw-medium dato-asunto">
                                 {{ Str::limit($consulta->asunto, 25, '...') }}
                             </td>
 

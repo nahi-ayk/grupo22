@@ -163,7 +163,7 @@
                                                id="direccion"
                                                name="direccion"
                                                placeholder="Ej: Av. Corrientes 1234, Depto 4"
-                                               value="{{ old('direccion', Auth::user()->miDireccion->direccion ?? '') }}">
+                                               value="{{ old('direccion', Auth::user()->direccion->direccion ?? '') }}">
                                     </div>
 
                                     <div class="col-md-5">
@@ -173,7 +173,7 @@
                                                id="provincia"
                                                name="provincia"
                                                placeholder="Provincia"
-                                               value="{{ old('provincia', Auth::user()->miDireccion->provincia ?? '') }}">
+                                               value="{{ old('provincia', Auth::user()->direccion->provincia ?? '') }}">
                                     </div>
 
                                     <div class="col-md-5">
@@ -183,7 +183,7 @@
                                                id="localidad"
                                                name="localidad"
                                                placeholder="Localidad"
-                                               value="{{ old('localidad', Auth::user()->miDireccion->localidad ?? '') }}">
+                                               value="{{ old('localidad', Auth::user()->direccion->localidad ?? '') }}">
                                     </div>
 
                                     <div class="col-md-2">
@@ -193,7 +193,7 @@
                                                id="codigo_postal"
                                                name="codigo_postal"
                                                placeholder="C.P."
-                                               value="{{ old('codigo_postal', Auth::user()->miDireccion->codigo_postal ?? '') }}">
+                                               value="{{ old('codigo_postal', Auth::user()->direccion->codigo_postal ?? '') }}">
                                     </div>
                                 </div>
                             </div>
@@ -363,7 +363,9 @@
         radioRetiro.addEventListener('change', toggleEnvioFields);
         radioEnvio.addEventListener('change', toggleEnvioFields);
 
+        // --- INICIO CÓDIGO VENCIMIENTO TARJETA ---
         const inputVencimiento = document.getElementById('vencimiento');
+        
         if(inputVencimiento) {
             inputVencimiento.addEventListener('input', function(e) {
                 let val = e.target.value.replace(/\D/g, '');
@@ -388,7 +390,12 @@
                 let vencida = false;
 
                 if (mesInput < 1 || mesInput > 12) {
-                    alert("El mes ingresado no es válido.");
+                    Swal.fire({
+                        title: 'Mi Juguetería',
+                        text: 'El mes ingresado no es válido.',
+                        icon: 'error',
+                        confirmButtonText: 'Aceptar'
+                    });
                     vencida = true;
                 } else if (anioInput < anioActual) {
                     vencida = true;
@@ -397,7 +404,13 @@
                 }
 
                 if (vencida) {
-                    alert("La tarjeta ingresada se encuentra vencida. Por favor, revisa los datos.");
+                    Swal.fire({
+                        title: 'Tn Toys',
+                        text: 'La tarjeta ingresada se encuentra vencida. Por favor, revisa los datos.',
+                        icon: 'warning',
+                        confirmButtonText: 'Aceptar',
+                        confirmButtonColor: 'rgb(107, 214, 161)'
+                    });
                     this.value = ''; 
                     this.classList.add('is-invalid');
                 } else {
@@ -405,17 +418,36 @@
                 }
             });
         }
+        // --- FIN CÓDIGO VENCIMIENTO TARJETA ---
 
+        // --- INICIO CÓDIGO NÚMERO DE TARJETA ---
         const inputTarjeta = document.getElementById('numero_tarjeta');
         if(inputTarjeta) {
+            // 1. Bloqueamos cualquier tecla que no sea un número
+            inputTarjeta.addEventListener('keypress', function(e) {
+                if (!/[0-9]/.test(e.key)) {
+                    e.preventDefault();
+                }
+            });
+
+            // 2. Formateamos en grupos de a 4 mientras escribe o pega texto
             inputTarjeta.addEventListener('input', function(e) {
-                let val = e.target.value.replace(/\D/g, '');
-                let v = val.match(/.{1,4}/g);
-                if (v) {
-                    e.target.value = v.join(' ');
+                let val = e.target.value.replace(/\D/g, ''); // Nos aseguramos de limpiar si pega texto
+                let v = val.match(/.{1,4}/g); // Agrupamos de a 4
+                e.target.value = v ? v.join(' ') : ''; // Unimos con espacios o vaciamos el input
+            });
+        }
+        
+        // Repetimos el bloqueo numérico para el CVV
+        const inputCvv = document.getElementById('cvv');
+        if (inputCvv) {
+            inputCvv.addEventListener('keypress', function(e) {
+                if (!/[0-9]/.test(e.key)) {
+                    e.preventDefault();
                 }
             });
         }
+        // --- FIN CÓDIGO NÚMERO DE TARJETA ---
 
         const radiosPago = document.querySelectorAll('.selector-pago');
         const seccionTarjeta = document.getElementById('seccion-tarjeta');

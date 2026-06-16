@@ -40,7 +40,7 @@
                 <div class="card producto-card h-100">
 
                     
-                    @if(auth()->check())
+                        @auth
                         @if(auth()->user()->rol?->nombre === 'cliente')
                             <form action="{{ route('favoritos.toggle', $producto->id) }}" method="POST">
                                 @csrf
@@ -49,11 +49,7 @@
                                 </button>
                             </form>
                         @endif
-                    @else
-                        <a href="{{ url('/login') }}" class="btn-favorito">
-                            <i class="bi bi-heart"></i>
-                        </a>
-                    @endif
+                    @endauth
 
                     <img src="{{ asset($producto->imagen) }}" class="card-img-top" alt="{{ $producto->nombre }}">
                     

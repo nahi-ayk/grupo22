@@ -16,7 +16,7 @@ class ClienteController extends Controller
         return view('backend.cliente.cuentaCliente', compact('usuario'));
     }
 
-    public function actualizar(Request $request)
+public function actualizar(Request $request)
     {
         $usuario = Usuario::find(Auth::id());
 
@@ -30,21 +30,33 @@ class ClienteController extends Controller
         // Comprobamos si el usuario escribió algo en los campos de dirección
         if ($request->filled('direccion') || $request->filled('provincia') || $request->filled('localidad') || $request->filled('codigo_postal')) {
             
-            if ($usuario->direccion_id) {
-                // Si ya tiene una dirección asignada, simplemente se actualiza
-                $usuario->miDireccion->update([
-                    'direccion'     => $request->direccion,
-                    'provincia'     => $request->provincia,
-                    'localidad'     => $request->localidad,
-                    'codigo_postal' => $request->codigo_postal,
-                ]);
+            $direccionActual = $usuario->miDireccion;
+            $crearNueva = false;
+
+            if (!$direccionActual) {
+                // Si es la primera vez que guarda una dirección, se marca para crear
+                $crearNueva = true;
             } else {
-                // Si es la primera vez que guarda una dirección, se crea el registro
+                // Si ya tiene una, verificamos si algún dato cambió
+                if (
+                    strtolower(trim($direccionActual->direccion)) !== strtolower(trim($request->direccion)) ||
+                    strtolower(trim($direccionActual->provincia)) !== strtolower(trim($request->provincia)) ||
+                    strtolower(trim($direccionActual->localidad)) !== strtolower(trim($request->localidad)) ||
+                    trim($direccionActual->codigo_postal) !== trim($request->codigo_postal)
+                ) {
+                    $crearNueva = true;
+                    // Archiva la dirección vieja (Soft Delete) para no romper el historial de envíos
+                    $direccionActual->delete(); 
+                }
+            }
+
+            if ($crearNueva) {
+                // Creamos el nuevo registro inmutable
                 $nuevaDireccion = \App\Models\Direccion::create([
-                    'direccion'     => $request->direccion,
-                    'provincia'     => $request->provincia,
-                    'localidad'     => $request->localidad,
-                    'codigo_postal' => $request->codigo_postal,
+                    'direccion'     => trim($request->direccion),
+                    'provincia'     => trim($request->provincia),
+                    'localidad'     => trim($request->localidad),
+                    'codigo_postal' => trim($request->codigo_postal),
                 ]);
                 
                 // Le asignamos el ID de esta nueva dirección a nuestro usuario
