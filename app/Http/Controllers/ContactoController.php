@@ -11,13 +11,16 @@ class ContactoController extends Controller
 {    
     public function procesar(Request $request)
     {
-        // Bloqueo de seguridad para administradores
-        if (auth()->check() && auth()->user()->rol->nombre === 'admin') {
+        // Bloquear administradores
+        if (auth()->check() && auth()->user()->rol_id == 1) {
+
             return response()->json([
-            'success' => false,
-            'mensaje' => 'Acción denegada: Los administradores no pueden enviar consultas.'
-        ], 403);
+                'success' => false,
+                'mensaje' => 'Los administradores no pueden enviar consultas.'
+            ], 403);
+
         }
+        
         // Validaciòn del lado del servidor 
         $request->validate([
             'nombre'  => 'required|string|max:255',

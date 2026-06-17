@@ -93,27 +93,23 @@
                             <textarea name="mensaje" class="form-control" rows="5" placeholder="Tu mensaje" required></textarea>
                             </div>
 
-                            @php 
-                                $isAdmin = auth()->check() && auth()->user()->rol->nombre === 'admin';
-                            @endphp
+                            @if(Auth::check() && Auth::user()->rol_id == 1)
 
-                            <div class="d-grid">
-                            <button type="submit" 
-                            class="btn btn-catalogo w-100" 
-                            {{ $isAdmin ? 'disabled' : '' }} 
-                            @if($isAdmin) 
-                            title="Los administradores no pueden enviar consultas." 
+                                <button type="button"
+                                        class="btn btn-secondary w-100"
+                                        disabled>
+                                    <i class="bi bi-shield-lock"></i>
+                                    No disponible para administradores
+                                </button>
+
+                            @else
+
+                                <button type="submit" class="btn btn-catalogo w-100">
+                                    <i class="bi bi-send"></i>
+                                    Enviar mensaje
+                                </button>
+
                             @endif
-                            >
-                            <i class="bi bi-send"></i> Enviar mensaje
-                            </button>
-    
-                            @if($isAdmin)
-                            <div class="form-text text-center text-danger mt-1">
-                            Los administradores no pueden usar este formulario.
-                            </div>
-                            @endif
-                            </div>
                         </form>
                     </div>
 

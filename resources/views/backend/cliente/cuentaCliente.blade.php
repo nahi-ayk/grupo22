@@ -97,6 +97,69 @@
                             value="{{ $usuario->direccion->codigo_postal ?? '' }}">
                     </div>
 
+                    <div class="form-separador"></div>
+
+                    <div class="row align-items-end">
+
+                        <div class="col-md-8 mb-3">
+                            <label class="form-label">Contraseña</label>
+                            <input type="password"
+                                class="form-control"
+                                value="********"
+                                disabled>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <button type="button"
+                                    class="btn btn-catalogo w-100"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#cambiarPassword">
+                                <i class="bi bi-key me-1"></i>
+                                Cambiar contraseña
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="collapse" id="cambiarPassword">
+
+                        <div class="row mt-2">
+
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Contraseña actual</label>
+                                <input type="password"
+                                    name="password_actual"
+                                    class="form-control">
+
+                                @error('password_actual')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Nueva contraseña</label>
+                                <input type="password"
+                                    name="password"
+                                    class="form-control">
+                                @error('password')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Confirmar contraseña</label>
+                                <input type="password"
+                                    name="password_confirmation"
+                                    class="form-control">
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
 
                 <div class="text-center mt-4">

@@ -45,4 +45,58 @@ class CategoriaController extends Controller
             ->route('admin.categorias.crear')
             ->with('success', 'Categoría creada correctamente');
     }
+
+    public function bajaCategoria($id)
+    {
+        $categoria = Categoria::findOrFail($id);
+
+        $categoria->activo = false;
+        $categoria->save();
+
+        $categoria->productos()->update([
+            'activo' => false
+        ]);
+
+        return back()->with(
+            'success',
+            'Categoría y productos asociados dados de baja.'
+        );
+    }
+
+    public function altaCategoria($id)
+    {
+        $categoria = Categoria::findOrFail($id);
+
+        $categoria->activo = true;
+        $categoria->save();
+
+        return back()->with(
+            'success',
+            'Categoría activada correctamente.'
+        );
+    }
+
+    public function mostrarCategorias(Request $request)
+    {
+        $query = Categoria::with('productos');
+
+        if ($request->filled('buscar')) {
+            $query->where('nombre', 'like', '%' . $request->buscar . '%');
+        }
+
+        if ($request->estado == 'activo') {
+            $query->where('activo', true);
+        }
+
+        if ($request->estado == 'inactivo') {
+            $query->where('activo', false);
+        }
+
+        $categorias = $query->get();
+
+        return view(
+            'backend.administrador.categorias',
+            compact('categorias')
+        );
+    }
 }
