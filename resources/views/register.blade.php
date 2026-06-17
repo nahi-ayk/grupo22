@@ -45,27 +45,43 @@
         <!-- dni -->
         <div class="mb-2 text-start">
           <label class="form-label">DNI</label>
-          <input type="text" name="dni" class="form-control" required>
-        </div>
+          <input type="text" 
+          name="dni" 
+          class="form-control" 
+          maxlength="8" 
+          minlength="8" 
+          pattern="\d{8}" 
+          title="El DNI debe contener exactamente 8 números."
+          oninput="this.value = this.value.replace(/[^0-9]/g, '');" 
+          required>
+          </div>
 
         <!-- email -->
-        <div class="mb-2 text-start">
+       <div class="mb-2 text-start">
           <label class="form-label">Correo electrónico</label>
-          <input type="email" name="email" class="form-control" required>
+          <input type="email" 
+          name="email" 
+          class="form-control" 
+          pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" 
+          title="Ingresa un correo electrónico válido. Por ejemplo: tu_nombre@dominio.com"
+          required>
         </div>
 
         <!-- password -->
         <div class="row">
           <div class="col-md-6 mb-2 text-start password-wrapper">
             <label class="form-label">Contraseña</label>
-            <div class= "password-wrapper">
-              <input type="password" name="password" class="form-control pe-5" id="password-register" required>
-
-              <i class="bi bi-eye password-toggle toggle-password"
-                data-target="password-register">
-              </i>
-            </div>
-          </div>
+              <div class="password-wrapper">
+                <input type="password" 
+                name="password" 
+                class="form-control pe-5" 
+                id="password-register" 
+                minlength="8" 
+                title="La contraseña debe tener al menos 8 caracteres."
+                required>
+           <i class="bi bi-eye password-toggle toggle-password" data-target="password-register"></i>
+      </div>
+  </div>
 
           <div class="col-md-6 mb-2 text-start">
             <label class="form-label">Confirmar contraseña</label>

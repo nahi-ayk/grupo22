@@ -13,7 +13,7 @@
             </p>
         </div>
 
-        <span class="panel-subtitulo">
+        <span class="badge bg-dark-subtle px-3 py-2 rounded-pill fw-semibold panel-subtitulo">
             Total: {{ $pedidos->count() }}
         </span>
 

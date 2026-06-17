@@ -46,51 +46,43 @@ public function index()
 // Agrega un producto al carrito o actualiza su cantidad si ya existe
 public function agregar(Request $request) {
     $request->validate([
-    'producto_id' => 'required|exists:productos,id',
-    'cantidad' => 'required|integer|min:1',
-]);
+        'producto_id' => 'required|exists:productos,id',
+        'cantidad' => 'required|integer|min:1',
+    ]);
 
-$producto = Producto::findOrFail($request->producto_id);
+    $producto = Producto::findOrFail($request->producto_id);
+    $carrito = $this->obtenerCarrito();
+    $item = $carrito->detalles()->where('producto_id', $producto->id)->first();
 
-// Verificar stock antes de agregar
-if ($producto->stock_actual < $request->cantidad) {
-return back()->with('error', 'No hay suficiente stock');
+    // Calcular cuánto tiene ya en el carrito (si no tiene, es 0)
+    $cantidadEnCarrito = $item ? $item->cantidad : 0;
+    
+    // Sumar lo que ya tiene + lo que quiere agregar ahora
+    $cantidadTotalDeseada = $cantidadEnCarrito + $request->cantidad;
+
+    // Verificar si el stock soporta la cantidad TOTAL
+    if ($producto->stock_actual < $cantidadTotalDeseada) {
+        return back()->with('error', 'No hay suficiente stock para la cantidad total solicitada');
+    }
+
+    if ($item) {
+        // Si ya existe: suma la cantidad
+        $item->cantidad += $request->cantidad;
+        $item->subtotal = $item->cantidad * $item->precio_unitario;
+        $item->save();
+    } else {
+        // Si no existe: crea un nuevo ítem
+        $carrito->detalles()->create([
+            'producto_id' => $producto->id,
+            'cantidad' => $request->cantidad,
+            'precio_unitario' => $producto->precio_venta,
+            'subtotal' => $producto->precio_venta * $request->cantidad,
+        ]);
+    }
+
+    $this->recalcularTotal($carrito);
+    return back()->with('success', 'Producto agregado al carrito');
 }
-
-$carrito = $this->obtenerCarrito();
-// ¿El producto ya está en el carrito?
-$item = $carrito->detalles()->where('producto_id', $producto->id)->first();
-if ($item) {
-// Si ya existe: suma la cantidad
-$item->cantidad += $request->cantidad;
-$item->subtotal = $item->cantidad * $item->precio_unitario;
-$item->save();
-} else {
-
-// Si no existe: crea un nuevo ítem
-$carrito->detalles()->create([
-'producto_id' => $producto->id,
-'cantidad' => $request->cantidad,
-'precio_unitario' => $producto->precio_venta,
-'subtotal' => $producto->precio_venta * $request->cantidad,
-]);
-
-}
-$this->recalcularTotal($carrito);
-return back()->with('success', 'Producto agregado al carrito');
-
-}
-
-// Quitar producto del carrito por su ID
-public function eliminar($id)
-{
-$carrito = $this->obtenerCarrito();
-// where('id',$id) evita eliminar ítems de otro carrito
-$carrito->detalles()->where('id', $id)->delete();
-$this->recalcularTotal($carrito);
-return back()->with('success', 'Producto eliminado');
-}
-
 
 
 // Recalcula el total del carrito sumando los subtotales de sus ítems
@@ -104,14 +96,14 @@ $carrito->update(['total' => $total]);
 // Vacia el carrito eliminando todos sus ítems y reiniciando montos a 0
 public function vaciar()
 {
-    // Buscamos el carrito activo del usuario 
+    // Buscar el carrito activo del usuario 
     $carrito = $this->obtenerCarrito();
 
     if ($carrito) {
-        // Eliminamos todos los detalles asociados usando la relación hasMany
+        // Eliminar todos los detalles asociados usando la relación hasMany
         $carrito->detalles()->delete();
 
-        // Reiniciamos los montos del pedido a 0
+        // Reiniciar los montos del pedido a 0
         $carrito->subtotal = 0;
         $carrito->total = 0;
         $carrito->save();

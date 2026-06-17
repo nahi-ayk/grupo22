@@ -90,13 +90,30 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Mensaje</label>
-                                <textarea name="mensaje" class="form-control" rows="5" placeholder="Tu mensaje" required></textarea>
+                            <textarea name="mensaje" class="form-control" rows="5" placeholder="Tu mensaje" required></textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-catalogo w-100">
-                                <i class="bi bi-send"></i> Enviar mensaje
+                            @php 
+                                $isAdmin = auth()->check() && auth()->user()->rol->nombre === 'admin';
+                            @endphp
+
+                            <div class="d-grid">
+                            <button type="submit" 
+                            class="btn btn-catalogo w-100" 
+                            {{ $isAdmin ? 'disabled' : '' }} 
+                            @if($isAdmin) 
+                            title="Los administradores no pueden enviar consultas." 
+                            @endif
+                            >
+                            <i class="bi bi-send"></i> Enviar mensaje
                             </button>
+    
+                            @if($isAdmin)
+                            <div class="form-text text-center text-danger mt-1">
+                            Los administradores no pueden usar este formulario.
+                            </div>
+                            @endif
+                            </div>
                         </form>
                     </div>
 

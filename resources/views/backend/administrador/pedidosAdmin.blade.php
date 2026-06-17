@@ -102,7 +102,7 @@
                                         <i class="bi bi-clock me-1"></i> Pendiente de pago
                                     </span>
                                 @elseif(strtolower($pedido->estado) == 'carrito')
-                                    <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2.5 py-1 rounded-pill">
+                                    <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2.5 py-1 rounded-pill"> 
                                         <i class="bi bi-cart me-1"></i> Carrito
                                     </span>
                                 @else

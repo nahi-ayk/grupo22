@@ -20,9 +20,30 @@ class AuthController extends Controller{
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
-            'dni' => 'required|unique:usuarios,dni',
+            'dni' => 'required|numeric|digits:8|unique:usuarios,dni',
             'email' => 'required|email|unique:usuarios,email',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:8|confirmed',
+        ]
+        , [
+            // Mensajes personalizados
+            'nombre.required' => 'El nombre es obligatorio.',
+            'nombre.max' => 'El nombre no puede tener más de 255 caracteres.',
+            
+            'apellido.required' => 'El apellido es obligatorio.',
+            'apellido.max' => 'El apellido no puede tener más de 255 caracteres.',
+            
+            'dni.required' => 'El DNI es obligatorio.',
+            'dni.numeric' => 'El DNI solo debe contener números.',
+            'dni.digits' => 'El DNI debe tener exactamente 8 números.',
+            'dni.unique' => 'Este DNI ya se encuentra registrado.',
+            
+            'email.required' => 'El correo electrónico es obligatorio.',
+            'email.email' => 'Debes ingresar un correo electrónico válido.',
+            'email.unique' => 'Este correo electrónico ya se encuentra registrado.',
+            
+            'password.required' => 'La contraseña es obligatoria.',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+            'password.confirmed' => 'Las contraseñas no coinciden.',
         ]);
 
         Usuario::create([

@@ -12,7 +12,7 @@
         </div>
     @endif
 
-    {{-- HEADER (igual estilo pedidos) --}}
+    {{-- HEADER --}}
     <div class="panel-header">
         <div>
             <h1 class="panel-titulo">Bandeja de Consultas</h1>

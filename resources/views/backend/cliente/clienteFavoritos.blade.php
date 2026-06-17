@@ -7,10 +7,10 @@
 <div class="container-fluid py-4">
 
     <div class="mb-4">
-        <h2 class="admin-titulo">
+        <h2 class="panel-titulo"">
             Mis Favoritos
         </h2>
-        <p class="admin-subtitulo">
+        <p class="panel-subtitulo">
             Productos que guardaste como favoritos
         </p>
     </div>

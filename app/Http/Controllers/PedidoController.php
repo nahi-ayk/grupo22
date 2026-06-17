@@ -10,10 +10,10 @@ class PedidoController extends Controller
 {
     public function index()
     {
-        // Traemos los pedidos ordenados por los más recientes
+        // Traer los pedidos ordenados por los más recientes
         $pedidos = Pedido::with('usuario')->orderBy('created_at', 'desc')->get();
 
-        // Retorna la vista pasando la variable $pedidos
+        // Retornar la vista pasando la variable $pedidos
         return view('backend.administrador.pedidosAdmin', compact('pedidos'));
     }
 

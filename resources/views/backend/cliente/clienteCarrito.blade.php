@@ -72,7 +72,7 @@
                                     @method('PUT')
 
                                     <div class="input-group input-group-sm flex-nowrap carrito-cantidad">
-                                        <button type="button" class="btn btn-outline-secondary px-2" onclick="decrementarCantidad(this)">
+                                        <button type="button" class="btn btn-carrito px-2" onclick="decrementarCantidad(this)">
                                             <i class="bi bi-dash"></i>
                                         </button>
 
@@ -82,7 +82,7 @@
                                                value="{{ $item->cantidad }}"
                                                readonly>
 
-                                        <button type="button" class="btn btn-outline-secondary px-2" onclick="incrementarCantidad(this)">
+                                        <button type="button" class="btn btn-carrito px-2" onclick="incrementarCantidad(this)">
                                             <i class="bi bi-plus"></i>
                                         </button>
                                     </div>
