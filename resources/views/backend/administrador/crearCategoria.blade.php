@@ -61,7 +61,7 @@
                         Guardar categoría
                     </button>
 
-                    <a href="{{ route('admin.productos') }}" class="btn btn-catalogo flex-fill">
+                    <a href="{{ route('admin.categorias') }}" class="btn btn-catalogo flex-fill">
                         <i class="bi bi-x-circle me-2"></i>
                         Cancelar
                     </a>
