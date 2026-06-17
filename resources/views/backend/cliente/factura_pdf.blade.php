@@ -11,7 +11,7 @@
             line-height: 1.5;
             margin: 0;
             padding: 0;
-            border-top: 8px solid #437eaf; /* Tu Azul */
+            border-top: 8px solid #437eaf; 
         }
         .invoice-box {
             max-width: 800px;
@@ -30,17 +30,17 @@
         .title {
             font-size: 28px;
             font-weight: bold;
-            color: #437eaf; /* Tu Azul */
+            color: #437eaf; 
         }
         .text-right {
             text-align: right;
         }
-        /* Nueva clase para la caja del cliente */
+        /*caja del cliente */
         .cliente-box {
             margin-bottom: 25px;
             padding: 12px 15px;
             background-color: #f8f9fa;
-            border-left: 4px solid #437eaf; /* Tu Azul */
+            border-left: 4px solid #437eaf; 
             border-radius: 4px;
         }
         .info-table {
@@ -48,8 +48,8 @@
         }
         .info-table td {
             padding: 10px;
-            background: #fff8d2; /* Tu Amarillo */
-            border: 1px solid #e9a6a7; /* Tu Rosa */
+            background: #fff8d2; 
+            border: 1px solid #e9a6a7; 
             vertical-align: top;
             width: 50%;
             border-radius: 4px;
@@ -58,15 +58,15 @@
             font-weight: bold;
             text-transform: uppercase;
             font-size: 11px;
-            color: #437eaf; /* Tu Azul */
+            color: #437eaf; 
             margin-bottom: 5px;
         }
         .items-table {
-            border: 1px solid #e9a6a7; /* Tu Rosa */
+            border: 1px solid #e9a6a7; 
             margin-bottom: 20px;
         }
         .items-table th {
-            background: #437eaf; /* Tu Azul */
+            background: #437eaf; 
             color: #ffffff;
             font-weight: bold;
             padding: 10px;
@@ -74,7 +74,7 @@
         }
         .items-table td {
             padding: 10px;
-            border-bottom: 1px solid #e9a6a7; /* Tu Rosa */
+            border-bottom: 1px solid #e9a6a7; 
         }
         .totals-table {
             width: 40%;
@@ -87,7 +87,7 @@
         .totals-table tr.total td {
             font-weight: bold;
             font-size: 16px;
-            color: #437eaf; /* Tu Azul */
+            color: #437eaf; 
             border-top: 2px solid #437eaf;
             padding-top: 10px;
         }
@@ -96,12 +96,12 @@
             margin-top: 50px;
             font-size: 11px;
             color: #6c757d;
-            border-top: 1px solid #e9a6a7; /* Tu Rosa */
+            border-top: 1px solid #e9a6a7; 
             padding-top: 15px;
             clear: both;
         }
         .badge-success {
-            color: rgb(107, 214, 161); /* Tu Verde */
+            color: rgb(107, 214, 161); 
             font-weight: bold;
         }
     </style>
@@ -147,7 +147,7 @@
                 @if($pedido->envio && $pedido->envio->costo_envio > 0)
                     {{ $pedido->envio->direccion->direccion ?? '' }}<br>
                     {{ $pedido->envio->direccion->localidad ?? '' }}, {{ $pedido->envio->direccion->provincia ?? '' }}<br>
-                    CP: {{ $pedido->envio->codigo_postal ?? '' }}
+                    CP: {{ $pedido->envio->direccion->codigo_postal ?? '' }}
                 @else
                     <span>Puedes pasar a retirar por nuestro local principal con tu DNI y número de comprobante.</span>
                 @endif

@@ -12,6 +12,7 @@
     </p>
 </div>
 
+<!--Filtros del catalogo--->
 <div class="container mt-4">
     <div class="filtros-catalogo">
 
@@ -34,12 +35,13 @@
 
 <div class="container mt-4 mb-5">
     <div class="row catalogo row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
-
+        
+    <!--Mostrar todos los productos disponibles--->
         @foreach($productos as $producto)
             <div class="col">
                 <div class="card producto-card h-100">
 
-                    
+                        <!--Si es cliente dar la opcion de agregar producto como favorito--->
                         @auth
                         @if(auth()->user()->rol?->nombre === 'cliente')
                             <form action="{{ route('favoritos.toggle', $producto->id) }}" method="POST">
@@ -66,7 +68,8 @@
                         <a href="{{ route('producto.mostrar', $producto->id) }}" id="btn-vermas-{{ $producto->id }}" class="btn btn-vermas">
                         Ver Más
                         </a>
-
+                    
+                    <!--Si es cliente mostrar la opcion de agregar al carrito--->
                     @auth
                         @if(Auth::user()->rol->nombre === 'cliente')
                         <button type="button" class="btn btn-carrito" id="btn-falso-{{ $producto->id }}" onclick="mostrarCantidad({{ $producto->id }})">
@@ -77,8 +80,8 @@
                         <a href="{{ route('login') }}" class="btn btn-carrito text-decoration-none">
                         <i class="bi bi-cart-plus"></i> Agregar
                         </a>
-                @endauth
-
+                    @endauth
+                            <!--Agrega productos al carrito usando la ruta carrito.agregar (CarritoController)--->
                             <form action="{{ route('carrito.agregar') }}" method="POST" id="form-carrito-{{ $producto->id }}" class="d-none w-100">
                                 @csrf 
                                 <input type="hidden" name="producto_id" value="{{ $producto->id }}">
@@ -113,7 +116,7 @@
 
     </div>
 </div>
-
+<!--Modal que aparece en pantalla luego de agregar un producto al carrito--->
 <div class="modal fade" id="modalExito" tabindex="-1" aria-labelledby="modalExitoLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content text-center p-4">

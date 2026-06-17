@@ -64,9 +64,9 @@
                             <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"
                                style="z-index: 5;"></i>
                             <input type="text"
-                                   id="buscador"
-                                   class="form-control filtro-control ps-5"
-                                   placeholder="Buscar...">
+                                id="buscador-consultas"
+                                class="form-control filtro-control ps-5"
+                                placeholder="Buscar...">
                         </div>
 
                     </div>
@@ -174,70 +174,86 @@
 </div>
 
 <script>
-    const buscador = document.getElementById('buscador');
-    const filtroEstado = document.getElementById('filtro-estado');
-    const fechaDesde = document.getElementById('fecha-desde');
-    const fechaHasta = document.getElementById('fecha-hasta');
-    const badgeTotal = document.getElementById('total-badge');
-    const filas = document.querySelectorAll('.fila-consulta');
-    const sinResultados = document.getElementById('sin-resultados');
+    document.addEventListener('DOMContentLoaded', function() {
+        const buscador = document.getElementById('buscador-consultas');
+        const filtroEstado = document.getElementById('filtro-estado');
+        const fechaDesde = document.getElementById('fecha-desde');
+        const fechaHasta = document.getElementById('fecha-hasta');
+        const badgeTotal = document.getElementById('total-badge');
+        const filas = document.querySelectorAll('.fila-consulta');
+        const sinResultados = document.getElementById('sin-resultados');
 
-    function filtrarConsultas() {
-        const termino = buscador.value.toLowerCase().trim();
-        const estadoSeleccionado = filtroEstado.value;
-        const valorDesde = fechaDesde.value;
-        const valorHasta = fechaHasta.value;
-        
-        let filasVisibles = 0;
+        console.log("Script cargado. Filas encontradas:", filas.length);
 
-        filas.forEach(fila => {
-            const nombre = fila.querySelector('.dato-nombre').textContent.toLowerCase();
-            const email = fila.querySelector('.dato-email').textContent.toLowerCase();
-            const asunto = fila.querySelector('.dato-asunto').textContent.toLowerCase();
+        function filtrarConsultas() {
+            if (!buscador) return;
             
-            // Obtenemos el estado y fecha de la consulta desde los atributos data
-            const estadoFila = fila.getAttribute('data-estado');
-            const fechaFila = fila.getAttribute('data-fecha');
-
-            // Verificamos coincidencias
-            const coincideTexto = nombre.includes(termino) || email.includes(termino) || asunto.includes(termino);
-            const coincideEstado = estadoSeleccionado === 'todos' || estadoFila === estadoSeleccionado;
+            const termino = buscador.value.toLowerCase().trim();
+            const estadoSeleccionado = filtroEstado?.value || 'todos';
+            const valorDesde = fechaDesde?.value;
+            const valorHasta = fechaHasta?.value;
             
-            let coincideFecha = true;
-            if (valorDesde && fechaFila < valorDesde) {
-                coincideFecha = false;
-            }
-            if (valorHasta && fechaFila > valorHasta) {
-                coincideFecha = false;
-            }
+            console.log("Buscando término:", `"${termino}"`);
+            
+            let filasVisibles = 0;
 
-            if (coincideTexto && coincideEstado && coincideFecha) {
-                fila.classList.remove('d-none');
-                filasVisibles++;
-            } else {
-                fila.classList.add('d-none');
-            }
-        });
+            filas.forEach((fila, index) => {
+                const limpiar = (texto) => texto ? texto.replace(/\s+/g, ' ').trim().toLowerCase() : "";
 
-        // Actualizar el número del badge Total dinámicamente
-        if (badgeTotal) {
-            badgeTotal.textContent = filasVisibles;
+                const nombre = limpiar(fila.querySelector('.dato-nombre')?.textContent || "");
+                const email = limpiar(fila.querySelector('.dato-email')?.textContent || "");
+                const asunto = limpiar(fila.querySelector('.dato-asunto')?.textContent || "");
+                
+                const estadoFila = fila.getAttribute('data-estado');
+                const fechaFila = fila.getAttribute('data-fecha');
+
+                const coincideTexto = nombre.includes(termino) || email.includes(termino) || asunto.includes(termino);
+                const coincideEstado = estadoSeleccionado === 'todos' || estadoFila === estadoSeleccionado;
+                
+                let coincideFecha = true;
+                if (valorDesde && fechaFila < valorDesde) coincideFecha = false;
+                if (valorHasta && fechaFila > valorHasta) coincideFecha = false;
+
+                // Solo imprimimos la fila 1 y 2 para no llenar la consola
+                if (index < 2 && termino !== "") {
+                    console.log(`Fila ${index + 1}:`, { nombre, email, coincideTexto });
+                }
+
+                if (coincideTexto && coincideEstado && coincideFecha) {
+                    fila.style.setProperty('display', '', 'important'); 
+                    fila.classList.remove('d-none'); // Intentamos ambos métodos por si hay conflicto CSS
+                    filasVisibles++;
+                } else {
+                    fila.style.setProperty('display', 'none', 'important');
+                    fila.classList.add('d-none');
+                }
+            });
+
+            console.log("Filas visibles al final:", filasVisibles);
+
+            if (badgeTotal) badgeTotal.textContent = filasVisibles;
+
+            if (filas.length > 0 && sinResultados) {
+                if (filasVisibles === 0) {
+                    sinResultados.classList.remove('d-none');
+                } else {
+                    sinResultados.classList.add('d-none');
+                }
+            }
         }
 
-        if (filas.length > 0) {
-            if (filasVisibles === 0) {
-                sinResultados.classList.remove('d-none');
-            } else {
-                sinResultados.classList.add('d-none');
-            }
+        if (buscador) {
+            buscador.addEventListener('input', filtrarConsultas);
+            buscador.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault(); 
+                }
+            });
         }
-    }
-
-    // Agregamos los event listeners
-    buscador.addEventListener('input', filtrarConsultas);
-    filtroEstado.addEventListener('change', filtrarConsultas);
-    fechaDesde.addEventListener('change', filtrarConsultas);
-    fechaHasta.addEventListener('change', filtrarConsultas);
+        if (filtroEstado) filtroEstado.addEventListener('change', filtrarConsultas);
+        if (fechaDesde) fechaDesde.addEventListener('change', filtrarConsultas);
+        if (fechaHasta) fechaHasta.addEventListener('change', filtrarConsultas);
+    });
 </script>
 
 @endsection

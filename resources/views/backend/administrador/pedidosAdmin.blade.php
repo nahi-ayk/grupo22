@@ -54,7 +54,7 @@
 
                         <div class="position-relative w-100" style="max-width: 250px;">
                             <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted" style="z-index: 5;"></i>
-                            <input type="text" id="buscador" class="form-control filtro-control ps-5" placeholder="Buscar...">
+                            <input type="text" id="buscador-pedidos" class="form-control filtro-control ps-5" placeholder="Buscar...">
                         </div>
                     </div>
                 </div>
@@ -154,7 +154,7 @@
 </div>
 
 <script>
-    const buscador = document.getElementById('buscador');
+    const buscador = document.getElementById('buscador-pedidos');
     const filtroEstado = document.getElementById('filtro-estado');
     const fechaDesde = document.getElementById('fecha-desde');
     const fechaHasta = document.getElementById('fecha-hasta');

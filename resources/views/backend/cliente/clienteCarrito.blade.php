@@ -112,14 +112,25 @@
                     </tbody>
                 </table>
 
-                <div class="d-flex justify-content-end align-items-center panel-footer pe-md-5">
-                    <span class="me-4 fs-4 fw-bold texto-bienvenida">Total:</span>
-                    <span class="fs-4 fw-bold panel-subtitulo">
-                        ${{ number_format($carrito->total, 2) }}
-                    </span>
+                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center panel-footer pe-md-5 ps-md-4">
+                    
+                    <form method="POST" action="{{ route('carrito.vaciar') }}" class="m-0 mb-3 mb-sm-0">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-eliminar-carrito shadow-sm rounded px-3" title="Vaciar todo el carrito">
+                            <i class="bi bi-trash3-fill me-1"></i> Vaciar Carrito
+                        </button>
+                    </form>
+
+                    <div class="d-flex align-items-center">
+                        <span class="me-4 fs-4 fw-bold texto-bienvenida">Total:</span>
+                        <span class="fs-4 fw-bold panel-subtitulo">
+                            ${{ number_format($carrito->total, 2) }}
+                        </span>
+                    </div>
+
                 </div>
             </div>
-
             <div class="card panel-card mt-4 carrito-card">
                 <div class="card-body panel-form">
 

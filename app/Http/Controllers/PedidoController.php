@@ -11,15 +11,13 @@ class PedidoController extends Controller
     public function index()
     {
         // Traemos los pedidos ordenados por los más recientes
-        // Usamos with('usuario') asumiendo que tienes esa relación definida en el modelo Pedido
         $pedidos = Pedido::with('usuario')->orderBy('created_at', 'desc')->get();
 
-        // Retornamos la vista pasando la variable $pedidos
-        // Asumiendo que guardaste la vista en resources/views/backend/pedidos/index.blade.php
+        // Retorna la vista pasando la variable $pedidos
         return view('backend.administrador.pedidosAdmin', compact('pedidos'));
     }
 
-    // Muestra el detalle de un pedido
+    // Muestra el detalle de un pedido desde la perspectiva del admin
     public function show(Pedido $pedido) 
     {   
 
@@ -57,7 +55,7 @@ class PedidoController extends Controller
 
     public function descargarFactura($id)
     {
-    // Buscamos el pedido con sus relaciones (ajusta los nombres según tu BD)
+    // Busca el pedido con sus relaciones (ajusta los nombres según tu BD)
     $pedido = Pedido::with(['envio', 'metodoPago', 'detalles'])
             ->where('id', $id)
             ->where('usuario_id', Auth::id())
@@ -66,19 +64,19 @@ class PedidoController extends Controller
     // Cargamos una vista de Blade especial para el PDF y le pasamos los datos
     $pdf = Pdf::loadView('backend.cliente.factura_pdf', compact('pedido'));
 
-    // Retornamos la descarga del archivo
+    // Retorna la descarga del archivo
     return $pdf->download('Comprobante_Pedido_'.$pedido->id.'.pdf');
     }
 
     // Método para que el admin confirme manualmente un pago pendiente
     public function confirmarPago(Pedido $pedido)
     {
-        // Actualizamos el estado
+        // Actualizar el estado
         $pedido->update([
             'estado' => 'confirmado'
         ]);
 
-        // Redirigimos de vuelta a la tabla con un mensaje de éxito
+        // Redirigir de vuelta a la tabla con un mensaje de éxito
         return back()->with('success', 'El pago del pedido #' . $pedido->numero_pedido . ' ha sido confirmado.');
     }
 

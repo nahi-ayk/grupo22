@@ -104,7 +104,7 @@ $carrito->update(['total' => $total]);
 // Vacia el carrito eliminando todos sus ítems y reiniciando montos a 0
 public function vaciar()
 {
-    // Buscamos el carrito activo del usuario logueado usando tu método privado
+    // Buscamos el carrito activo del usuario 
     $carrito = $this->obtenerCarrito();
 
     if ($carrito) {
@@ -124,31 +124,31 @@ public function vaciar()
 // Actualiza la cantidad de un producto específico en el carrito
     public function actualizar(Request $request, $id)
     {
-        // 1. Validar que la cantidad sea correcta
+        // Validar que la cantidad sea correcta
         $request->validate([
             'cantidad' => 'required|integer|min:1',
         ]);
 
         $carrito = $this->obtenerCarrito();
 
-        // 2. Buscar el ítem asegurando que pertenezca al carrito del usuario actual
+        // Buscar el ítem asegurando que pertenezca al carrito del usuario actual
         $item = $carrito->detalles()->where('id', $id)->first();
 
         if (!$item) {
             return back()->with('error', 'El producto no se encontró en el pedido.');
         }
 
-        // 3. Verificar stock antes de actualizar
+        // Verificar stock antes de actualizar
         if ($item->producto->stock_actual < $request->cantidad) {
             return back()->with('error', 'No hay suficiente stock para la cantidad solicitada.');
         }
 
-        // 4. Actualizar cantidad y subtotal del ítem
+        // Actualizar cantidad y subtotal del ítem
         $item->cantidad = $request->cantidad;
         $item->subtotal = $item->cantidad * $item->precio_unitario;
         $item->save();
 
-        // 5. Recalcular el total general del carrito
+        // Recalcular el total general del carrito
         $this->recalcularTotal($carrito);
 
         return back()->with('success', 'Cantidad actualizada correctamente.');

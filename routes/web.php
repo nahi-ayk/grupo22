@@ -97,27 +97,17 @@ Route::middleware(['auth', 'cliente'])->group(function () {
     // Actualiza la cantidad de unidades de los productos del carrito
     Route::put('/carrito/actualizar/{id}', [CarritoController::class, 'actualizar'])->name('carrito.actualizar');
 
-    // Retorna la vista de compra confirmada (protegida: redirige si no hay sesión)
-
-
     // Vacia el carrito
     Route::delete('/carrito/vaciar', [CarritoController::class, 'vaciar'])->name('carrito.vaciar');
     
-    /*
-    Route::get('/finalizar-compra', [CheckoutController::class, 'index'])->name('checkout.index');
 
-    // Crea el pedido del carrito
-    Route::post('/finalizar-compra', [CheckoutController::class, 'store'])->name('checkout.store');
-
-   */
-
-    
-Route::get('/compra-confirmada', function () {
+    // Redirecciona a la vista de compra confirmada
+    Route::get('/compra-confirmada', function () {
     if (!session('pedido_id')) {
         return redirect()->route('catalogo')->with('error', 'No tienes una compra reciente para mostrar.');
     }
 
-    // Se cambió 'metodo_pago' por 'metodoPago' para que coincida con tu modelo
+    
     $pedido = \App\Models\Pedido::with(['metodoPago', 'envio'])->find(session('pedido_id'));
 
     if (!$pedido) {
@@ -125,7 +115,7 @@ Route::get('/compra-confirmada', function () {
     }
 
     return view('backend.cliente.compra-confirmada', compact('pedido'));
-})->name('compra.confirmada');
+    })->name('compra.confirmada');
 
 
     // Devuelve la vista que muestra los datos del cliente
@@ -243,7 +233,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::patch('/admin/pedidos/{pedido}/confirmar', [App\Http\Controllers\PedidoController::class, 'confirmarPago'])->name('pedidos.confirmar');
 
     Route::prefix('admin')->group(function () {
-
+    
+    // Tarifa controller
     Route::get('/tarifas-envio', [TarifaEnvioController::class, 'index'])
         ->name('admin.tarifas.index');
 

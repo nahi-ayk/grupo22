@@ -16,7 +16,7 @@ class CheckoutController extends Controller
     {
         $metodosPago = MetodoPago::all();
         
-        // Gracias a la relación belongsTo, obtenemos la dirección activa del usuario
+        //Obtiene la dirección activa del usuario
         $direccionActual = Auth::user()->direccion; 
         
         return view('frontend.checkout', compact('metodosPago', 'direccionActual'));
@@ -24,7 +24,7 @@ class CheckoutController extends Controller
 
     public function store(Request $request)
     {
-        // 1. Validación de los campos
+        // Validación de todos los campos
         $request->validate([
             'metodo_pago_id' => 'required|exists:metodos_pago,id',
             'tipo_entrega'   => 'required|in:retiro,envio',
@@ -42,7 +42,7 @@ class CheckoutController extends Controller
             'codigo_postal'  => 'required_if:tipo_entrega,envio|nullable|string',
         ]);
 
-        // 2. Buscar el carrito actual del usuario
+        // Buscar el carrito actual del usuario
         $pedido = Pedido::where('usuario_id', Auth::id())
                         ->where('estado', 'carrito')
                         ->first();
@@ -52,7 +52,7 @@ class CheckoutController extends Controller
             return redirect()->route('cliente.carrito')->with('error', 'Tu carrito está vacío o la sesión expiró.');
         }
 
-        // --- NUEVA VALIDACIÓN DE STOCK ANTES DE COMPRAR ---
+        // --- VALIDACIÓN DE STOCK ANTES DE COMPRAR ---
         foreach ($pedido->detalles as $detalle) {
             $producto = $detalle->producto;
             
@@ -62,12 +62,12 @@ class CheckoutController extends Controller
             }
         }
 
-        // 3. Obtener el subtotal sumando los detalles (por seguridad)
+        // Obtener el subtotal sumando los detalles (por seguridad)
         $subtotal = $pedido->detalles()->sum('subtotal');
         $costo_envio = 0;
         $tarifa_id = null;
 
-        // 4. Lógica de costo de envío dinámica y actualización de direcciones
+        // Lógica de costo de envío dinámica y actualización de direcciones
         if ($request->tipo_entrega === 'envio') {
             $usuario = Auth::user();
             $direccionActual = $usuario->direccion;
@@ -162,7 +162,7 @@ class CheckoutController extends Controller
             $costo_envio = $tarifa ? $tarifa->precio : 0;
             $tarifa_id = $tarifa ? $tarifa->id : null;
 
-            // ¡CORRECCIÓN AQUÍ! Usamos $pedido en lugar de $carrito
+            
             $envio = new Envio();
             $envio->pedido_id       = $pedido->id;
             $envio->tarifa_envio_id = $tarifa_id; 
@@ -172,10 +172,10 @@ class CheckoutController extends Controller
             $envio->save();
         }
 
-        // 5. Calculamos el gran total
+        //  Calcula el gran total
         $totalPedido = $subtotal + $costo_envio;
 
-        // 6. Actualizamos el pedido
+        // Actualizar el pedido
         $estadoFinal = 'confirmado'; 
         $metodo = MetodoPago::find($request->metodo_pago_id);
 
@@ -192,7 +192,7 @@ class CheckoutController extends Controller
             'fecha_venta'    => now(),
         ]);
 
-        // 7. DESCONTAR STOCK DE LOS PRODUCTOS
+        // DESCONTAR STOCK DE LOS PRODUCTOS
         foreach ($pedido->detalles as $detalle) {
             $producto = $detalle->producto;
             if ($producto) {
@@ -204,7 +204,7 @@ class CheckoutController extends Controller
             }
         }
 
-        // 8. Redirigimos a la pantalla de éxito pasando el ID del pedido
+        // Redirigimos a la pantalla de éxito pasando el ID del pedido
         return redirect()->route('compra.confirmada')->with('pedido_id', $pedido->id);
     }
 }
