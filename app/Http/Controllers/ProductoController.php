@@ -34,6 +34,14 @@ class ProductoController extends Controller
                 $query->whereColumn('stock_actual', '<=', 'stock_minimo')
                     ->where('stock_actual', '>', 0);
             }
+
+            if ($request->estado == 'inactivo') {
+                $query->where('activo', false);
+            }
+
+            if ($request->estado == 'activo') {
+                $query->where('activo', true);
+            }
         }
 
         $productos = $query->latest()->get();
@@ -190,5 +198,35 @@ class ProductoController extends Controller
                 'success',
                 'Producto actualizado correctamente'
             );
+    }
+
+    public function baja($id)
+    {
+        $producto = Producto::findOrFail($id);
+
+        $producto->activo = false;
+        $producto->save();
+
+        return back()->with('success', 'Producto dado de baja.');
+    }
+
+    public function alta($id)
+    {
+        $producto = Producto::findOrFail($id);
+
+        if (!$producto->categoria->activo) {
+            return back()->with(
+                'error',
+                'No se puede activar el producto porque su categoría está inactiva.'
+            );
+        }
+
+        $producto->activo = true;
+        $producto->save();
+
+        return back()->with(
+            'success',
+            'Producto activado correctamente.'
+        );
     }
 }

@@ -94,9 +94,23 @@
                                 <textarea name="mensaje" class="form-control" rows="5" placeholder="Tu mensaje" required></textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-catalogo w-100">
-                                <i class="bi bi-send"></i> Enviar mensaje
-                            </button>
+                            @if(Auth::check() && Auth::user()->rol_id == 1)
+
+                                <button type="button"
+                                        class="btn btn-secondary w-100"
+                                        disabled>
+                                    <i class="bi bi-shield-lock"></i>
+                                    No disponible para administradores
+                                </button>
+
+                            @else
+
+                                <button type="submit" class="btn btn-catalogo w-100">
+                                    <i class="bi bi-send"></i>
+                                    Enviar mensaje
+                                </button>
+
+                            @endif
                         </form>
                     </div>
 

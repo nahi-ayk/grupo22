@@ -33,6 +33,10 @@
                         class="{{ request()->routeIs('admin.productos') ? 'activo' : '' }}">
                         Productos
                     </a>
+                    <a href="{{ route('admin.categorias') }}" 
+                        class="{{ request()->routeIs('admin.categorias') ? 'activo' : '' }}">
+                        Categorías
+                    </a>
                     <a href="{{ route('admin.pedidos.index') }}"
                         class="{{ request()->routeIs('admin.pedidos.index') ? 'activo' : '' }}">
                         Pedidos

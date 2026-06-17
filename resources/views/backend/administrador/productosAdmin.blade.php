@@ -97,9 +97,29 @@
                     <div class="col-md-3">
                         <select name="estado" class="form-select filtro-control">
 
-                            <option value="">Todos</option>
-                            <option value="sin_stock">Sin stock</option>
-                            <option value="stock_minimo">Stock mínimo</option>
+                            <option value=""
+                                {{ request('estado') == '' ? 'selected' : '' }}>
+                                Todos
+                            </option>
+
+                            <option value="sin_stock"
+                                {{ request('estado') == 'sin_stock' ? 'selected' : '' }}>
+                                Sin stock
+                            </option>
+
+                            <option value="stock_minimo"
+                                {{ request('estado') == 'stock_minimo' ? 'selected' : '' }}>
+                                Stock mínimo
+                            </option>
+
+                            <option value="inactivo"
+                                {{ request('estado') == 'inactivo' ? 'selected' : '' }}>
+                                Inactivos
+                            </option>
+                            <option value="activo"
+                                {{ request('estado') == 'activo' ? 'selected' : '' }}>
+                                Activos
+                            </option>
 
                         </select>
                     </div>
@@ -145,7 +165,7 @@
                                     <img src="{{ $producto->imagen ? asset($producto->imagen) : asset('img/logo.png') }}"
                                         style="width:45px;height:45px;object-fit:cover;border-radius:10px;">
 
-                                    <span class="fw-semibold">
+                                    <span class="fw-semibold {{ !$producto->activo ? 'text-muted text-decoration-line-through' : '' }}">
                                         {{ $producto->nombre }}
                                     </span>
 
@@ -190,10 +210,60 @@
 
                             {{-- ACCIONES --}}
                             <td>
-                                <a href="{{ route('producto.editar', $producto->id) }}"
-                                class="btn btn-vermas-pedido btn-sm">
-                                    <i class="bi bi-pencil"></i>Ver
-                                </a>
+                                <div class="d-flex justify-content-center gap-2">
+
+                                    {{-- EDITAR --}}
+                                    <a href="{{ route('producto.editar', $producto->id) }}"
+                                    class="btn btn-outline-primary btn-sm"
+                                    title="Editar producto">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+
+                                    {{-- PRODUCTO ACTIVO -> DAR DE BAJA --}}
+                                    @if($producto->activo)
+
+                                        <form action="{{ route('producto.baja', $producto->id) }}"
+                                            method="POST">
+                                            @csrf
+
+                                            <button type="submit"
+                                                    class="btn btn-outline-danger btn-sm"
+                                                    title="Dar de baja">
+                                                <i class="bi bi-x-circle"></i>
+                                            </button>
+                                        </form>
+
+                                    {{-- PRODUCTO INACTIVO --}}
+                                    @else
+
+                                        {{-- CATEGORÍA ACTIVA -> PERMITIR ALTA --}}
+                                        @if($producto->categoria && $producto->categoria->activo)
+
+                                            <form action="{{ route('producto.alta', $producto->id) }}"
+                                                method="POST">
+                                                @csrf
+
+                                                <button type="submit"
+                                                        class="btn btn-outline-success btn-sm"
+                                                        title="Dar de alta">
+                                                    <i class="bi bi-check-circle"></i>
+                                                </button>
+                                            </form>
+
+                                        {{-- CATEGORÍA INACTIVA -> BLOQUEAR ALTA --}}
+                                        @else
+
+                                            <button class="btn btn-outline-secondary btn-sm"
+                                                    disabled
+                                                    title="No se puede activar porque la categoría está inactiva">
+                                                <i class="bi bi-lock"></i>
+                                            </button>
+
+                                        @endif
+
+                                    @endif
+
+                                </div>
                             </td>
 
                         </tr>
@@ -215,20 +285,15 @@
         </div>
     </div>
 
+
     {{-- BOTONES ABAJO --}}
-        <div class="d-flex justify-content-end gap-2 mt-4">
+    <div class="d-flex justify-content-end gap-2 mt-4">
 
-            <a href="{{ route('crear.producto') }}" class="btn btn-catalogo">
-                <i class="bi bi-plus-circle me-1"></i>
-                Agregar producto
-            </a>
-
-            <a href="{{ route('admin.categorias.crear') }}" class="btn btn-catalogo">
-                <i class="bi bi-tags me-1"></i>
-                Agregar categoría
-            </a>
-
-        </div>
+        <a href="{{ route('crear.producto') }}" class="btn btn-catalogo">
+            <i class="bi bi-plus-circle me-1"></i>
+            Agregar producto
+        </a>
+    </div>
 </div>
 
 @endsection

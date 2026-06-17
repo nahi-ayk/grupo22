@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Usuario;
 use App\Models\Direccion;
 
@@ -18,6 +19,7 @@ class ClienteController extends Controller
 
 public function actualizar(Request $request)
     {
+        $request->validate(['password' => 'nullable|min:8|confirmed',]);
         $usuario = Usuario::find(Auth::id());
 
         // Actualizar los datos personales
@@ -25,6 +27,25 @@ public function actualizar(Request $request)
         $usuario->apellido = $request->apellido;
         $usuario->dni = $request->dni;
         $usuario->email = $request->email;
+
+        if ($request->filled('password')) {
+
+        if (!Hash::check(
+            $request->password_actual,
+            $usuario->password
+        )) {
+
+            return back()
+                ->withErrors([
+                    'password_actual' => 'La contraseña actual es incorrecta.'
+                ])
+                ->withInput();
+        }
+
+        $usuario->password = Hash::make(
+            $request->password
+        );
+    }
 
         // Lógica para los datos de envío
         if ($request->filled('direccion') || $request->filled('provincia') || $request->filled('localidad') || $request->filled('codigo_postal')) {

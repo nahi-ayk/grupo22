@@ -191,6 +191,21 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // Devuelve la vista de crear producto 
     Route::get('/crear_producto', [ProductoController::class, 'crear'])
     ->name('crear.producto');
+
+    Route::post('/productos/{id}/baja',[ProductoController::class, 'baja'])
+    ->name('producto.baja');
+
+    Route::post('/productos/{id}/alta',[ProductoController::class, 'alta'])
+    ->name('producto.alta');
+
+    Route::get('/admin/categorias', [CategoriaController::class, 'mostrarCategorias'])
+    ->name('admin.categorias');
+    
+    Route::post('/categorias/{id}/baja',[CategoriaController::class, 'bajaCategoria'])
+    ->name('categoria.baja');
+
+    Route::post('/categorias/{id}/alta',[CategoriaController::class, 'altaCategoria'])
+    ->name('categoria.alta');
     
     // Ruta a la funcion "guardar" que crea y guarda un nuevo producto
     Route::post('/admin/productos/guardar', [ProductoController::class, 'guardar'])
