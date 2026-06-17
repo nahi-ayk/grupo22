@@ -98,8 +98,11 @@
                                     </form>
 
                                 @else
-                                    <button type="button" class="btn btn-agregar-carrito w-100 d-flex align-items-center justify-content-center m-0" disabled>
-                                        <i class="bi bi-cart-x me-1"></i> Sin stock
+                                    <button
+                                        type="button"
+                                        class="btn btn-carrito w-100 d-flex align-items-center justify-content-center m-0"
+                                        disabled>
+                                        <i class="bi bi-cart-x me-1"></i> Agotado
                                     </button>
                                 @endif
 
