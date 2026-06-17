@@ -1,6 +1,9 @@
 <h1>Tn Toys - Jugueteria</h1>
 <p>Tn Toys es Una plataforma de comercio electrónico diseñada para la venta y gestión del catálogo de una juguetería. Este proyecto implementa un sistema completo que abarca desde la exploración de productos para los clientes hasta la administración del inventario (CRUD) para los administradores.</p>
 
+<img width="1906" height="908" alt="image" src="https://github.com/user-attachments/assets/c4e203cc-21d9-4863-89bc-b3b701eac849" />
+
+
 <h3>Caracteristicas principales</h3>
 <ul>
     <li>Catálogo de Productos: Visualización de juguetes con detalles, imágenes, precios y filtrado por categorías.</li>
