@@ -135,6 +135,16 @@
 
         </nav>
 
+        <div class="mt-4">
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-outline-danger w-100">
+                    <i class="bi bi-box-arrow-right me-2"></i>
+                    Cerrar sesión
+                </button>
+            </form>
+        </div>
+
     </div>
 
 </div>
