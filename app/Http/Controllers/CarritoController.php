@@ -29,7 +29,14 @@ private function obtenerCarrito()
     );
 }
 
-
+public function eliminar($id)
+{
+$carrito = $this->obtenerCarrito();
+// where('id',$id) evita eliminar ítems de otro carrito
+$carrito->detalles()->where('id', $id)->delete();
+$this->recalcularTotal($carrito);
+return back()->with('success', 'Producto eliminado');
+}
 
 // Muestra el carrito con sus items
 public function index()
