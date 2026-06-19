@@ -92,7 +92,11 @@ class AdminController extends Controller
             ->count();
 
         $clientes = Usuario::where('rol_id', 2)
-            ->withCount('pedidos')
+            ->withCount([
+                'pedidos' => function ($query) {
+                    $query->where('estado', '!=', 'carrito');
+                }
+            ])
             ->when($request->filled('buscar'), function ($q) use ($request) {
                 $q->where(function ($q2) use ($request) {
                     $q2->where('nombre', 'like', '%' . $request->buscar . '%')
@@ -101,8 +105,8 @@ class AdminController extends Controller
             })
             ->latest()
             ->get();
-        
-            $topCompradorId = $clientes->sortByDesc('pedidos_count')->first()?->id;
+
+        $topCompradorId = $clientes->sortByDesc('pedidos_count')->first()?->id;
 
         return view('backend.administrador.clientesAdmin', compact(
             'clientes',
